@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>글로벌 네트워크 | 바이오프로테크</title>
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .globals { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--bp-lt2); border: 1px solid var(--bp-lt2); }
+  .global-card { background: #fff; padding: 36px; display: flex; flex-direction: column; gap: 14px; min-height: 280px; }
+  .global-card .code { font-size: 11px; letter-spacing: 0.22em; font-weight: 700; color: var(--bp-accent5); }
+  .global-card h3 { font-size: 22px; font-weight: 700; color: var(--bp-dk2); line-height: 1.3; }
+  .global-card h3 .en { display: block; font-size: 12px; font-weight: 400; letter-spacing: 0.12em; color: var(--bp-dk2); opacity: 0.7; margin-top: 6px; }
+  .global-card .role { font-size: 13px; line-height: 1.7; color: var(--bp-dk2); opacity: 0.85; }
+  .global-card .addr { margin-top: auto; font-size: 12px; color: var(--bp-dk2); opacity: 0.7; line-height: 1.7; }
+  .map-placeholder { min-height: 380px; margin-top: 48px; }
+  @media (max-width: 900px) { .globals { grid-template-columns: 1fr; } }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="about">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+        <a href="about.html">About</a>
+    <span class="sep">/</span>
+    <span>Global</span>
+  </nav>
+  <h1 class="ko-only">글로벌 네트워크<span class="en">Global Network</span></h1>
+  <h1 class="en-only">Global Network<span class="en">Four Entities Worldwide</span></h1>
+  <p class="lead ko-only">한국·미국·중국 4개 법인.<br>한국은 R&amp;D·생산, 미국은 유통, 중국은 아시아 생산을 맡습니다.</p>
+  <p class="lead en-only">Four entities across Korea, USA, and China.<br>Korea leads R&amp;D and production, the US handles sales, and China serves Asia.</p>
+</section>
+
+<main class="page-body">
+  <div class="globals">
+    <div class="global-card">
+      <div class="code">KR · BPH</div>
+      <h3>㈜바이오프로테크<span class="en">Bio Protech HQ &amp; R&amp;D</span></h3>
+      <p class="role ko-only">본사 · 연구개발 · 국내 생산. 하이드로젤·접착 시스템·센서 설계와 국내 유통을 총괄합니다.</p>
+      <p class="role en-only">HQ · R&amp;D · domestic manufacturing. Oversees hydrogel, adhesive systems, sensor design, and Korean distribution.</p>
+      <div class="addr ko-only">(26365) 강원도 원주시 문막읍 동화공단로 151-3<br/>Tel 033-735-7720</div>
+      <div class="addr en-only">(26365) 151-3 Donghwagongdan-ro, Munmak-eup, Wonju-si, Gangwon-do, Korea<br/>Tel +82-33-735-7720</div>
+    </div>
+    <div class="global-card">
+      <div class="code">USA · BPU</div>
+      <h3>Bio Protech USA<span class="en">North America · Sales</span></h3>
+      <p class="role ko-only">북미 지역 판매법인. FDA 등록 제품의 미주 유통과 고객 대응을 담당합니다.</p>
+      <p class="role en-only">North American sales entity. Distributes FDA-registered products and handles customer support in the Americas.</p>
+      <div class="addr ko-only">주소 준비 중</div>
+      <div class="addr en-only">Address pending</div>
+    </div>
+    <div class="global-card">
+      <div class="code">CHN · BPC</div>
+      <h3>Bio Protech Yantai<span class="en">China · Manufacturing</span></h3>
+      <p class="role ko-only">중국 연태 생산법인. ECG · TENS 전극 양산 및 아시아 공급.</p>
+      <p class="role en-only">China Yantai manufacturing entity. Mass production of ECG · TENS electrodes and Asian supply.</p>
+      <div class="addr ko-only">주소 준비 중</div>
+      <div class="addr en-only">Address pending</div>
+    </div>
+    <div class="global-card">
+      <div class="code">CHN · BPG</div>
+      <h3>Bio Protech Guangzhou<span class="en">China · Manufacturing</span></h3>
+      <p class="role ko-only">광저우 생산법인. 전기수술 제품군 생산 및 중화권 유통 거점.</p>
+      <p class="role en-only">Guangzhou manufacturing entity. Production of the electrosurgery line and Greater China distribution hub.</p>
+      <div class="addr ko-only">주소 준비 중</div>
+      <div class="addr en-only">Address pending</div>
+    </div>
+  </div>
+
+  <div class="placeholder-img map-placeholder" data-label="Global Map"></div>
+  <p class="placeholder-empty ko-only"><strong>지도 이미지 / 인터랙티브 맵</strong>4개 법인 위치 표시 지도 자리. Google Maps embed 또는 자체 SVG 맵으로 대체 예정입니다.</p>
+  <p class="placeholder-empty en-only"><strong>Map image / interactive map</strong>A map showing the four entity locations. Will be replaced by a Google Maps embed or a custom SVG map.</p>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+</body>
+</html>

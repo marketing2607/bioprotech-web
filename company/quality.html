@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>품질방침 | 바이오프로테크</title>
+<meta name="description" content="㈜바이오프로테크 품질방침 및 품질경영시스템(ISO 13485 · KGMP · FDA QMSR)." />
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .qp-statement { background: #14306b; color: #fff; padding: 56px 48px; text-align: center; margin-bottom: 80px; }
+  .qp-statement h2 { font-size: 30px; line-height: 1.5; font-weight: 700; margin: 0 auto; max-width: 900px; letter-spacing: -0.01em; word-break: keep-all; }
+  .qp-statement p { margin: 16px auto 0; max-width: 760px; color: rgba(255,255,255,.72); font-size: 15px; line-height: 1.7; }
+  .qp-goals { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid #1d1d1f; border-bottom: 1px solid #d2d2d7; }
+  .qp-goal { padding: 28px 24px 30px; display: flex; flex-direction: column; gap: 10px; border-left: 1px solid #d2d2d7; }
+  .qp-goal:first-child { border-left: 0; padding-left: 0; }
+  .qp-goal .no { font-size: 13px; color: #14306b; font-weight: 700; }
+  .qp-goal h4 { font-size: 19px; font-weight: 700; color: #1d1d1f; line-height: 1.35; word-break: keep-all; }
+  .qp-goal p { font-size: 13px; line-height: 1.65; color: #6e6e73; word-break: keep-all; }
+  .qp-arrow { display: none; }
+  .qp-final { border-top: 1px solid #d2d2d7; border-bottom: 1px solid #d2d2d7; padding: 28px 0; margin-top: 56px; display: flex; align-items: baseline; justify-content: center; gap: 18px; flex-wrap: wrap; text-align: center; }
+  .qp-final h3 { font-size: 24px; font-weight: 700; color: #14306b; word-break: keep-all; }
+  .qp-final p { font-size: 14px; color: #6e6e73; }
+  .qms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .qms-card { border: 1px solid #d2d2d7; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 10px; background: #fff; transition: box-shadow .2s, transform .2s; }
+  a.qms-card:hover { border-color: #14306b; }
+  .qms-card .code { font-size: 22px; font-weight: 700; color: #1d1d1f; }
+  .qms-card p { font-size: 13px; color: #6e6e73; line-height: 1.7; }
+  .qms-card .go { margin-top: auto; font-size: 13px; color: var(--bp-accent5); font-weight: 500; }
+  .draft-flag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .04em; padding: 4px 10px; border-radius: 980px; background: #fff4e5; color: #b25e00; margin-top: 18px; }
+  .qp-note { margin-top: 56px; padding: 20px 0; border-top: 1px solid #d2d2d7; font-size: 14px; color: #424245; line-height: 1.8; }
+  /* 261008 품질방침 디자인 요소 */
+  .qp-vennwrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 80px; }
+  .qp-venn { width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto; }
+  .v-ring { fill: none; stroke: #c9d2e3; stroke-width: 1.2; stroke-dasharray: 3 6; }
+  .v-arc { fill: none; stroke: #14306b; stroke-width: 2.4; stroke-linecap: round; }
+  .v-ringtext { font-size: 11px; font-weight: 700; letter-spacing: .22em; fill: #14306b; }
+  .v-c { mix-blend-mode: multiply; stroke: #fff; stroke-width: 2; }
+  .v1 { fill: rgba(20,48,107,.85); } .v2 { fill: rgba(56,86,145,.75); } .v3 { fill: rgba(110,135,180,.75); }
+  .vt { fill: #fff; font-size: 16px; font-weight: 700; } .vs { fill: rgba(255,255,255,.85); font-size: 13px; font-weight: 600; }
+  .v-core { fill: #fff; stroke: #14306b; stroke-width: 2; }
+  .vcore { fill: #14306b; font-size: 12px; font-weight: 800; } .vcore2 { fill: #14306b; font-size: 11px; font-weight: 600; }
+  .qp-venn-text h3 { font-size: 28px; font-weight: 700; line-height: 1.4; color: #1d1d1f; margin: 6px 0 16px; word-break: keep-all; }
+  .qp-venn-text p { font-size: 15px; line-height: 1.8; color: #424245; word-break: keep-all; }
+  .qp-legend { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; }
+  .qp-legend li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #1d1d1f; }
+  .qp-legend i { width: 12px; height: 12px; flex: none; }
+  .qp-legend .l1 { background: #14306b; } .qp-legend .l2 { background: #385691; } .qp-legend .l3 { background: #6e87b4; }
+  .qp-legend .l4 { border: 2px dashed #14306b; border-radius: 50%; }
+  .qp-goal-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .qp-ic { color: #14306b; display: inline-flex; }
+  .qp-ic svg { width: 30px; height: 30px; }
+  .qp-goal p.en { font-size: 12px; color: #86868b; margin-top: -4px; }
+  /* PDCA: 박스 없이 번호 + 가로 선 */
+  .qp-pdca { margin-top: 72px; }
+  .pd-head { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 26px; color: #14306b; text-align: center; }
+  .pd-head-ic svg { width: 26px; height: 26px; display: block; }
+  .pd-head b { font-size: 18px; color: #1d1d1f; margin-right: 8px; }
+  .pd-head > div > span { font-size: 12px; font-weight: 700; letter-spacing: .2em; color: #6e6e73; }
+  .pd-steps { display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 32px; }
+  .pd-step { position: relative; border-top: 1px solid #14306b; padding: 22px 12px 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+  .pd-step::before { content: ''; position: absolute; top: -5px; left: calc(50% - 4.5px); width: 9px; height: 9px; border-radius: 50%; background: #14306b; }
+  .pd-ic { width: 28px; height: 28px; color: #14306b; }
+  .pd-ic svg { width: 100%; height: 100%; }
+  .pd-step b { font-size: 18px; font-weight: 800; color: #14306b; }
+  .pd-step > span:not(.pd-ic) { font-size: 14px; font-weight: 600; color: #1d1d1f; }
+  .pd-step small { font-size: 12px; color: #6e6e73; line-height: 1.5; }
+  @media (max-width: 900px) {
+    .qp-vennwrap { grid-template-columns: 1fr; gap: 28px; }
+    .pd-steps { grid-template-columns: 1fr 1fr; }
+    .qp-venn-text h3 { font-size: 24px; }
+  }
+  @media (max-width: 900px) {
+    .qp-goals { grid-template-columns: 1fr 1fr; }
+    .qp-goal:nth-child(3) { border-left: 0; padding-left: 0; }
+    .qp-goal:nth-child(n+3) { border-top: 1px solid #d2d2d7; }
+    .qp-statement { padding: 40px 24px; }
+    br.pc { display: none; }
+    .qms-grid { grid-template-columns: 1fr; }
+    .qp-statement { padding: 44px 24px; }
+    .qp-statement h2 { font-size: 22px; }
+  }
+  @media (max-width: 560px) { .qp-goals { grid-template-columns: 1fr; } .qp-goal { border-left: 0; padding-left: 0; border-top: 1px solid #d2d2d7; } .qp-goal:first-child { border-top: 0; } }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="about">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+        <a href="about.html">About</a><span class="sep">/</span>
+    <span>Quality Policy</span>
+  </nav>
+  <h1 class="ko-only">품질방침<span class="en">Quality Policy</span></h1>
+  <h1 class="en-only">Quality Policy<span class="en">Quality Management</span></h1>
+  <p class="lead ko-only">설계부터 출하까지, 국제 표준에 기반한 품질경영시스템으로 관리합니다.</p>
+  <p class="lead en-only">From design to shipment, every step follows an international quality system.</p>
+</section>
+
+<div class="company-tabs"><nav aria-label="Company">
+  <a href="about.html"><span class="ko-only">회사소개</span><span class="en-only">About</span></a>
+  <a href="ceo.html"><span class="ko-only">CEO 메시지</span><span class="en-only">CEO Message</span></a>
+  <a href="quality.html" class="on" aria-current="page"><span class="ko-only">품질방침</span><span class="en-only">Quality Policy</span></a>
+  <a href="certification.html"><span class="ko-only">인증현황</span><span class="en-only">Certifications</span></a>
+</nav></div>
+
+<main class="page-body">
+
+  <!-- ① 품질방침 (출처: TF/품질팀/품질방침& 목표.bmp) -->
+  <div class="qp-statement">
+    <h2 class="ko-only">㈜바이오프로테크는 최고 일류 의료기기 업체를 목표로<br class="pc"> 하기와 같은 품질 목표를 준수한다.</h2>
+    <h2 class="en-only">To be a leading company of medical devices,<br class="pc"> we should achieve the quality goal as follows.</h2>
+    <p class="ko-only">To be a leading company of medical devices, we should achieve the quality goal as follows.</p>
+  </div>
+
+  <!-- ② 품질목표 관계도 (벤다이어그램 + 지속적 개선 순환) -->
+  <div class="qp-vennwrap">
+    <div class="qp-venn-fig">
+    <svg class="qp-venn" viewBox="-6 -6 532 532" role="img" aria-label="품질목표 관계도">
+      <defs><path id="ringPath" d="M260 26 a234 234 0 1 1 -0.1 0"/>
+        <marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14306b"/></marker></defs>
+      <circle class="v-ring" cx="260" cy="260" r="220"/>
+      <path class="v-arc" d="M440 134 A220 220 0 0 1 478 280" marker-end="url(#ah)"/>
+      <path class="v-arc" d="M150 450 A220 220 0 0 1 48 320" marker-end="url(#ah)"/>
+      <text class="v-ringtext"><textPath href="#ringPath" startOffset="3%"><tspan class="ko-only">지속적 개선 · CONTINUOUS IMPROVEMENT · 지속적 개선 · CONTINUOUS IMPROVEMENT</tspan><tspan class="en-only">CONTINUOUS IMPROVEMENT · CONTINUOUS IMPROVEMENT · CONTINUOUS IMPROVEMENT</tspan></textPath></text>
+      <circle class="v-c v1" cx="200" cy="215" r="118"/>
+      <circle class="v-c v2" cx="320" cy="215" r="118"/>
+      <circle class="v-c v3" cx="260" cy="320" r="118"/>
+      <g class="v-ico" transform="translate(132 140) scale(1.5)"><g fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13.5l2 2 4-4"/></g></g>
+      <text class="vt ko-only" x="150" y="205" text-anchor="middle">품질경영시스템</text><text class="vt en-only" x="150" y="205" text-anchor="middle">Quality</text><text class="vs ko-only" x="150" y="225" text-anchor="middle">준수</text><text class="vs en-only" x="150" y="225" text-anchor="middle">Management System</text>
+      <g class="v-ico" transform="translate(352 140) scale(1.5)"><g fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20c.6-3.4 2.8-5.5 5.5-5.5s4.9 2.1 5.5 5.5"/><path d="M14 15c.8-.6 1.6-.9 2.5-.9 2.3 0 4 1.8 4.5 4.6"/></g></g>
+      <text class="vt ko-only" x="370" y="205" text-anchor="middle">품질의식</text><text class="vt en-only" x="370" y="205" text-anchor="middle">Quality</text><text class="vs ko-only" x="370" y="225" text-anchor="middle">강화</text><text class="vs en-only" x="370" y="225" text-anchor="middle">Mind</text>
+      <g class="v-ico" transform="translate(242 352) scale(1.5)"><g fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.6-3.3 8-8 9-4.7-1-8-4.4-8-9V6z"/><path d="M12 8v5"/><circle cx="12" cy="16" r=".6" fill="currentColor"/></g></g>
+      <text class="vt ko-only" x="260" y="412" text-anchor="middle">위험경영 준수</text><text class="vt en-only" x="260" y="412" text-anchor="middle">Risk Management</text>
+      <circle class="v-core" cx="260" cy="250" r="44"/>
+      <g transform="translate(248 222)"><g fill="none" stroke="#14306b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><path d="M18 3l-4.5 4.5M18 3v3h3"/></g></g>
+      <text class="vcore ko-only" x="260" y="264" text-anchor="middle">품질목표</text><text class="vcore en-only" x="260" y="264" text-anchor="middle">Quality Goal</text><text class="vcore2 ko-only" x="260" y="280" text-anchor="middle">달성</text><text class="vcore2 en-only" x="260" y="280" text-anchor="middle">Achieved</text>
+    </svg>
+    </div>
+    <div class="qp-venn-text">
+      <div class="bp-kicker">Quality Goal</div>
+      <h3 class="ko-only">세 가지 품질목표가 맞물려<br class="pc"> 하나의 목표를 이룹니다</h3>
+      <h3 class="en-only">Three quality goals interlock<br class="pc"> toward one outcome</h3>
+      <p class="ko-only">품질경영시스템 준수, 전 직원의 품질의식 강화, 위험경영 준수가 서로 겹치는 지점에서 품질목표 추진계획이 달성되며, 이 전 과정은 지속적 개선으로 다시 순환합니다.</p>
+      <p class="en-only">Where the quality management system, a quality mind across all staff and risk management overlap, the quality goal promotion plan is achieved, and the whole process cycles back through continuous improvement.</p>
+      <ul class="qp-legend">
+        <li><i class="l1"></i><span class="ko-only">품질경영시스템 준수</span><span class="en-only">Quality Management System</span></li>
+        <li><i class="l2"></i><span class="ko-only">전 직원의 품질의식 강화</span><span class="en-only">Quality Mind</span></li>
+        <li><i class="l3"></i><span class="ko-only">위험경영 준수</span><span class="en-only">Risk Management</span></li>
+        <li><i class="l4"></i><span class="ko-only">지속적 개선 (순환)</span><span class="en-only">Continuous Improvement (cycle)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ③ 품질목표 4항목 (픽토그램) -->
+  <div class="qp-goals">
+    <div class="qp-goal">
+      <div class="qp-goal-top"><span class="qp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13.5l2 2 4-4"/></svg></span><span class="no">01</span></div>
+      <h4 class="ko-only">품질경영시스템 준수</h4><h4 class="en-only">Implementation of Quality Management System</h4>
+      <p class="en ko-only">Implementation of Quality Management System</p>
+      <p class="ko-only">국제 표준 기반 절차를 설계·생산·출하 전 과정에 적용합니다.</p><p class="en-only">We apply procedures based on international standards from design to shipment.</p>
+    </div>
+    <div class="qp-goal">
+      <div class="qp-goal-top"><span class="qp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20c.6-3.4 2.8-5.5 5.5-5.5s4.9 2.1 5.5 5.5"/><path d="M14 15c.8-.6 1.6-.9 2.5-.9 2.3 0 4 1.8 4.5 4.6"/></svg></span><span class="no">02</span></div>
+      <h4 class="ko-only">전 직원의 품질의식 강화</h4><h4 class="en-only">Improvement of Quality Mind</h4>
+      <p class="en ko-only">Improvement of Quality Mind</p>
+      <p class="ko-only">모든 구성원이 품질의 주체라는 인식을 공유합니다.</p><p class="en-only">Every member of our team shares ownership of quality.</p>
+    </div>
+    <div class="qp-goal">
+      <div class="qp-goal-top"><span class="qp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.6-3.3 8-8 9-4.7-1-8-4.4-8-9V6z"/><path d="M12 8v5"/><circle cx="12" cy="16" r=".6" fill="currentColor"/></svg></span><span class="no">03</span></div>
+      <h4 class="ko-only">위험경영 준수</h4><h4 class="en-only">Implementation of Risk Management</h4>
+      <p class="en ko-only">Implementation of Risk Management</p>
+      <p class="ko-only">제품 수명주기 전반의 위험을 식별하고 관리합니다.</p><p class="en-only">We identify and manage risks across the product life cycle.</p>
+    </div>
+    <div class="qp-goal">
+      <div class="qp-goal-top"><span class="qp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.6-4.5"/><path d="M4 4v3.5h3.5"/><path d="M4 13a8 8 0 0 0 14.6 4.5"/><path d="M20 20v-3.5h-3.5"/></svg></span><span class="no">04</span></div>
+      <h4 class="ko-only">지속적 개선</h4><h4 class="en-only">Continuous Improvement</h4>
+      <p class="en ko-only">Continuous Improvement</p>
+      <p class="ko-only">측정과 검토를 통해 품질 수준을 꾸준히 높여 갑니다.</p><p class="en-only">We keep raising our quality level through measurement and review.</p>
+    </div>
+  </div>
+
+  <!-- ④ 지속적 개선 사이클 (PDCA) -->
+  <div class="qp-pdca">
+    <div class="pd-head">
+      <span class="pd-head-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.6-4.5"/><path d="M4 4v3.5h3.5"/><path d="M4 13a8 8 0 0 0 14.6 4.5"/><path d="M20 20v-3.5h-3.5"/></svg></span>
+      <div><b class="ko-only">지속적 개선 사이클</b><b class="en-only">Continuous Improvement Cycle</b><span>PDCA</span></div>
+    </div>
+    <div class="pd-steps">
+      <div class="pd-step"><span class="pd-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span><b>Plan</b><span class="ko-only">계획</span><small class="ko-only">품질목표·추진계획 수립</small><small class="en-only">Set goals & plans</small></div>
+      <div class="pd-step"><span class="pd-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5l4 4L9 19H5v-4z"/><path d="M12.5 7.5l4 4"/></svg></span><b>Do</b><span class="ko-only">실행</span><small class="ko-only">절차에 따른 설계·생산</small><small class="en-only">Design & produce by procedure</small></div>
+      <div class="pd-step"><span class="pd-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/><path d="M8.3 11l1.9 1.9 3.6-3.6"/></svg></span><b>Check</b><span class="ko-only">검토</span><small class="ko-only">측정·심사·데이터 분석</small><small class="en-only">Measure, audit & analyze</small></div>
+      <div class="pd-step"><span class="pd-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg></span><b>Act</b><span class="ko-only">개선</span><small class="ko-only">시정·예방조치와 개선</small><small class="en-only">Corrective & improvement actions</small></div>
+    </div>
+  </div>
+
+  <div class="qp-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></div>
+  <div class="qp-final">
+    <h3 class="ko-only">품질목표 추진계획 목표 달성</h3>
+    <h3 class="en-only">Achievement of Quality Goal Promotion Plan</h3>
+    <p class="ko-only">Achievement of Quality Goal Promotion Plan</p>
+  </div>
+  <div style="height:88px"></div>
+
+  <!-- ③ 품질경영시스템: 품질팀 요청 연계 표기: ISO 13485, KGMP, FDA QMSR -->
+  <div class="bp-kicker">Quality Management System</div>
+  <div class="qms-grid">
+    <a class="qms-card" href="certification.html#cert-04">
+      <div class="code">ISO 13485:2016</div>
+      <p class="ko-only">의료기기 품질경영시스템 국제 표준 (인증기관 DNV)</p>
+      <p class="en-only">International standard for medical device QMS (certified by DNV)</p>
+      <span class="go ko-only">인증서 보기 →</span><span class="go en-only">View certificate →</span>
+    </a>
+    <a class="qms-card" href="certification.html#cert-03">
+      <div class="code">KGMP</div>
+      <p class="ko-only">의료기기 제조 및 품질관리 기준 적합인정 (한국산업기술시험원)</p>
+      <p class="en-only">Korea Good Manufacturing Practice certification (KTL)</p>
+      <span class="go ko-only">인증서 보기 →</span><span class="go en-only">View certificate →</span>
+    </a>
+    <div class="qms-card">
+      <div class="code">FDA QMSR</div>
+      <p class="ko-only">미국 FDA 품질경영시스템 규정(21 CFR Part 820) 대응</p>
+      <p class="en-only">Compliance with US FDA Quality Management System Regulation (21 CFR Part 820)</p>
+    </div>
+  </div>
+
+  <div class="qp-note ko-only">품질 문의 및 고객 클레임은 영업팀에서 접수 후 진행합니다. <a href="../support/contact.html" style="color:var(--bp-accent5)">문의하기 →</a></div>
+  <div class="qp-note en-only">Quality inquiries and customer claims are received by our Sales team. <a href="../support/contact.html" style="color:var(--bp-accent5)">Contact us →</a></div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+</body>
+</html>

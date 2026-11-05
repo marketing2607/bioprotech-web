@@ -1,0 +1,187 @@
+/* =========================================================
+   Bioprotech Homepage v3-1 — Apple Style Tokens
+   Base: Apple Design System (white canvas, near-black ink,
+   single Apple Blue accent, SF Pro typography)
+   Variable names kept identical to v2 for drop-in reskin.
+   ========================================================= */
+
+/* v3-3-5: 본문·제목 모두 Pretendard 적용. 모노만 IBM Plex Mono 유지. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+:root {
+  /* ---------- Color Tokens (Apple mapping) ---------- */
+  --bp-accent1:        #14306b;   /* Navy: indicators, hovers (261008) */
+  --bp-accent5:        #14306b;   /* Navy: links, primary actions (261008) */
+  --bp-dk2:            #1d1d1f;   /* near-black ink — body text, headings */
+  --bp-bg1:            #FFFFFF;
+  --bp-bg2:            #1d1d1f;
+  --bp-lt2:            #d2d2d7;   /* hairline gray */
+  --bp-lt-bluegray:    #f5f5f7;   /* alternation surface */
+  --bp-accent2:        #ED7D31;   /* unused */
+  --bp-accent3:        #86868b;   /* secondary gray text */
+  --bp-text-black:     #1d1d1f;
+
+  /* ---------- Semantic ---------- */
+  --bp-fg-on-gradient: #f5f5f7;
+  --bp-fg-on-white:    var(--bp-dk2);
+  --bp-fg-section:     var(--bp-dk2);
+  --bp-fg-emphasis:    var(--bp-accent5);
+  --bp-bg-content:     var(--bp-bg1);
+  --bp-bg-secondary:   var(--bp-lt-bluegray);
+  --bp-indicator:      var(--bp-accent1);
+  --bp-divider-light:  rgba(255,255,255,0.25);
+
+  /* ---------- Gradient → cinematic black ---------- */
+  --bp-gradient-primary:  linear-gradient(180deg, #1d1d1f 0%, #000000 100%);
+  --bp-gradient-cover:    linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.78) 100%);
+
+  /* ---------- Type (본문·제목 모두 Pretendard) ---------- */
+  --bp-font-family: "Pretendard Variable", "Pretendard",
+                    -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  --bp-font-head:   "Pretendard Variable", "Pretendard",
+                    -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  --bp-font-mono:   "IBM Plex Mono", "Consolas", monospace;
+
+  --bp-fs-cover-title:        113px;
+  --bp-fs-cover-subtitle:     45px;
+  --bp-fs-sidebar-company:    44px;
+  --bp-fs-sidebar-project:    29px;
+  --bp-fs-section-title:      37px;
+  --bp-fs-agenda-number:      43px;
+  --bp-fs-content-heading:    21px;
+  --bp-fs-content-subheading: 20px;
+  --bp-fs-agenda-item-title:  19px;
+  --bp-fs-sidebar-label:      19px;
+  --bp-fs-footer:             19px;
+  --bp-fs-body:               15px;
+  --bp-fs-body-small:         13px;
+  --bp-fs-spec:               17px;
+
+  --bp-fw-regular: 400;
+  --bp-fw-bold:    600;   /* Apple favors semibold over heavy bold */
+  --bp-lh-tight:   1.08;
+  --bp-lh-normal:  1.47;
+  --bp-lh-relaxed: 1.6;
+
+  /* ---------- Spacing (unchanged layout skeleton) ---------- */
+  --bp-sb-w-section:  339px;
+  --bp-sb-w-agenda:   264px;
+  --bp-sb-w-content:  395px;
+  --bp-slide-w:      1280px;
+  --bp-slide-h:       720px;
+
+  --bp-pad-sm:  8px;
+  --bp-pad-md:  16px;
+  --bp-pad-lg:  32px;
+  --bp-pad-xl:  48px;
+
+  /* ---------- Apple shape tokens ---------- */
+  --ap-radius-card:  18px;
+  --ap-radius-pill:  980px;
+  --ap-radius-input: 12px;
+  --ap-shadow-card:  0 4px 16px rgba(0,0,0,0.06);
+  --ap-text-secondary: #6e6e73;
+}
+
+/* ---------- Element-level semantic styles ---------- */
+html, body {
+  font-family: var(--bp-font-family);
+  color: var(--bp-fg-on-white);
+  font-weight: var(--bp-fw-regular);
+}
+
+/* 제목 계열도 Pretendard (본문과 동일 패밀리) */
+h1, h2, h3, h4, h5, h6,
+.hero-title, .section-h2, .sec-head h2 {
+  font-family: var(--bp-font-head);
+}
+
+.bp-h1, .bp-cover-title {
+  font-size: var(--bp-fs-cover-title);
+  font-weight: 700;
+  line-height: var(--bp-lh-tight);
+  letter-spacing: -0.02em;
+}
+.bp-h2, .bp-section-title {
+  font-size: var(--bp-fs-section-title);
+  font-weight: var(--bp-fw-bold);
+  color: var(--bp-fg-section);
+  letter-spacing: -0.02em;
+}
+.bp-h3, .bp-content-heading {
+  font-size: var(--bp-fs-content-heading);
+  font-weight: var(--bp-fw-bold);
+  color: var(--bp-dk2);
+}
+.bp-subheading {
+  font-size: var(--bp-fs-content-subheading);
+  font-weight: var(--bp-fw-bold);
+  color: var(--bp-text-black);
+}
+.bp-body {
+  font-size: var(--bp-fs-body);
+  font-weight: var(--bp-fw-regular);
+  line-height: var(--bp-lh-normal);
+}
+.bp-body-small {
+  font-size: var(--bp-fs-body-small);
+  font-weight: var(--bp-fw-regular);
+}
+.bp-spec {
+  font-size: var(--bp-fs-spec);
+  font-weight: var(--bp-fw-regular);
+  color: var(--bp-dk2);
+  text-align: right;
+}
+.bp-on-gradient { color: var(--bp-fg-on-gradient); }
+.bp-on-white    { color: var(--bp-fg-on-white); }
+.bp-uppercase   { text-transform: none; letter-spacing: 0; }
+
+/* ---------- Surfaces ---------- */
+.bp-sidebar-gradient {
+  background: var(--bp-gradient-primary);
+  color: var(--bp-fg-on-gradient);
+}
+.bp-cover-overlay {
+  background: var(--bp-gradient-cover);
+}
+.bp-content-surface {
+  background: var(--bp-bg-content);
+  color: var(--bp-fg-on-white);
+}
+.bp-secondary-surface {
+  background: var(--bp-bg-secondary);
+}
+
+/* ---------- Atoms ---------- */
+.bp-divider-h {
+  height: 1px;
+  background: var(--bp-lt2);
+  border: 0;
+  display: block;
+}
+.bp-divider-v {
+  width: 1px;
+  background: var(--bp-lt2);
+  display: block;
+}
+.bp-agenda-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bp-accent5);
+  color: var(--bp-bg1);
+  font-size: var(--bp-fs-agenda-number);
+  font-weight: var(--bp-fw-bold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.bp-indicator-square {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bp-accent1);
+  display: inline-block;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>전시회 · 학회 | 바이오프로테크</title>
+<meta name="description" content="㈜바이오프로테크 전시회·학회 참가 일정." />
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  /* 261008: 연도 탭 + 포스터형 카드 목록 (참고 레이아웃: classys.co.kr 전시/학회) */
+  .ex-years { display: flex; justify-content: center; gap: 36px; border-bottom: 1px solid #d2d2d7; margin-bottom: 48px; }
+  .ex-years button { appearance: none; background: none; border: 0; font: inherit; font-size: 17px; font-weight: 600; color: #86868b; padding: 0 2px 16px; cursor: pointer; position: relative; }
+  .ex-years button.on { color: #0a1428; }
+  .ex-years button.on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: #0a1428; }
+  .ex-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 28px; }
+  .ex-item { display: flex; flex-direction: column; }
+  .ex-poster { aspect-ratio: 4 / 3; background: #0a1428; overflow: hidden; margin-bottom: 20px; }
+  .ex-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ex-poster .tile { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; color: #fff; }
+  .ex-poster .tile b { font-size: 30px; font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; }
+  .ex-poster .tile span { font-size: 13px; color: rgba(255,255,255,.6); margin-top: 8px; }
+  .ex-item h4 { font-size: 18px; font-weight: 700; color: #1d1d1f; line-height: 1.4; margin-bottom: 12px; word-break: keep-all; }
+  .ex-item h4 em { font-style: normal; font-size: 12px; font-weight: 600; color: #b25e00; margin-left: 6px; vertical-align: 2px; }
+  .ex-info { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 6px; }
+  .ex-info li { font-size: 14px; color: #424245; line-height: 1.5; word-break: keep-all; }
+  .ex-info li b { font-weight: 600; color: #1d1d1f; margin-right: 6px; }
+  .ex-more { margin-top: auto; align-self: flex-start; font-size: 14px; font-weight: 600; color: #0a1428; border-bottom: 1px solid #0a1428; padding-bottom: 2px; }
+  .ex-more:hover { color: #14306b; border-color: #14306b; }
+  .ex-empty { text-align: center; color: #86868b; padding: 60px 0; }
+  .ex-pager { display: flex; justify-content: center; gap: 6px; margin-top: 56px; }
+  .ex-pager button { min-width: 36px; height: 36px; border: 0; background: none; font: inherit; font-size: 14px; color: #6e6e73; cursor: pointer; }
+  .ex-pager button.on { color: #0a1428; font-weight: 700; text-decoration: underline; text-underline-offset: 6px; }
+  .ex-note { margin-top: 56px; padding-top: 20px; border-top: 1px solid #d2d2d7; font-size: 13px; color: #86868b; line-height: 1.7; }
+  @media (max-width: 900px) { .ex-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .ex-grid { grid-template-columns: 1fr; } .ex-years { gap: 22px; } }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="news">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb"><a href="index.html">News</a><span class="sep">/</span><span>Exhibitions</span></nav>
+  <h1 class="ko-only">전시회 · 학회<span class="en">Exhibitions &amp; Congresses</span></h1>
+  <h1 class="en-only">Exhibitions &amp; Congresses<span class="en">Annual Schedule</span></h1>
+  <p class="lead ko-only">바이오프로테크가 참가하는 국내외 전시회와 학회 일정을 안내합니다.<br>현장에서 제품을 직접 만나보세요.</p>
+  <p class="lead en-only">Find the trade shows and congresses Bioprotech attends in Korea and abroad.<br>Meet our products in person.</p>
+</section>
+
+<div class="company-tabs"><nav aria-label="News">
+  <a href="index.html"><span class="ko-only">뉴스 · IR</span><span class="en-only">News &amp; IR</span></a>
+  <a href="exhibition.html" class="on" aria-current="page"><span class="ko-only">전시회 · 학회</span><span class="en-only">Exhibitions</span></a>
+</nav></div>
+
+<main class="page-body">
+  <div class="ex-years" id="ex-year" role="tablist"></div>
+  <ul class="ex-grid" id="ex-list"></ul>
+  <div class="ex-pager" id="ex-pager"></div>
+  <p class="ex-note ko-only">※ 2026 GMES는 실제 개최 정보, 2026 MEDICA는 가상 데이터, 2027년 항목은 예시입니다. 영업팀 연간 일정 수령 후 교체합니다.</p>
+  <p class="ex-note en-only">※ GMES 2026 is actual event information, MEDICA 2026 is sample data and 2027 entries are examples.</p>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+<script>
+/* =========================================================
+   전시회·학회 일정 데이터: 영업팀 전달 일정으로 교체
+   · status: 'plan'(참가 예정) | 'tbd'(일정 확인 중) | 'done'(종료)
+     ※ 종료일(end)이 지나면 자동으로 '종료' 표시
+   · start/end: 'YYYY-MM-DD' (미정이면 month만 'YYYY-MM' 또는 빈 값)
+   · sample:true → 「가상」 배지 표시 (MEDICA 2026, 가상 데이터, 실제 참가 확정 후 sample 삭제)
+   · news: 관련 뉴스 id (news.json) → 「더보기」 링크 (없으면 url 사용)
+   · img: 포스터 이미지 경로 (없으면 남색 타일에 행사명 표시)
+   · short: 포스터 타일에 표시할 짧은 이름 (예: 'GMES 2026')
+   ========================================================= */
+const EXHIBITIONS = [
+  { year: 2026, start: '2026-09-03', end: '2026-09-04', status: 'done',
+    short: 'GMES 2026', name: { ko: '제22회 강원의료기기전시회 (GMES 2026)', en: 'GMES 2026, 22nd Gangwon Medical Equipment Show', es: 'GMES 2026' },
+    city: { ko: '원주 · 의료기기종합지원센터 상설전시장', en: 'Medical Device Comprehensive Support Center, Wonju, Korea', es: 'Wonju, Corea' },
+    booth: 'W209 (2F)', img: '../assets/img/news/gmes-2026/card.jpg', url: '', news: '2026-gmes' },
+  { year: 2026, start: '2026-11-16', end: '2026-11-19', status: 'plan', sample: true, short: 'MEDICA 2026',
+    name: { ko: 'MEDICA 2026', en: 'MEDICA 2026', es: 'MEDICA 2026' },
+    city: { ko: '독일 · 뒤셀도르프 메쎄', en: 'Messe Düsseldorf, Germany', es: 'Messe Düsseldorf, Alemania' },
+    booth: 'Hall 10 / 10D30', img: '../assets/img/exhibitions/medica-2026.jpg', url: 'https://www.medica-tradefair.com/', news: '2026-medica' },
+  { year: 2027, start: '', end: '', status: 'tbd',
+    short: 'KIMES', name: { ko: '[예시] KIMES 국제의료기기·병원설비전시회', en: '[Example] KIMES', es: '[Ejemplo] KIMES' },
+    city: { ko: '서울 · 코엑스', en: 'Seoul, Korea', es: 'Seúl, Corea' }, booth: '', url: '' },
+  { year: 2027, start: '', end: '', status: 'tbd',
+    short: 'GMES', name: { ko: '[예시] GMES 강원의료기기전시회', en: '[Example] GMES', es: '[Ejemplo] GMES' },
+    city: { ko: '원주', en: 'Wonju, Korea', es: 'Wonju, Corea' }, booth: '', url: '' },
+  { year: 2027, start: '', end: '', status: 'tbd',
+    short: 'MEDICA', name: { ko: '[예시] MEDICA', en: '[Example] MEDICA', es: '[Ejemplo] MEDICA' },
+    city: { ko: '독일 · 뒤셀도르프', en: 'Düsseldorf, Germany', es: 'Düsseldorf, Alemania' }, booth: '', url: '' },
+];
+
+(function () {
+  const lang = window.bpLang ? bpLang() : 'ko';
+  const L = (ko, en, es) => lang === 'en' ? en : lang === 'es' ? es : ko;
+  const WD = { ko:['일','월','화','수','목','금','토'], en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], es:['dom','lun','mar','mié','jue','vie','sáb'] }[lang];
+  const fmt = d => { const t = new Date(d + 'T00:00:00'); return `${d.replace(/-/g, '.')} (${WD[t.getDay()]})`; };
+  const dateText = e => !e.start ? L('일정 확인 중', 'To be confirmed', 'Por confirmar') : fmt(e.start) + (e.end && e.end !== e.start ? ' ~ ' + fmt(e.end) : '');
+  const short = e => (e.short || (e.name.en || '').replace(/^\[[^\]]*\]\s*/, '').split(',')[0]);
+  const years = [...new Set(EXHIBITIONS.map(e => e.year))].sort((a, b) => b - a);
+  const thisYear = new Date().getFullYear();
+  let sel = years.includes(thisYear) ? thisYear : years[0], page = 1;
+  const PER = 9;
+  const yearBox = document.getElementById('ex-year'), list = document.getElementById('ex-list'), pager = document.getElementById('ex-pager');
+
+  function drawYears() {
+    yearBox.innerHTML = years.map(y => `<button type="button" role="tab" data-y="${y}" class="${y === sel ? 'on' : ''}">${y}</button>`).join('');
+  }
+  function draw() {
+    const items = EXHIBITIONS.filter(e => e.year === sel).sort((a, b) => (b.start || '0').localeCompare(a.start || '0'));
+    const pages = Math.max(1, Math.ceil(items.length / PER));
+    const view = items.slice((page - 1) * PER, page * PER);
+    list.innerHTML = view.map(e => {
+      const more = e.news ? `detail.html?id=${e.news}` : (e.url || '');
+      const ext = !e.news && e.url;
+      const poster = e.img
+        ? `<img src="${e.img}" alt="${e.name[lang] || e.name.en}" loading="lazy">`
+        : `<div class="tile"><b>${short(e)}</b><span>${e.city[lang] || e.city.en}</span></div>`;
+      return `<li class="ex-item">
+        <div class="ex-poster">${poster}</div>
+        <h4>${e.name[lang] || e.name.en}${e.sample ? `<em>${L('가상', 'Sample', 'Ejemplo')}</em>` : ''}</h4>
+        <ul class="ex-info">
+          <li><b>${L('위치', 'Venue', 'Lugar')}</b>${e.city[lang] || e.city.en}</li>
+          <li><b>${L('날짜', 'Date', 'Fecha')}</b>${dateText(e)}</li>
+          ${e.booth ? `<li><b>${L('부스', 'Booth', 'Stand')}</b>${e.booth}</li>` : ''}
+        </ul>
+        ${more ? `<a class="ex-more" href="${more}"${ext ? ' target="_blank" rel="noopener"' : ''}>${L('더보기', 'More', 'Ver más')}</a>` : ''}
+      </li>`;
+    }).join('') || `<li class="ex-empty">${L('등록된 일정이 없습니다.', 'No events scheduled.', 'No hay eventos.')}</li>`;
+    pager.innerHTML = pages > 1 ? Array.from({ length: pages }, (_, k) => `<button type="button" data-p="${k + 1}" class="${k + 1 === page ? 'on' : ''}">${k + 1}</button>`).join('') : '';
+  }
+  yearBox.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { sel = +b.dataset.y; page = 1; drawYears(); draw(); } });
+  pager.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { page = +b.dataset.p; draw(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+  drawYears(); draw();
+})();
+</script>
+</body>
+</html>

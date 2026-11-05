@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CEO 메시지 | 바이오프로테크</title>
+<meta name="description" content="㈜바이오프로테크 대표이사 인사말." />
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  /* CEO 메시지: 사진(좌) + 남색 메시지 패널(우) 전폭 구성 */
+  .page-body { overflow-x: clip; }
+  .ceo-hero { margin: -80px calc(50% - 50vw) 0; display: grid; grid-template-columns: 1fr 1.15fr; min-height: 560px; }
+  .ceo-photo { background: #0a1428 url("../assets/img/about/ceo-global.svg") center center / contain no-repeat; position: relative; }
+  .ceo-photo { border-right: 1px solid rgba(255,255,255,.08); }
+  .ceo-photo span { position: absolute; left: 24px; bottom: 20px; font-size: 12px; letter-spacing: .12em; color: rgba(255,255,255,.8); text-transform: uppercase; }
+  .ceo-panel { background: #0a1428; color: #fff; padding: 72px max(32px, calc((100vw - 1180px) / 2)) 72px 64px; display: flex; flex-direction: column; justify-content: center; }
+  .ceo-kick { font-size: 12px; font-weight: 700; letter-spacing: .18em; color: rgba(255,255,255,.6); text-transform: uppercase; }
+  .ceo-q { font-family: Georgia, "Times New Roman", serif; font-size: 120px; line-height: .55; color: #c8102e; margin: 28px 0 10px; }
+  .ceo-panel p { font-size: clamp(20px, 2.1vw, 28px); line-height: 1.6; font-weight: 600; max-width: 640px; word-break: keep-all; margin: 0; }
+  .ceo-rule { width: 56px; height: 2px; background: #c8102e; margin: 36px 0 16px; }
+  .ceo-panel .sign { font-size: 14px; font-weight: 700; letter-spacing: .1em; color: rgba(255,255,255,.85); }
+  .ceo-more { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 36px 0 0; }
+  .ceo-more p { font-size: 15px; color: #424245; margin: 0; }
+  .ceo-more a { font-size: 14px; font-weight: 600; color: #14306b; border-bottom: 1px solid #14306b; padding-bottom: 2px; }
+  @media (max-width: 900px) {
+    .ceo-hero { grid-template-columns: 1fr; margin-top: -56px; }
+    .ceo-photo { min-height: 260px; }
+    .ceo-panel { padding: 48px 28px; }
+    .ceo-q { font-size: 90px; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="about">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+    <a href="about.html">About</a><span class="sep">/</span><span>CEO Message</span>
+  </nav>
+  <h1 class="ko-only">CEO 메시지<span class="en">CEO Message</span></h1>
+  <h1 class="en-only">CEO Message<span class="en">From Our CEO</span></h1>
+  <p class="lead ko-only">신뢰와 책임으로 파트너와 함께 성장합니다.</p>
+  <p class="lead en-only">We grow with our partners through trust and responsibility.</p>
+</section>
+
+<div class="company-tabs"><nav aria-label="Company">
+  <a href="about.html"><span class="ko-only">회사소개</span><span class="en-only">About</span></a>
+  <a href="ceo.html" class="on" aria-current="page"><span class="ko-only">CEO 메시지</span><span class="en-only">CEO Message</span></a>
+  <a href="quality.html"><span class="ko-only">품질방침</span><span class="en-only">Quality Policy</span></a>
+  <a href="certification.html"><span class="ko-only">인증현황</span><span class="en-only">Certifications</span></a>
+</nav></div>
+
+<main class="page-body">
+  <section class="ceo-hero">
+    <div class="ceo-photo" role="img" aria-label="World map of Bioprotech export countries"><span>60 Countries · Global Partnership</span></div>
+    <div class="ceo-panel">
+      <div class="ceo-kick">CEO Message</div>
+      <span class="ceo-q" aria-hidden="true">“</span>
+      <p class="ko-only">성공적인 파트너십은 상호 신뢰와 공동의 책임에서 시작된다고 믿습니다.<br>꾸준한 협력과 품질에 대한 책임으로 고객과의 관계를 더욱 단단히 하겠습니다.</p><p class="en-only">We believe successful partnerships depend on mutual trust and shared responsibility.<br>We look forward to strengthening our relationships with customers through continued cooperation and a commitment to quality.</p>
+      <div class="ceo-rule" aria-hidden="true"></div>
+      <div class="sign"><span class="ko-only">㈜바이오프로테크 대표이사</span><span class="en-only">CEO, BIO PROTECH INC.</span></div>
+    </div>
+  </section>
+  <div class="ceo-more">
+    <p class="ko-only">바이오프로테크의 제품과 협력 방식을 회사소개에서 확인하세요.</p><p class="en-only">See our products and how we work on the About page.</p>
+    <a href="about.html"><span class="ko-only">회사소개 보기 →</span><span class="en-only">About Bioprotech →</span></a>
+  </div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+</body>
+</html>

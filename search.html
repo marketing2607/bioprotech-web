@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>검색 | 바이오프로테크</title>
+<link rel="stylesheet" href="Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="assets/css/site.css" />
+<style>
+  .search-box { display: flex; gap: 8px; margin-bottom: 32px; }
+  .search-box input { flex: 1; padding: 16px 20px; font-size: 15px; border: 1px solid var(--bp-lt2); background: #fff; }
+  .search-box input:focus { border-color: var(--bp-accent5); outline: 0; }
+  .search-group { margin-bottom: 48px; }
+  .search-group h3 { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bp-accent5); font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--bp-lt2); }
+  .result-item { display: block; padding: 16px 0; border-bottom: 1px solid var(--bp-lt2); transition: padding .2s; }
+  .result-item:hover { padding-left: 8px; background: #F7F8FA; }
+  .result-item h4 { font-size: 15px; font-weight: 700; color: var(--bp-dk2); margin-bottom: 4px; }
+  .result-item h4 mark { background: #FFF5B8; color: var(--bp-accent5); padding: 0 2px; }
+  .result-item p { font-size: 13px; color: var(--bp-dk2); opacity: 0.75; }
+  .result-item .kind { font-size: 10px; letter-spacing: 0.22em; font-weight: 700; color: var(--bp-accent5); text-transform: uppercase; margin-right: 8px; }
+  .empty-state { padding: 48px 24px; text-align: center; color: var(--bp-dk2); opacity: 0.6; }
+  .sr-count { font-size: 13px; color: #6e6e73; margin-bottom: 18px; }
+  .search-group { margin-bottom: 28px; }
+  .search-group h3 { font-size: 13px; font-weight: 700; color: #1d1d1f; margin-bottom: 6px; padding-bottom: 8px; border-bottom: 1px solid #e5e5ea; }
+  .search-box input { border-radius: 12px; font-size: 17px; }
+</style>
+<link rel="stylesheet" href="assets/css/theme-apple.css" />
+</head>
+<body data-base="." data-nav="">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb"><span>Search</span></nav>
+  <h1 class="ko-only">검색<span class="en">Search</span></h1>
+  <h1 class="en-only">Search<span class="en">Site-wide</span></h1>
+  <p class="lead ko-only">제품, 뉴스, FAQ 전체를 한 번에 검색합니다.</p>
+  <p class="lead en-only">Search across products, news, and FAQ at once.</p>
+</section>
+
+<main class="page-body">
+  <div class="search-box">
+    <input type="search" id="q" placeholder="" autofocus />
+  </div>
+  <div id="results"><div class="empty-state"></div></div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="assets/js/data-bundle.js"></script>
+<script src="assets/js/chrome.js"></script>
+<script>
+/* 261008: 헤더 검색과 같은 검색 엔진(window.bpSearch) 사용: 제품·모델번호·사양·뉴스·FAQ·페이지 통합 검색 */
+(function () {
+  const lang = window.bpLang();
+  const L = ({
+    ko: { hint: '검색어를 입력해 주세요.', none: q => `"${q}"에 대한 결과가 없습니다.`, cnt: n => `검색 결과 ${n}건` },
+    en: { hint: 'Please enter a search term.', none: q => `No results for "${q}".`, cnt: n => `${n} results` },
+    es: { hint: 'Introduzca un término de búsqueda.', none: q => `No se han encontrado resultados para "${q}".`, cnt: n => `${n} resultados` },
+  })[lang] || {};
+  const input = document.getElementById('q'), root = document.getElementById('results');
+  input.setAttribute('aria-label', ({ko:'검색',en:'Search',es:'Buscar'})[lang]);
+  const seed = window.bpQuery('q'); if (seed) input.value = seed;
+  const ORDER = ['prod', 'cat', 'page', 'news', 'faq'];
+  async function render() {
+    const q = input.value.trim();
+    history.replaceState(null, '', q ? '?q=' + encodeURIComponent(q) : location.pathname);
+    if (!q) { root.innerHTML = `<div class="empty-state">${L.hint}</div>`; return; }
+    const r = await window.bpSearch(q);
+    if (!r.length) { root.innerHTML = `<div class="empty-state">${L.none(q)}</div>`; return; }
+    let html = `<p class="sr-count">${L.cnt(r.length)}</p>`;
+    ORDER.forEach(t => {
+      const g = r.filter(x => x.type === t); if (!g.length) return;
+      html += `<section class="search-group"><h3>${window.bpSearchKind(t)} · ${g.length}</h3>${g.map(window.bpSearchItemHTML).join('')}</section>`;
+    });
+    root.innerHTML = html;
+  }
+  let timer;
+  input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(render, 150); });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>회사소개 | 바이오프로테크</title>
+<meta name="description" content="㈜바이오프로테크, 2000년 설립, 강원도 원주 본사의 의료기기 제조 전문기업." />
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .ceo-block {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+    align-items: start;
+  }
+  .ceo-media { position: sticky; top: 140px; }
+  .ceo-video { position: relative; aspect-ratio: 16 / 9; background: #0a1428; overflow: hidden; }
+  .ceo-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #0a1428; }
+  .ceo-cap { font-size: 12px !important; color: #86868b; margin-top: 10px; }
+  /* 문장마다 줄을 바꿔 줄 끝을 정리(양끝 맞춤의 어색한 띄어쓰기 방지) */
+  .ceo-text p { word-break: keep-all; text-align: left; line-height: 1.85; }
+  .ceo-promise { margin: 6px 0 22px; border-top: 1px solid var(--bp-lt2); }
+  .ceo-promise > div { display: grid; grid-template-columns: 88px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--bp-lt2); align-items: baseline; }
+  .ceo-promise dt { font-size: 15px; font-weight: 700; color: #14306b; }
+  .ceo-promise dd { margin: 0; font-size: 15px; line-height: 1.7; color: var(--bp-dk2); word-break: keep-all; }
+  .ceo-block h2 {
+    font-size: 28px; font-weight: 700; color: var(--bp-accent5);
+    line-height: 1.35; margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .ceo-block p { font-size: 15px; line-height: 1.9; color: var(--bp-dk2); opacity: 0.88; margin-bottom: 14px; }
+  .ceo-block .sign { margin-top: 24px; font-size: 13px; letter-spacing: 0.15em; color: var(--bp-accent5); font-weight: 700; text-transform: uppercase; }
+
+  .info-table { margin-top: 48px; }
+  .info-table table { width: 100%; border-top: 1px solid var(--bp-lt2); }
+  .info-table tr { border-bottom: 1px solid var(--bp-lt2); }
+  .info-table th, .info-table td { padding: 16px 20px; text-align: left; font-size: 14px; vertical-align: top; }
+  .info-table th { width: 28%; background: #F7F8FA; font-weight: 700; color: var(--bp-dk2); letter-spacing: 0.05em; }
+  .info-table td { color: var(--bp-dk2); opacity: 0.9; }
+
+  .nav-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--bp-lt2);
+    border: 1px solid var(--bp-lt2);
+    margin-top: 64px;
+  }
+  .nav-tile {
+    background: #fff;
+    padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 12px;
+    min-height: 180px;
+    transition: background .2s;
+  }
+  .nav-tile:hover { background: var(--bp-lt-bluegray); }
+  .nav-tile .kicker { font-size: 11px; letter-spacing: 0.22em; font-weight: 700; color: var(--bp-accent5); text-transform: uppercase; }
+  .nav-tile h4 { font-size: 20px; font-weight: 700; color: var(--bp-dk2); }
+  .nav-tile p { font-size: 13px; color: var(--bp-dk2); opacity: 0.8; line-height: 1.6; margin-top: auto; }
+  @media (max-width: 900px) {
+    .ceo-block { grid-template-columns: 1fr; }
+    .ceo-media { position: static; }
+    .nav-tiles { grid-template-columns: 1fr; }
+  }
+  /* 261008 회사소개 섹션 (디자인 개선) */
+  .page-body { overflow-x: clip; }
+  .ab-sec { margin-bottom: 96px; }
+  .ab-label { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #14306b; padding-bottom: 14px; border-bottom: 1px solid var(--bp-lt2); margin-bottom: 36px; }
+  .ab-head { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; margin: 48px 0 0; }
+  .ab-head .ab-text { margin-top: -4px; } /* 본문 첫 줄 위 여백(줄간격)만큼 올려 헤드라인 윗선과 맞춤 */
+  .ab-statement { font-size: clamp(28px, 3.2vw, 44px); font-weight: 800; line-height: 1.22; letter-spacing: -0.02em; color: #0a1428; word-break: keep-all; margin: 0; }
+  .ab-text p { font-size: 16px; line-height: 2; color: var(--bp-dk2); margin: 0; word-break: keep-all; }
+  .ab-video .ceo-media { position: static; }
+  .ab-video .ceo-video { aspect-ratio: 21 / 9; }
+  .ab-ceo p { word-break: keep-all; }
+  .ab-facts { display: grid; grid-template-columns: 1fr 1fr 1fr 1.3fr; margin-top: 56px; border-top: 2px solid #0a1428; border-bottom: 1px solid var(--bp-lt2); }
+  .ab-fact { padding: 30px 20px; border-left: 1px solid var(--bp-lt2); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+  .ab-fact:first-child { border-left: 0; }
+  .ab-fact b { display: block; font-size: 34px; font-weight: 800; color: #0a1428; letter-spacing: -0.02em; line-height: 1.1; white-space: nowrap; }
+  .ab-fact.wide b { font-size: clamp(24px, 2.5vw, 34px); }
+  .ab-fact span { display: block; margin-top: 8px; font-size: 13px; color: #6e6e73; }
+  .ab-ports { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--bp-lt2); border: 1px solid var(--bp-lt2); }
+  .ab-port { background: #fff; padding: 18px 20px 22px; color: inherit; display: flex; flex-direction: column; }
+  .ab-port .img { display: block; aspect-ratio: 4 / 3; margin-bottom: 14px; }
+  .ab-port .img img { width: 100%; height: 100%; object-fit: contain; }
+  .ab-port .no { font-size: 12px; font-weight: 700; color: #14306b; letter-spacing: .1em; }
+  .ab-port b { font-size: 16px; font-weight: 700; color: #1d1d1f; margin-top: 4px; }
+  .ab-port:hover b { text-decoration: underline; text-underline-offset: 4px; }
+  /* 전폭 밴드 */
+  .ab-band { margin: 0 calc(50% - 50vw) 96px; padding: 80px max(72px, calc((100vw - 1180px) / 2)); }
+  .ab-band-in { max-width: none; }
+  .ab-dark { background: #0a1428; color: #fff; }
+  .ab-dark .ab-label { color: rgba(255,255,255,.7); border-color: rgba(255,255,255,.18); }
+  .ab-band-title { font-size: clamp(24px, 2.6vw, 34px); font-weight: 700; line-height: 1.3; margin-bottom: 40px; word-break: keep-all; }
+  .ab-biz { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,.25); }
+  .ab-biz-item { padding: 24px 22px 6px 0; }
+  .ab-biz-item + .ab-biz-item { padding-left: 22px; border-left: 1px solid rgba(255,255,255,.14); }
+  .ab-biz-item b { display: block; font-size: 24px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .ab-biz-item p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.75); word-break: keep-all; }
+  .ab-coms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .ab-com { position: relative; padding: 0 28px 8px; border-left: 1px solid var(--bp-lt2); display: flex; flex-direction: column; gap: 18px; }
+  .ab-com:first-child { border-left: 0; padding-left: 0; }
+  .ab-com .num { font-size: 56px; font-weight: 800; line-height: 1; color: #0a1428; letter-spacing: -0.03em; }
+  .ab-com h3 { font-size: 21px; font-weight: 700; color: #14306b; margin-bottom: 8px; }
+  .ab-com p { font-size: 14px; line-height: 1.75; color: #424245; word-break: keep-all; }
+  .ab-com .en-label { display: none; }
+  .ab-light { background: #f3f5f8; }
+  .ab-ceo { position: relative; }
+  .ab-quote { display: block; font-size: 96px; line-height: .6; font-weight: 700; color: #14306b; margin: 8px 0 18px; font-family: Georgia, 'Times New Roman', serif; }
+  .ab-ceo p { font-size: clamp(19px, 2vw, 24px); line-height: 1.7; font-weight: 600; color: #0a1428; max-width: 900px; }
+  .ab-ceo .sign { margin-top: 26px; font-size: 13px; letter-spacing: .12em; font-weight: 700; color: #14306b; }
+  /* 조직도 */
+  .org-wrap { overflow-x: auto; padding-bottom: 8px; }
+  .org { min-width: 0; display: flex; flex-direction: column; align-items: center; }
+  .org-top { background: #0a1428; color: #fff; font-size: 17px; font-weight: 700; padding: 16px 44px; position: relative; }
+  .org-top::after { content: ''; position: absolute; left: 50%; top: 100%; width: 1px; height: 28px; background: #9aa5b8; }
+  .org-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; width: 100%; margin-top: 28px; padding-top: 22px; position: relative; }
+  .org-row::before { content: ''; position: absolute; top: 0; left: calc(100% / 12); right: calc(100% / 12); height: 1px; background: #9aa5b8; }
+  .org-col { display: flex; flex-direction: column; gap: 8px; position: relative; }
+  .org-col::before { content: ''; position: absolute; top: -22px; left: 50%; width: 1px; height: 22px; background: #9aa5b8; }
+  .org-div { background: #14306b; color: #fff; text-align: center; font-size: 14px; font-weight: 700; padding: 14px 8px; line-height: 1.35; }
+  .org-sub { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .org-sub li { border: 1px solid #c9d2e3; background: #fff; color: #14306b; text-align: center; font-size: 13px; padding: 11px 6px; line-height: 1.35; }
+  .org-note { font-size: 12px; color: #86868b; margin-top: 14px; }
+  @media (max-width: 760px) {
+    .org-row { grid-template-columns: 1fr 1fr; gap: 18px 12px; padding-top: 0; margin-top: 18px; }
+    .org-row::before, .org-col::before, .org-top::after { display: none; }
+  }
+  /* 연혁 */
+  .hi { list-style: none; margin: 0; padding: 0; border-top: 2px solid #0a1428; }
+  .hi-row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--bp-lt2); align-items: baseline; }
+  .hi-year { font-size: 22px; font-weight: 800; color: #9aa5b8; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .hi-row.key .hi-year { color: #0a1428; }
+  .hi-ev { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .hi-ev li { font-size: 15px; line-height: 1.6; color: #1d1d1f; word-break: keep-all; }
+  @media (max-width: 600px) { .hi-row { grid-template-columns: 72px 1fr; gap: 14px; } .hi-year { font-size: 18px; } }
+  /* 261008 시각화 */
+  .ab-fact .fi { color: #14306b; margin-bottom: 10px; }
+  .hw-scale { margin-top: 8px; }
+  .hw-axis { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; letter-spacing: .06em; color: rgba(255,255,255,.65); padding-bottom: 12px; position: relative; }
+  .hw-axis::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(255,255,255,.35); }
+  .hw-axis::before { content: ""; position: absolute; right: -2px; bottom: -4px; border-left: 9px solid #c8102e; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+  .hw-cards { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .hw-card { padding: 26px 20px 8px 0; display: flex; flex-direction: column; gap: 10px; }
+  .hw-card + .hw-card { padding-left: 20px; border-left: 1px solid rgba(255,255,255,.12); }
+  .hw-ic { color: #fff; }
+  .hw-card b { font-size: 24px; font-weight: 800; }
+  .hw-card p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,.75); word-break: keep-all; margin: 0; }
+  .hw-matrix-wrap { margin-top: 40px; overflow-x: auto; }
+  .hw-matrix { width: 100%; border-collapse: collapse; min-width: 480px; }
+  .hw-matrix th, .hw-matrix td { padding: 14px 10px; text-align: center; border-bottom: 1px solid rgba(255,255,255,.12); font-size: 14px; }
+  .hw-matrix thead th { font-weight: 800; font-size: 15px; color: #fff; }
+  .hw-matrix tbody th { text-align: left; font-weight: 600; color: rgba(255,255,255,.8); width: 22%; }
+  .dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; vertical-align: middle; }
+  .dot.bp { background: #fff; }
+  .dot.cust { border: 2px solid rgba(255,255,255,.7); }
+  .dot.half { background: linear-gradient(90deg, #fff 50%, transparent 50%); border: 2px solid #fff; }
+  .hw-legend { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 14px; font-size: 12px; color: rgba(255,255,255,.7); }
+  .hw-legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .hw-legend .dot { width: 12px; height: 12px; }
+  .ab-port .no { display: flex; align-items: center; gap: 8px; }
+  .pi { color: #14306b; }
+  .cm-wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; }
+  .cm-venn { width: 100%; max-width: 420px; height: auto; display: block; margin: 0 auto; }
+  .cv { mix-blend-mode: multiply; stroke: #fff; stroke-width: 2; }
+  .c1 { fill: rgba(20,48,107,.85); } .c2 { fill: rgba(56,86,145,.75); } .c3 { fill: rgba(110,135,180,.75); }
+  .cv-ic { color: #fff; }
+  .cv-t { fill: #fff; font-size: 15px; font-weight: 700; }
+  .cv-core { fill: #fff; stroke: #c8102e; stroke-width: 2; }
+  .cv-core-t { fill: #c8102e; font-size: 15px; font-weight: 800; }
+  .ab-coms { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .ab-com { display: grid !important; grid-template-columns: 44px 1fr; gap: 16px !important; align-items: start; padding: 20px 0 !important; border-left: 0 !important; border-bottom: 1px solid var(--bp-lt2); }
+  .ab-com:first-child { border-top: 2px solid #0a1428; }
+  .ab-com .cm-ic { color: #14306b; }
+  .ab-com h3 { margin-bottom: 4px !important; }
+  .tl-ph { display: grid; grid-template-columns: repeat(3, 1fr); position: relative; margin-bottom: 40px; }
+  .tl-ph::before { content: ''; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: #0a1428; }
+  .ph { position: relative; padding: 34px 20px 0; text-align: center; }
+  .ph-dot { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 2px solid #14306b; }
+  .ph:last-child .ph-dot { background: #c8102e; border-color: #c8102e; }
+  .ph-yr { font-size: 14px; font-weight: 700; color: #6e6e73; letter-spacing: .02em; }
+  .ph-ics { display: flex; justify-content: center; color: #14306b; margin: 14px 0 10px; }
+  .ph h3 { font-size: 22px; font-weight: 800; color: #0a1428; margin: 0 0 14px; }
+  .ph-st { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .ph-st li { display: flex; flex-direction: column; align-items: center; gap: 2px; border-top: 1px solid var(--bp-lt2); padding-top: 10px; }
+  .ph-st b { font-size: 20px; font-weight: 800; color: #14306b; white-space: nowrap; }
+  .ph-st span { font-size: 13px; color: #6e6e73; }
+  @media (max-width: 700px) { .tl-ph { grid-template-columns: 1fr; gap: 28px; } .tl-ph::before { top: 0; bottom: 0; left: 50%; right: auto; width: 2px; height: auto; transform: translateX(-1px); } .ph { background: #fff; padding: 34px 0 12px; } }
+  .hi-row { grid-template-columns: 120px 28px 1fr !important; }
+  .hi-ic { color: #14306b; align-self: center; }
+  @media (max-width: 900px) {
+    .hw-cards { grid-template-columns: 1fr 1fr; }
+    .hw-card:nth-child(3) { padding-left: 0; border-left: 0; }
+    .cm-wrap { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 600px) {
+    .hi-row { grid-template-columns: 64px 24px 1fr !important; }
+    .hw-matrix { min-width: 0; }
+    .hw-matrix th, .hw-matrix td { padding: 12px 4px; font-size: 13px; }
+    .hw-matrix thead th { font-size: 13px; }
+    .hw-matrix tbody th { width: auto; }
+    .hw-card { padding: 22px 12px 8px 0; }
+    .hw-card + .hw-card { padding-left: 12px; }
+    .hw-card b { font-size: 20px; }
+    .hw-axis { font-size: 11px; }
+  }
+  @media (max-width: 900px) {
+    .ab-head { grid-template-columns: 1fr; gap: 24px; }
+    .ab-video .ceo-video { aspect-ratio: 16 / 9; }
+    .ab-facts { grid-template-columns: repeat(2, 1fr); }
+    .ab-fact { padding: 22px 16px; }
+    .ab-fact.wide b { font-size: 20px; }
+    .ab-fact:nth-child(3) { border-left: 0; }
+    .ab-fact:nth-child(n+3) { border-top: 1px solid var(--bp-lt2); }
+    .ab-fact b { font-size: 26px; }
+    .ab-ports { grid-template-columns: repeat(2, 1fr); }
+    .ab-biz { grid-template-columns: 1fr 1fr; }
+    .ab-biz-item:nth-child(3) { padding-left: 0; border-left: 0; }
+    .ab-coms { grid-template-columns: 1fr; gap: 28px; }
+    .ab-com { border-left: 0; padding: 0; }
+    .ab-band { padding: 56px 28px; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="about">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+        <span>About</span>
+  </nav>
+  <h1 class="ko-only">회사소개<span class="en">About Bioprotech</span></h1>
+  <h1 class="en-only">About Bioprotech<span class="en">Company Overview</span></h1>
+  <p class="ko-only lead">의료기기 제조를 함께하는 파트너, 바이오프로테크입니다.</p><p class="en-only lead">Your Partner in Medical Device Manufacturing.</p>
+</section>
+
+<div class="company-tabs"><nav aria-label="Company">
+  <a href="about.html" class="on" aria-current="page"><span class="ko-only">회사소개</span><span class="en-only">About</span></a>
+  <a href="ceo.html"><span class="ko-only">CEO 메시지</span><span class="en-only">CEO Message</span></a>
+  <a href="quality.html"><span class="ko-only">품질방침</span><span class="en-only">Quality Policy</span></a>
+  <a href="certification.html"><span class="ko-only">인증현황</span><span class="en-only">Certifications</span></a>
+</nav></div>
+
+<main class="page-body">
+  <!-- 261008 회사소개 (디자인 개선) -->
+  <section class="ab-sec">
+    <div class="ab-label">01 · Company Introduction</div>
+    <div class="ab-video">
+    <div class="ceo-media">
+      <div class="ceo-video">
+        <!-- 회사 소개 영상: 260623-바이오프로테크-수정본.mp4 (웹용 1280px 변환본) -->
+        <video id="company-video" controls autoplay muted loop playsinline preload="auto" poster="../assets/video/company-intro-poster.jpg">
+          <source src="../assets/video/company-intro.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <p class="ceo-cap"><span class="ko-only">바이오프로테크 회사 소개 영상</span><span class="en-only">Bioprotech company video</span></p>
+    </div>
+    </div>
+    <div class="ab-head">
+      <div>
+  <h2 class="ko-only ab-statement">의료기기 제조를 함께하는<br>파트너, 바이오프로테크.</h2><h2 class="en-only ab-statement">Your Partner in<br>Medical Device Manufacturing.</h2>
+      </div>
+  <div class="ab-text">
+      <p class="ko-only">2000년부터 의료기기를 만들며 해외 파트너와 함께해 왔습니다.<br>ECG 전극, 전기수술, TENS/EMS 전극, 수술 연기 배출 제품을 생산합니다.<br>OEM, ODM, OBL, 직접 공급으로 고객의 사업 방식에 맞춰 협력합니다.<br>명확한 소통, 책임 있는 제조, 오래가는 관계를 중요하게 생각합니다.</p><p class="en-only">Since 2000, BIO PROTECH INC. has been manufacturing medical devices and working with international business partners.<br>Our product portfolio spans ECG electrodes, electrosurgical products, TENS/EMS electrodes, and surgical smoke evacuation products.<br>Through OEM, ODM, OBL, and direct supply, we work with customers across different business needs.<br>We value clear communication, responsible manufacturing, and business relationships built to last.</p>
+    </div>
+    </div>
+    <div class="ab-facts"><div class="ab-fact"><svg class="fi" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg><b>2000</b><span class="ko-only">설립</span><span class="en-only">Founded</span></div><div class="ab-fact"><svg class="fi" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><b>60</b><span class="ko-only">수출 국가</span><span class="en-only">Export countries</span></div><div class="ab-fact"><svg class="fi" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg><b>4</b><span class="ko-only">제품군</span><span class="en-only">Product lines</span></div><div class="ab-fact wide"><svg class="fi" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg><b>OEM · ODM · OBL</b><span class="ko-only">공급 방식</span><span class="en-only">Business models</span></div></div>
+  </section>
+
+  <section class="ab-band ab-dark">
+    <div class="ab-band-in">
+      <div class="ab-label">02 · How We Work</div>
+      <h2 class="ko-only ab-band-title">고객의 사업 방식에 맞춰 협력합니다.</h2><h2 class="en-only ab-band-title">We work the way your business works.</h2>
+      <div class="hw-scale">
+        <div class="hw-axis"><span><span class="ko-only">고객 브랜드 중심</span><span class="en-only">Your brand</span></span><span><span class="ko-only">바이오프로테크 브랜드</span><span class="en-only">Bioprotech brand</span></span></div>
+        <div class="hw-cards"><div class="hw-card"><svg class="hw-ic" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 15h5M10 18h3"/></svg><b>OEM</b><p class="ko-only">고객 사양으로 위탁 생산</p><p class="en-only">Built to your specification</p></div><div class="hw-card"><svg class="hw-ic" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg><b>ODM</b><p class="ko-only">설계부터 함께 개발</p><p class="en-only">Co-developed from design</p></div><div class="hw-card"><svg class="hw-ic" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg><b>OBL</b><p class="ko-only">검증 제품에 고객 브랜드</p><p class="en-only">Our product, your label</p></div><div class="hw-card"><svg class="hw-ic" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2z"/><path d="M13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><b>Direct</b><p class="ko-only">바이오프로테크 브랜드 직접 공급</p><p class="en-only">Bioprotech brand, supplied direct</p></div></div>
+      </div>
+      <div class="hw-matrix-wrap">
+        <table class="hw-matrix">
+          <thead><tr><th></th><th>OEM</th><th>ODM</th><th>OBL</th><th>Direct</th></tr></thead>
+          <tbody><tr><th><span class="ko-only">설계</span><span class="en-only">Design</span></th><td><i class="dot cust" title="Customer"></i></td><td><i class="dot half" title="Joint"></i></td><td><i class="dot bp" title="Bioprotech"></i></td><td><i class="dot bp" title="Bioprotech"></i></td></tr><tr><th><span class="ko-only">생산</span><span class="en-only">Manufacturing</span></th><td><i class="dot bp" title="Bioprotech"></i></td><td><i class="dot bp" title="Bioprotech"></i></td><td><i class="dot bp" title="Bioprotech"></i></td><td><i class="dot bp" title="Bioprotech"></i></td></tr><tr><th><span class="ko-only">브랜드</span><span class="en-only">Brand</span></th><td><i class="dot cust" title="Customer"></i></td><td><i class="dot cust" title="Customer"></i></td><td><i class="dot cust" title="Customer"></i></td><td><i class="dot bp" title="Bioprotech"></i></td></tr></tbody>
+        </table>
+        <div class="hw-legend"><span><i class="dot bp" title="Bioprotech"></i><span class="ko-only">바이오프로테크</span><span class="en-only">Bioprotech</span></span><span><i class="dot half" title="Joint"></i><span class="ko-only">공동</span><span class="en-only">Joint</span></span><span><i class="dot cust" title="Customer"></i><span class="ko-only">고객</span><span class="en-only">Customer</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ab-sec">
+    <div class="ab-label">03 · Product Portfolio</div>
+    <div class="ab-ports">
+      <a class="ab-port" href="../products/category.html?cat=cardio">
+        <span class="img"><img src="../assets/img/about/ecg.jpg" alt="ECG Electrodes" loading="lazy"></span>
+        <span class="no"><svg class="pi" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-4 3 8 2-5 1.5 1H21"/></svg>01</span><b class="ko-only">ECG 전극</b><b class="en-only">ECG Electrodes</b>
+      </a>
+      <a class="ab-port" href="../products/category.html?cat=esu">
+        <span class="img"><img src="../assets/img/about/electrosurgical.jpg" alt="Electrosurgical Products" loading="lazy"></span>
+        <span class="no"><svg class="pi" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3l7 7-9 9-4 1 1-4z"/><path d="M3 21l5-5"/></svg>02</span><b class="ko-only">전기수술 제품</b><b class="en-only">Electrosurgical Products</b>
+      </a>
+      <a class="ab-port" href="../products/category.html?cat=pain">
+        <span class="img"><img src="../assets/img/about/tens.jpg" alt="TENS/EMS Electrodes" loading="lazy"></span>
+        <span class="no"><svg class="pi" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>03</span><b class="ko-only">TENS/EMS 전극</b><b class="en-only">TENS/EMS Electrodes</b>
+      </a>
+      <a class="ab-port" href="../products/category.html?cat=esu">
+        <span class="img"><img src="../assets/img/about/smoke.jpg" alt="Surgical Smoke Evacuation" loading="lazy"></span>
+        <span class="no"><svg class="pi" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3l7 7-9 9-4 1 1-4z"/><path d="M3 21l5-5"/></svg>04</span><b class="ko-only">수술 연기 배출 제품</b><b class="en-only">Surgical Smoke Evacuation</b>
+      </a>
+    </div>
+  </section>
+
+  <section class="ab-sec">
+    <div class="ab-label">04 · Our Commitments</div>
+    <div class="cm-wrap">
+      <div class="cm-fig"><svg class="cm-venn" viewBox="0 0 420 380" role="img" aria-label="Responsibility, Collaboration and Continuity overlap in Trust">
+  <circle cx="150" cy="140" r="105" class="cv c1"/><circle cx="270" cy="140" r="105" class="cv c2"/><circle cx="210" cy="240" r="105" class="cv c3"/>
+  <g transform="translate(96 82)" class="cv-ic"><svg class="x" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.3 8-8 9-4.7-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg></g><g transform="translate(296 82)" class="cv-ic"><svg class="x" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20c.6-3.4 2.8-5.5 5.5-5.5s4.9 2.1 5.5 5.5"/><path d="M14 15c.8-.6 1.6-.9 2.5-.9 2.3 0 4 1.8 4.5 4.6"/></svg></g><g transform="translate(196 286)" class="cv-ic"><svg class="x" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.6-4.5"/><path d="M4 4v3.5h3.5"/><path d="M4 13a8 8 0 0 0 14.6 4.5"/><path d="M20 20v-3.5h-3.5"/></svg></g>
+  <text class="cv-t ko-only" x="110" y="135" text-anchor="middle">책임</text><text class="cv-t en-only" x="110" y="135" text-anchor="middle">Responsibility</text><text class="cv-t ko-only" x="310" y="135" text-anchor="middle">협력</text><text class="cv-t en-only" x="310" y="135" text-anchor="middle">Collaboration</text><text class="cv-t ko-only" x="210" y="272" text-anchor="middle">지속성</text><text class="cv-t en-only" x="210" y="272" text-anchor="middle">Continuity</text>
+  <circle cx="210" cy="172" r="36" class="cv-core"/><text class="cv-core-t ko-only" x="210" y="178" text-anchor="middle">신뢰</text><text class="cv-core-t en-only" x="210" y="178" text-anchor="middle">Trust</text>
+</svg></div>
+      <div class="ab-coms">
+        <div class="ab-com"><svg class="cm-ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.3 8-8 9-4.7-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg><div><h3 class="ko-only">책임</h3><h3 class="en-only">Responsibility</h3><p class="ko-only">의료기기 제조사로서의 역할을 무겁게 여깁니다.</p><p class="en-only">We take our role as a medical device manufacturer seriously.</p></div></div>
+        <div class="ab-com"><svg class="cm-ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20c.6-3.4 2.8-5.5 5.5-5.5s4.9 2.1 5.5 5.5"/><path d="M14 15c.8-.6 1.6-.9 2.5-.9 2.3 0 4 1.8 4.5 4.6"/></svg><div><h3 class="ko-only">협력</h3><h3 class="en-only">Collaboration</h3><p class="ko-only">파트너의 사업 요구를 이해하기 위해 긴밀히 협력합니다.</p><p class="en-only">We work closely with our partners to understand their business needs.</p></div></div>
+        <div class="ab-com"><svg class="cm-ic" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.6-4.5"/><path d="M4 4v3.5h3.5"/><path d="M4 13a8 8 0 0 0 14.6 4.5"/><path d="M20 20v-3.5h-3.5"/></svg><div><h3 class="ko-only">지속성</h3><h3 class="en-only">Continuity</h3><p class="ko-only">안정적인 협력과 장기적인 관계를 소중히 여깁니다.</p><p class="en-only">We value stable cooperation and long-term business relationships.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ab-sec">
+    <div class="ab-label">05 · Organization</div>
+    <div class="org-wrap">
+      <div class="org">
+        <div class="org-top"><span class="ko-only">대표이사</span><span class="en-only">President</span></div>
+        <div class="org-row">
+        <div class="org-col"><div class="org-div"><span class="ko-only">경영지원</span><span class="en-only">Management Support</span></div><ul class="org-sub"><li><span class="ko-only">인사팀</span><span class="en-only">Human Resources Team</span></li><li><span class="ko-only">재무팀</span><span class="en-only">Finance Team</span></li></ul></div>
+        <div class="org-col"><div class="org-div"><span class="ko-only">영업·운영</span><span class="en-only">Sales & Operation</span></div><ul class="org-sub"><li><span class="ko-only">해외영업팀</span><span class="en-only">Overseas Sales Team</span></li><li><span class="ko-only">BPU</span><span class="en-only">BPU</span></li></ul></div>
+        <div class="org-col"><div class="org-div"><span class="ko-only">구매</span><span class="en-only">Purchasing</span></div></div>
+        <div class="org-col"><div class="org-div"><span class="ko-only">생산</span><span class="en-only">Production</span></div><ul class="org-sub"><li><span class="ko-only">생산혁신팀</span><span class="en-only">Production Innovation Team</span></li><li><span class="ko-only">생산관리팀</span><span class="en-only">Production Management Team</span></li><li><span class="ko-only">BPC</span><span class="en-only">BPC</span></li><li><span class="ko-only">BPG</span><span class="en-only">BPG</span></li></ul></div>
+        <div class="org-col"><div class="org-div"><span class="ko-only">연구개발</span><span class="en-only">R&amp;D</span></div></div>
+        <div class="org-col"><div class="org-div"><span class="ko-only">품질보증</span><span class="en-only">Quality Assurance</span></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="org-note"><span class="ko-only">BPU: 미국 법인 · BPC: 중국 옌타이 법인 · BPG: 중국 광저우 법인</span><span class="en-only">BPU: US entity · BPC: Yantai, China · BPG: Guangzhou, China</span></p>
+  </section>
+
+  <section class="ab-sec">
+    <div class="ab-label">06 · History</div>
+    <div class="tl-ph">
+      <div class="ph"><i class="ph-dot"></i><div class="ph-yr">2000 ~ 2003</div><div class="ph-ics"><svg class="x" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></div><h3 class="ko-only">기반 구축</h3><h3 class="en-only">Foundation</h3><ul class="ph-st"><li><b>2000</b><span class="ko-only">법인 설립</span><span class="en-only">Founded</span></li><li><b>1</b><span class="ko-only">미국 법인</span><span class="en-only">U.S. entity</span></li><li><b>ISO · CE</b><span class="ko-only">인증 획득</span><span class="en-only">Certified</span></li></ul></div>
+      <div class="ph"><i class="ph-dot"></i><div class="ph-yr">2005 ~ 2009</div><div class="ph-ics"><svg class="x" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></div><h3 class="ko-only">해외 확장</h3><h3 class="en-only">Expansion</h3><ul class="ph-st"><li><b>2</b><span class="ko-only">중국 법인</span><span class="en-only">China entities</span></li><li><b>$10M</b><span class="ko-only">수출의 탑</span><span class="en-only">Export award</span></li><li><b>1</b><span class="ko-only">본사 사옥 준공</span><span class="en-only">New HQ</span></li></ul></div>
+      <div class="ph"><i class="ph-dot"></i><div class="ph-yr">2010 ~ 2022</div><div class="ph-ics"><svg class="x" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg></div><h3 class="ko-only">글로벌 공급</h3><h3 class="en-only">Global supply</h3><ul class="ph-st"><li><b>7</b><span class="ko-only">주요 공급 계약</span><span class="en-only">Major supply agreements</span></li><li><b>GPO · IDN</b><span class="ko-only">미국 의료 공급망</span><span class="en-only">U.S. healthcare channels</span></li></ul></div>
+    </div>
+    <ol class="hi">
+      <li class="hi-row key"><b class="hi-year">2022</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg><ul class="hi-ev"><li><span class="ko-only">Zynex(나스닥 상장사) TENS 전극 공급 계약</span><span class="en-only">TENS electrode supply agreement with Zynex (NASDAQ-listed)</span></li></ul></li>
+      <li class="hi-row key"><b class="hi-year">2021</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg><ul class="hi-ev"><li><span class="ko-only">HPG(3rd GPO) 스모크 펜슬 공급 계약</span><span class="en-only">Smoke Pencil supply agreement with HPG (3rd GPO)</span></li></ul></li>
+      <li class="hi-row key"><b class="hi-year">2019</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg><ul class="hi-ev"><li><span class="ko-only">Intermountain Hospital Group IDN 스모크 펜슬 공급 계약</span><span class="en-only">Smoke Pencil supply agreement with Intermountain Hospital Group IDN</span></li><li><span class="ko-only">McKesson ECG 센서 공급 계약</span><span class="en-only">ECG sensor supply agreement with McKesson</span></li></ul></li>
+      <li class="hi-row"><b class="hi-year">2013</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg><ul class="hi-ev"><li><span class="ko-only">Cardinal Health 공급 계약</span><span class="en-only">Supply agreement with Cardinal Health</span></li></ul></li>
+      <li class="hi-row key"><b class="hi-year">2011</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg><ul class="hi-ev"><li><span class="ko-only">Medline GPO(Broadlane) 공급 계약</span><span class="en-only">Supply agreement with Medline GPO (Broadlane)</span></li></ul></li>
+      <li class="hi-row key"><b class="hi-year">2010</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg><ul class="hi-ev"><li><span class="ko-only">GE Healthcare 공급 계약</span><span class="en-only">Supply agreement with GE Healthcare</span></li></ul></li>
+      <li class="hi-row"><b class="hi-year">2009</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5l8-2v18M12 7l8 3v11"/><path d="M7 9h2M7 13h2M7 17h2M15 13h2M15 17h2"/></svg><ul class="hi-ev"><li><span class="ko-only">본사 사옥 준공·이전 (원주 문막)</span><span class="en-only">HQ building completed and relocated (Munmak, Wonju)</span></li><li><span class="ko-only">중국 법인 설립 (Guangzhou BoChang Co., Ltd.)</span><span class="en-only">Chinese entity established (Guangzhou BoChang Co., Ltd.)</span></li></ul></li>
+      <li class="hi-row"><b class="hi-year">2007</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5v1a3 3 0 0 0 3 3M16 6h3v1a3 3 0 0 1-3 3"/><path d="M12 13v4M8 20h8M10 17h4"/></svg><ul class="hi-ev"><li><span class="ko-only">1천만 달러 수출의 탑 수상</span><span class="en-only">Awarded the $10 Million Export Tower</span></li></ul></li>
+      <li class="hi-row"><b class="hi-year">2006</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><ul class="hi-ev"><li><span class="ko-only">중국 법인 설립 (Bio Protech Yantai Inc.)</span><span class="en-only">Chinese entity established (Bio Protech Yantai Inc.)</span></li></ul></li>
+      <li class="hi-row"><b class="hi-year">2005</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5v1a3 3 0 0 0 3 3M16 6h3v1a3 3 0 0 1-3 3"/><path d="M12 13v4M8 20h8M10 17h4"/></svg><ul class="hi-ev"><li><span class="ko-only">기술보증기금 우수기술 인증 (KIBO)</span><span class="en-only">Certificate of Superior Technology (KIBO)</span></li></ul></li>
+      <li class="hi-row key"><b class="hi-year">2003</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><ul class="hi-ev"><li><span class="ko-only">미국 법인 설립 (Bio Protech U.S.A Inc.)</span><span class="en-only">US entity established (Bio Protech U.S.A Inc.)</span></li></ul></li>
+      <li class="hi-row"><b class="hi-year">2002</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5l8-2v18M12 7l8 3v11"/><path d="M7 9h2M7 13h2M7 17h2M15 13h2M15 17h2"/></svg><ul class="hi-ev"><li><span class="ko-only">본사·연구소·공장 원주 이전 (4월)</span><span class="en-only">HQ, R&amp;D lab and factory relocated to Wonju (April)</span></li><li><span class="ko-only">이노비즈 기업 선정</span><span class="en-only">Selected as an Innobiz company</span></li></ul></li>
+      <li class="hi-row"><b class="hi-year">2001</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l4-4 4 2 4-3 4 2 4 3"/><path d="M6 8l5 6a2 2 0 0 0 3 0l4-5"/><path d="M2 12l5 6h3"/></svg><ul class="hi-ev"><li><span class="ko-only">3M 공급 계약 (ECG 센서)</span><span class="en-only">Supply agreement with 3M (ECG sensor)</span></li></ul></li>
+      <li class="hi-row key"><b class="hi-year">2000</b><svg class="hi-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg><ul class="hi-ev"><li><span class="ko-only">법인 설립 (㈜바이오프로테크)</span><span class="en-only">Corporation established (Bio Protech Inc.)</span></li><li><span class="ko-only">벤처기업 인증, ISO 9001·CE 마크 획득</span><span class="en-only">Venture company certification, ISO 9001 and CE Mark acquired</span></li></ul></li>
+    </ol>
+  </section>
+
+
+  <div class="bp-kicker">Company Profile</div>
+  <div class="info-table">
+    <table class="ko-only">
+      <tbody>
+        <tr><th>회사명</th><td>㈜바이오프로테크 (Bio Protech Co., Ltd.)</td></tr>
+        <tr><th>설립일</th><td>2000년 5월 19일</td></tr>
+        <tr><th>대표이사</th><td><span class="placeholder-empty" style="display:inline-block; padding:6px 12px; margin:0;">준비 중</span></td></tr>
+        <tr><th>사업자등록번호</th><td>108-81-22350</td></tr>
+        <tr><th>본사</th><td>(26365) 강원도 원주시 문막읍 동화공단로 151-3 (동화첨단의료기기산업단지)</td></tr>
+        <tr><th>연락처</th><td>전화 033-735-7720 · 팩스 033-735-7736 · info@protechsite.com</td></tr>
+        <tr><th>주요 사업</th><td>전기수술 기기, 심전도·신경진단·통증관리 전극 제조</td></tr>
+        <tr><th>임직원</th><td>79명 (한국 본사 기준)</td></tr>
+        <tr><th>법인 현황</th><td>한국 BPH · 미국 BPU · 중국 연태 BPC · 중국 광저우 BPG</td></tr>
+      </tbody>
+    </table>
+    <table class="en-only">
+      <tbody>
+        <tr><th>Company</th><td>Bio Protech Co., Ltd.</td></tr>
+        <tr><th>Founded</th><td>May 19, 2000</td></tr>
+        <tr><th>CEO</th><td><span class="placeholder-empty" style="display:inline-block; padding:6px 12px; margin:0;">Pending</span></td></tr>
+        <tr><th>Business Reg. No.</th><td>108-81-22350</td></tr>
+        <tr><th>Headquarters</th><td>(26365) 151-3 Donghwagongdan-ro, Munmak-eup, Wonju-si, Gangwon-do, Korea</td></tr>
+        <tr><th>Contact</th><td>Tel +82-33-735-7720 · Fax +82-33-735-7736 · info@protechsite.com</td></tr>
+        <tr><th>Business</th><td>Manufacturing of electrosurgical devices and ECG/EEG/EMG/TENS electrodes</td></tr>
+        <tr><th>Employees</th><td>79 (Korea HQ)</td></tr>
+        <tr><th>Entities</th><td>Korea BPH · USA BPU · China BPC (Yantai) · China BPG (Guangzhou)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="nav-tiles">
+    <a class="nav-tile" href="history.html">
+      <span class="kicker">History</span>
+      <h4 class="ko-only">연혁</h4><h4 class="en-only">History</h4>
+      <p class="ko-only">2000년 설립부터 현재까지의 주요 마일스톤.</p>
+      <p class="en-only">Key milestones from 2000 to today.</p>
+    </a>
+    <a class="nav-tile" href="global.html">
+      <span class="kicker">Global</span>
+      <h4 class="ko-only">글로벌 네트워크</h4><h4 class="en-only">Global Network</h4>
+      <p class="ko-only">한국·미국·중국 4개 법인의 역할과 거점.</p>
+      <p class="en-only">Four entities across Korea, USA, and China.</p>
+    </a>
+    <a class="nav-tile" href="rnd.html">
+      <span class="kicker">R&amp;D</span>
+      <h4 class="ko-only">연구개발</h4><h4 class="en-only">R&amp;D</h4>
+      <p class="ko-only">하이드로젤·접착·센서 설계의 자체 기술.</p>
+      <p class="en-only">In-house hydrogel, adhesive, and sensor technology.</p>
+    </a>
+    <a class="nav-tile" href="quality.html">
+      <span class="kicker">Quality Policy</span>
+      <h4 class="ko-only">품질방침</h4><h4 class="en-only">Quality Policy</h4>
+      <p class="ko-only">품질경영시스템과 품질방침.</p>
+      <p class="en-only">Our quality management system and policy.</p>
+    </a>
+    <a class="nav-tile" href="certification.html">
+      <span class="kicker">Certifications</span>
+      <h4 class="ko-only">인증현황</h4><h4 class="en-only">Certifications</h4>
+      <p class="ko-only">허가증·인증서 원본 이미지 열람.</p>
+      <p class="en-only">View licenses and certificates.</p>
+    </a>
+    <a class="nav-tile" href="../support/contact.html">
+      <span class="kicker">Contact</span>
+      <h4 class="ko-only">문의하기</h4><h4 class="en-only">Contact</h4>
+      <p class="ko-only">견적·샘플·파트너십 문의 접수.</p>
+      <p class="en-only">Quote, sample, and partnership inquiries.</p>
+    </a>
+  </div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+<script>
+/* 회사 소개 영상 자동 재생: 브라우저 정책상 음소거 상태로 시작(소리는 컨트롤에서 켤 수 있음).
+   화면에 보일 때 재생, 화면 밖으로 나가면 일시정지 */
+(function () {
+  const v = document.getElementById('company-video'); if (!v) return;
+  v.muted = true;
+  const tryPlay = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) tryPlay(); else v.pause(); }), { threshold: 0.35 }).observe(v);
+  } else { tryPlay(); }
+})();
+</script>
+</body>
+</html>

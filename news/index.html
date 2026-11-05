@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>뉴스 | 바이오프로테크</title>
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .filters { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+  .filter-btn { padding: 10px 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--bp-lt2); color: var(--bp-dk2); transition: all .2s; background: #fff; }
+  .filter-btn.active, .filter-btn:hover { background: var(--bp-accent5); color: #fff; border-color: var(--bp-accent5); }
+  .news-list { border-top: 1px solid var(--bp-lt2); }
+  .news-item { display: grid; grid-template-columns: 100px 110px 1fr auto; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--bp-lt2); align-items: center; transition: padding .2s; color: inherit; }
+  .news-item:hover { padding-left: 12px; background: #F7F8FA; }
+  .news-item .date { font-size: 13px; color: var(--bp-accent5); font-weight: 700; letter-spacing: 0.05em; }
+  .news-item .tag { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; color: #fff; background: var(--bp-accent1); padding: 5px 10px; text-transform: uppercase; text-align: center; justify-self: start; }
+  .news-item h3 { font-size: 15px; font-weight: 700; color: var(--bp-dk2); margin-bottom: 4px; }
+  .news-item p { font-size: 13px; color: var(--bp-dk2); opacity: 0.7; }
+  .news-item .arrow { font-size: 18px; color: var(--bp-accent5); opacity: 0.5; }
+  .news-item:hover .arrow { opacity: 1; }
+  .pager { display: flex; justify-content: center; gap: 8px; margin-top: 48px; }
+  .pager a { padding: 8px 14px; font-size: 13px; color: var(--bp-dk2); border: 1px solid var(--bp-lt2); }
+  .pager a.active, .pager a:hover { background: var(--bp-accent5); color: #fff; border-color: var(--bp-accent5); }
+  @media (max-width: 900px) {
+    .news-item { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
+    .news-item .arrow { display: none; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="news">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb"><span>News</span></nav>
+  <h1 class="ko-only">뉴스 · IR<span class="en">News</span></h1>
+  <h1 class="en-only">News<span class="en">Announcements &amp; IR</span></h1>
+  <p class="lead ko-only">공지사항, 보도자료, IR 공시, 전시회 참가 소식을 모아 보여드립니다.</p>
+  <p class="lead en-only">Announcements, press releases, IR disclosures, and exhibition news.</p>
+</section>
+
+<div class="company-tabs"><nav aria-label="News">
+  <a href="index.html" class="on" aria-current="page"><span class="ko-only">뉴스 · IR</span><span class="en-only">News &amp; IR</span></a>
+  <a href="exhibition.html"><span class="ko-only">전시회 · 학회</span><span class="en-only">Exhibitions</span></a>
+</nav></div>
+
+<main class="page-body">
+  <div class="filters" id="filters"></div>
+  <div class="news-list" id="list"></div>
+  <div class="pager" id="pager"></div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+<script>
+(async function () {
+  const res = await fetch('../assets/data/news.json');
+  const data = await res.json();
+  const lang = window.bpLang();
+  const all = ({ ko: '전체', en: 'All', es: 'Todos' }[lang] || '전체');
+  const tags = [...new Set(data.items.map(i => i.tag[lang]))];
+
+  const filters = document.getElementById('filters');
+  filters.innerHTML = `<button class="filter-btn active" data-t="*">${all}</button>` +
+    tags.map(t => `<button class="filter-btn" data-t="${t}">${t}</button>`).join('');
+
+  const PER = 10; let page = 1, cur = '*';
+  function render(filter, pg) {
+    cur = filter; page = pg || 1;
+    const all = filter === '*' ? data.items : data.items.filter(i => i.tag[lang] === filter);
+    const pages = Math.max(1, Math.ceil(all.length / PER));
+    const items = all.slice((page - 1) * PER, page * PER);
+    document.getElementById('pager').innerHTML = pages > 1 ? Array.from({length: pages}, (_, k) => `<a href="#" data-p="${k+1}" class="${k+1 === page ? 'active' : ''}">${k+1}</a>`).join('') : '';
+    document.getElementById('list').innerHTML = items.map(i => `
+      <a class="news-item" href="detail.html?id=${i.id}">
+        <div class="date">${i.date}</div>
+        <div class="tag">${i.tag[lang]}</div>
+        <div>
+          <h3>${i.title[lang]}</h3>
+          <p>${i.summary[lang]}</p>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+    `).join('');
+  }
+  render('*');
+
+  filters.addEventListener('click', e => {
+    const b = e.target.closest('.filter-btn');
+    if (!b) return;
+    filters.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    render(b.dataset.t, 1);
+  });
+  document.getElementById('pager').addEventListener('click', e => {
+    const a = e.target.closest('[data-p]'); if (!a) return;
+    e.preventDefault(); render(cur, +a.dataset.p); window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

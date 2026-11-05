@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ | 바이오프로테크</title>
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .faq-tabs { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+  .tab-btn { padding: 10px 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; background: #fff; border: 1px solid var(--bp-lt2); color: var(--bp-dk2); cursor: pointer; }
+  .tab-btn.active { background: var(--bp-accent5); color: #fff; border-color: var(--bp-accent5); }
+  .faq-search { display: flex; gap: 8px; margin-bottom: 32px; }
+  .faq-search input { flex: 1; padding: 14px 18px; border: 1px solid var(--bp-lt2); font-size: 14px; background: #fff; }
+  .faq-search input:focus { border-color: var(--bp-accent5); outline: 0; }
+  .faq-list { border-top: 1px solid var(--bp-lt2); }
+  .faq-q { padding: 20px 0; border-bottom: 1px solid var(--bp-lt2); cursor: pointer; }
+  .faq-q summary { display: flex; gap: 20px; align-items: center; list-style: none; cursor: pointer; }
+  .faq-q summary::-webkit-details-marker { display: none; }
+  .faq-q .q-mark { font-size: 18px; font-weight: 700; color: var(--bp-accent5); width: 24px; flex-shrink: 0; }
+  .faq-q .q-text { font-size: 15px; font-weight: 700; color: var(--bp-dk2); flex: 1; }
+  .faq-q .q-chev { font-size: 20px; color: var(--bp-accent5); transition: transform .2s; }
+  .faq-q[open] .q-chev { transform: rotate(45deg); }
+  .faq-a { margin: 16px 0 0 44px; padding: 20px 24px; background: #F7F8FA; font-size: 14px; line-height: 1.8; color: var(--bp-dk2);  }
+  .empty-state { padding: 48px 24px; text-align: center; color: var(--bp-dk2); opacity: 0.6; font-size: 14px; }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="support">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb"><a href="#">Support</a><span class="sep">/</span><span>FAQ</span></nav>
+  <h1 class="ko-only">자주 묻는 질문<span class="en">Frequently Asked Questions</span></h1>
+  <h1 class="en-only">Frequently Asked Questions<span class="en">Support · FAQ</span></h1>
+  <p class="lead ko-only">자주 들어오는 문의를 카테고리별로 정리했습니다.<br>답을 찾지 못하셨다면 문의 페이지를 이용해 주세요.</p>
+  <p class="lead en-only">Common questions organized by category.<br>If you cannot find an answer, please reach out via the Contact page.</p>
+</section>
+
+<main class="page-body">
+  <div class="faq-search">
+    <input type="search" id="search" placeholder="" />
+  </div>
+  <div class="faq-tabs" id="tabs"></div>
+  <div class="faq-list" id="list"></div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+<script>
+(async function () {
+  const res = await fetch('../assets/data/faq.json');
+  const data = await res.json();
+  const lang = window.bpLang();
+  document.getElementById('search').placeholder = ({ko:'질문 검색...', en:'Search questions...', es:'Buscar preguntas...'}[lang] || '질문 검색...');
+  let activeCat = '*';
+  let query = '';
+
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = `<button class="tab-btn active" data-c="*">${({ko:'전체', en:'All', es:'Todos'}[lang] || '전체')}</button>` +
+    data.categories.map(c => `<button class="tab-btn" data-c="${c.id}">${c.name[lang]}</button>`).join('');
+
+  function render() {
+    const filtered = data.items.filter(i => {
+      if (activeCat !== '*' && i.cat !== activeCat) return false;
+      if (query && !(i.q[lang].toLowerCase().includes(query) || i.a[lang].toLowerCase().includes(query))) return false;
+      return true;
+    });
+    const list = document.getElementById('list');
+    if (!filtered.length) {
+      list.innerHTML = `<div class="empty-state">${({ko:'검색 결과가 없습니다.', en:'No results found.', es:'No se han encontrado resultados.'}[lang] || '검색 결과가 없습니다.')}</div>`;
+      return;
+    }
+    list.innerHTML = filtered.map(i => `
+      <details class="faq-q">
+        <summary>
+          <span class="q-mark">Q.</span>
+          <span class="q-text">${i.q[lang]}</span>
+          <span class="q-chev">+</span>
+        </summary>
+        <div class="faq-a">${i.a[lang]}</div>
+      </details>
+    `).join('');
+  }
+  render();
+
+  tabs.addEventListener('click', e => {
+    const b = e.target.closest('.tab-btn');
+    if (!b) return;
+    tabs.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    activeCat = b.dataset.c;
+    render();
+  });
+
+  document.getElementById('search').addEventListener('input', e => {
+    query = e.target.value.trim().toLowerCase();
+    render();
+  });
+})();
+</script>
+</body>
+</html>

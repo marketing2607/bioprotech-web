@@ -1,0 +1,35 @@
+{
+  "ko": {
+    "nav.products": "제품",
+    "nav.about": "회사소개",
+    "nav.news": "뉴스",
+    "nav.resources": "자료실",
+    "nav.support": "고객지원",
+    "nav.contact": "문의",
+    "common.viewMore": "자세히 보기",
+    "common.backToList": "목록으로",
+    "common.readMore": "더 읽기"
+  },
+  "en": {
+    "nav.products": "Products",
+    "nav.about": "About",
+    "nav.news": "News",
+    "nav.resources": "Download",
+    "nav.support": "Support",
+    "nav.contact": "Contact",
+    "common.viewMore": "View More",
+    "common.backToList": "Back to List",
+    "common.readMore": "Read More"
+  },
+  "es": {
+    "nav.products": "Productos",
+    "nav.about": "Empresa",
+    "nav.news": "Noticias",
+    "nav.resources": "Recursos",
+    "nav.support": "Soporte",
+    "nav.contact": "Contacto",
+    "common.viewMore": "Ver más",
+    "common.backToList": "Volver a la lista",
+    "common.readMore": "Leer más"
+  }
+}

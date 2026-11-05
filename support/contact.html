@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>문의하기 | 바이오프로테크</title>
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+  .contact-info h3 { font-size: 20px; font-weight: 700; color: var(--bp-accent5); margin-bottom: 12px; }
+  .contact-info .row { padding: 16px 0; border-bottom: 1px solid var(--bp-lt2); font-size: 14px; color: var(--bp-dk2); }
+  .contact-info .row strong { display: block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bp-accent5); margin-bottom: 6px; font-weight: 700; }
+  .contact-info .row a { color: var(--bp-accent5); }
+  .form-wrap { background: #F7F8FA; padding: 40px; }
+  .form-wrap h3 { font-size: 20px; font-weight: 700; color: var(--bp-accent5); margin-bottom: 24px; }
+  .form-actions { display: flex; gap: 12px; margin-top: 24px; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } .form-wrap { padding: 28px 20px; } }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="contact">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb"><span>Contact</span></nav>
+  <h1 class="ko-only">문의하기<span class="en">Contact Us</span></h1>
+  <h1 class="en-only">Contact Us<span class="en">Inquiries</span></h1>
+  <p class="lead ko-only">제품 견적, 샘플 요청, 대리점·유통 파트너십, 기타 문의.<br>영업팀이 3영업일 내에 회신드립니다.</p>
+  <p class="lead en-only">Product quotes, sample requests, distribution partnerships, and other inquiries.<br>Our sales team responds within 3 business days.</p>
+</section>
+
+<main class="page-body">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3 class="ko-only">연락처</h3><h3 class="en-only">Contact Info</h3>
+      <div class="row ko-only"><strong>본사</strong>(26365) 강원도 원주시 문막읍 동화공단로 151-3</div>
+      <div class="row en-only"><strong>HQ</strong>(26365) 151-3 Donghwagongdan-ro, Munmak-eup, Wonju-si, Gangwon-do, Korea</div>
+      <div class="row ko-only"><strong>Tel / Fax</strong>033-735-7720 · Fax 033-735-7736</div>
+      <div class="row en-only"><strong>Tel / Fax</strong>+82-33-735-7720 · Fax +82-33-735-7736</div>
+      <div class="row"><strong>Email</strong><a href="mailto:info@protechsite.com">info@protechsite.com</a></div>
+      <div class="row ko-only"><strong>영업 시간</strong>평일 09:00 ~ 18:00 (점심 12:00 ~ 13:00)<br/>주말 및 공휴일 휴무</div>
+      <div class="row en-only"><strong>Hours</strong>Weekdays 09:00 ~ 18:00 KST (Lunch 12:00 ~ 13:00)<br/>Closed on weekends and Korean holidays</div>
+      <div class="row ko-only"><strong>해외 법인</strong>USA · BPU / CHN · BPC (연태), BPG (광저우)</div>
+      <div class="row en-only"><strong>Overseas Entities</strong>USA · BPU / CHN · BPC (Yantai), BPG (Guangzhou)</div>
+
+      <p class="placeholder-empty ko-only" style="margin-top:24px"><strong>카카오톡 채널 · 오시는 길 지도</strong>채널 링크와 네이버·구글 맵 embed 자리. 채널 개설 후 연결될 예정입니다.</p>
+      <p class="placeholder-empty en-only" style="margin-top:24px"><strong>Messaging Channel · Map</strong>Reserved for messaging channel link and Naver/Google Maps embed. To be connected after channel is set up.</p>
+    </div>
+
+    <form class="form-wrap" id="contact-form" novalidate>
+      <h3 class="ko-only">문의 양식</h3><h3 class="en-only">Inquiry Form</h3>
+      <div class="form-msg" id="form-msg"></div>
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label><span class="ko-only">이름</span><span class="en-only">Name</span><span class="req">*</span></label>
+          <input name="name" required />
+        </div>
+        <div class="form-row">
+          <label><span class="ko-only">소속 / 회사</span><span class="en-only">Organization / Company</span></label>
+          <input name="company" />
+        </div>
+        <div class="form-row">
+          <label><span class="ko-only">이메일</span><span class="en-only">Email</span><span class="req">*</span></label>
+          <input name="email" type="email" required />
+        </div>
+        <div class="form-row">
+          <label><span class="ko-only">연락처</span><span class="en-only">Phone</span></label>
+          <input name="phone" inputmode="tel" />
+        </div>
+        <div class="form-row full">
+          <label><span class="ko-only">문의 유형</span><span class="en-only">Inquiry Type</span><span class="req">*</span></label>
+          <select name="type" required data-i18n-select="type">
+            <option value="" data-ko="선택해 주세요" data-en="Select one" data-es="Seleccione una opción">선택해 주세요</option>
+            <option value="quote" data-ko="견적 문의" data-en="Quote" data-es="Presupuesto">견적 문의</option>
+            <option value="sample" data-ko="샘플 요청" data-en="Sample Request" data-es="Solicitud de muestra">샘플 요청</option>
+            <option value="partner" data-ko="파트너십 / 유통" data-en="Partnership / Distribution" data-es="Alianza / Distribución">파트너십 / 유통</option>
+            <option value="technical" data-ko="기술 문의" data-en="Technical" data-es="Consulta técnica">기술 문의</option>
+            <option value="quality" data-ko="품질·인증 자료" data-en="Quality / Certification" data-es="Calidad / Certificación">품질·인증 자료</option>
+            <option value="etc" data-ko="기타" data-en="Other" data-es="Otro">기타</option>
+          </select>
+        </div>
+        <div class="form-row full">
+          <label><span class="ko-only">관심 제품</span><span class="en-only">Product of Interest</span></label>
+          <select name="product" data-i18n-first-option>
+            <option value="" data-ko="선택 (선택 사항)" data-en="Select (optional)" data-es="Seleccione (opcional)">선택 (선택 사항)</option>
+          </select>
+        </div>
+        <div class="form-row full">
+          <label><span class="ko-only">제목</span><span class="en-only">Subject</span><span class="req">*</span></label>
+          <input name="subject" required />
+        </div>
+        <div class="form-row full">
+          <label><span class="ko-only">문의 내용</span><span class="en-only">Message</span><span class="req">*</span></label>
+          <textarea name="message" required data-ph-ko="제품, 수량, 배송지, 기타 요청 사항을 자세히 기재해 주시면 빠른 회신이 가능합니다." data-ph-en="Please describe the product, quantity, shipping location, and any other requirements for a faster response." data-ph-es="Indique el producto, la cantidad, el lugar de entrega y cualquier otro requisito para recibir una respuesta más rápida."></textarea>
+        </div>
+        <div class="form-row full">
+          <label class="form-consent">
+            <input type="checkbox" name="consent" required />
+            <span class="ko-only">개인정보 수집·이용에 동의합니다. 수집 항목: 이름·이메일·연락처·문의 내용. 보관 기간: 문의 처리 완료 후 3년. <a href="../legal/privacy.html">개인정보처리방침</a></span>
+            <span class="en-only">I consent to the collection and use of my personal data. Items: name, email, phone, inquiry content. Retention: 3 years after inquiry is resolved. <a href="../legal/privacy.html">Privacy Policy</a></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary"><span class="ko-only">문의 접수</span><span class="en-only">Submit</span> <span class="arrow">→</span></button>
+        <button type="reset" class="btn btn-ghost"><span class="ko-only">초기화</span><span class="en-only">Reset</span></button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+<script>
+(async function () {
+  const lang = window.bpLang();
+
+  // Localize select options / textarea placeholder
+  document.querySelectorAll('select option[data-ko]').forEach(o => {
+    o.textContent = o.dataset[lang];
+  });
+  document.querySelectorAll('textarea[data-ph-ko]').forEach(t => {
+    t.placeholder = t.dataset['ph' + ({ko:'Ko', en:'En', es:'Es'}[lang] || 'Ko')];
+  });
+
+  // pre-fill product dropdown from products.json
+  try {
+    const res = await fetch('../assets/data/products.json');
+    const data = await res.json();
+    const sel = document.querySelector('select[name="product"]');
+    data.categories.sort((a,b)=>a.order-b.order).forEach(cat => {
+      const og = document.createElement('optgroup');
+      og.label = cat.name[lang];
+      data.products.filter(p=>p.cat===cat.id).sort((a,b)=>a.order-b.order).forEach(p=>{
+        const o = document.createElement('option');
+        o.value = p.id;
+        o.textContent = p.name[lang];
+        og.appendChild(o);
+      });
+      sel.appendChild(og);
+    });
+  } catch(e) {}
+
+  // pre-select from ?subject=quote etc.
+  const sub = window.bpQuery('subject');
+  if (sub) {
+    const t = document.querySelector('select[name="type"]');
+    if ([...t.options].some(o => o.value === sub)) t.value = sub;
+  }
+  const pid = window.bpQuery('product');
+  if (pid) {
+    const p = document.querySelector('select[name="product"]');
+    p.value = pid;
+  }
+
+  const form = document.getElementById('contact-form');
+  const msg = document.getElementById('form-msg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.className = 'form-msg';
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd);
+    // simple validation
+    if (!data.name || !data.email || !data.subject || !data.message || !data.type || !data.consent) {
+      msg.className = 'form-msg err';
+      msg.textContent = ({ko:'필수 항목을 모두 입력해 주세요.', en:'Please fill in all required fields.', es:'Por favor, complete todos los campos obligatorios.'})[lang] || '필수 항목을 모두 입력해 주세요.';
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(data.email)) {
+      msg.className = 'form-msg err';
+      msg.textContent = ({ko:'올바른 이메일 주소를 입력해 주세요.', en:'Please enter a valid email address.', es:'Por favor, introduzca una dirección de correo electrónico válida.'})[lang] || '올바른 이메일 주소를 입력해 주세요.';
+      return;
+    }
+
+    // ── 문의 메일 발송 (261008) ──
+    // FormSubmit(무료 폼 메일 서비스)으로 info@protechsite.com 에 바로 전달합니다.
+    // ※ 최초 1회: 첫 문의가 들어오면 info@protechsite.com 으로 FormSubmit의 "Activate Form" 메일이 오며,
+    //    그 메일의 버튼을 눌러야 이후 문의가 정상 전달됩니다.
+    // ※ 활성화 후 받는 임의 주소(예: https://formsubmit.co/ajax/abc123...)로 아래 FORM_ENDPOINT 를 바꾸면
+    //    페이지 소스에 메일 주소가 드러나지 않습니다.
+    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@protechsite.com';
+    const typeSel = form.querySelector('select[name="type"]');
+    const prodSel = form.querySelector('select[name="product"]');
+    const payload = {
+      '_subject': `[홈페이지 문의] ${typeSel.options[typeSel.selectedIndex].dataset.ko || data.type} · ${data.subject}`,
+      '_replyto': data.email,
+      '_template': 'table',
+      '_captcha': 'false',
+      '이름 (Name)': data.name,
+      '소속 (Company)': data.company || '-',
+      '이메일 (Email)': data.email,
+      '연락처 (Phone)': data.phone || '-',
+      '문의 유형 (Type)': typeSel.options[typeSel.selectedIndex].dataset.ko || data.type,
+      '관심 제품 (Product)': prodSel && prodSel.value ? prodSel.options[prodSel.selectedIndex].textContent : '-',
+      '제목 (Subject)': data.subject,
+      '문의 내용 (Message)': data.message,
+      '접수 언어 (Language)': lang,
+      '접수 페이지 (Page)': location.href,
+      '개인정보 수집·이용 동의': '동의함'
+    };
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = true;
+    try {
+      if (form.querySelector('input[name="_honey"]') && form.querySelector('input[name="_honey"]').value) throw new Error('spam');
+      const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) === 'false') throw new Error(out.message || 'send failed');
+      msg.className = 'form-msg ok';
+      msg.innerHTML = ({
+        ko: '<strong>문의가 접수되었습니다.</strong> 영업팀이 3영업일 내 입력하신 이메일로 회신드립니다.',
+        en: '<strong>Inquiry received.</strong> Our sales team will reply to your email within 3 business days.',
+        es: '<strong>Consulta recibida.</strong> Nuestro equipo comercial responderá a su correo en un plazo de 3 días hábiles.'
+      })[lang] || '<strong>문의가 접수되었습니다.</strong> 영업팀이 3영업일 내 입력하신 이메일로 회신드립니다.';
+      form.reset();
+      if (btn) btn.disabled = false;
+      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      if (btn) btn.disabled = false;
+      msg.className = 'form-msg err';
+      msg.textContent = ({
+        ko: '전송 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 info@protechsite.com 으로 이메일 문의해 주시기 바랍니다.',
+        en: 'An error occurred while sending. Please try again later or email info@protechsite.com.',
+        es: 'Se produjo un error al enviar. Inténtelo de nuevo más tarde o escriba a info@protechsite.com.'
+      })[lang] || '전송 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 info@protechsite.com 으로 이메일 문의해 주시기 바랍니다.';
+    }
+  });
+})();
+</script>
+</body>
+</html>

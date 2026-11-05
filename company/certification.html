@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>인증현황 | 바이오프로테크</title>
+<meta name="description" content="㈜바이오프로테크 보유 인증·허가 현황: ISO 13485, KGMP, CE MDR, FDA 510(k), 식약처 품목 허가·인증·신고." />
+<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
+<link rel="stylesheet" href="../assets/css/site.css" />
+<style>
+  /* 국가별 현황 표 */
+  .cs-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 72px; }
+  .cs-table th, .cs-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #d2d2d7; vertical-align: top; line-height: 1.6; }
+  .cs-table thead th { font-size: 12px; font-weight: 600; color: #6e6e73; letter-spacing: .04em; border-bottom: 1px solid #1d1d1f; }
+  .cs-table td:first-child { font-weight: 600; white-space: nowrap; }
+  .cs-table .num { font-family: var(--bp-font-mono); font-size: 12px; color: #424245; word-break: break-all; }
+  .cs-table a { color: var(--bp-accent5); white-space: nowrap; }
+  .cs-wrap { overflow-x: auto; }
+  .cs-note { font-size: 12px; color: #6e6e73; margin: -56px 0 72px; }
+
+  /* 필터 */
+  .cert-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .cert-filter button {
+    border: 1px solid #d2d2d7; background: #fff; color: #1d1d1f; border-radius: 980px;
+    padding: 9px 18px; font-size: 14px; font-family: inherit; cursor: pointer;
+  }
+  .cert-filter button .cnt { color: #86868b; margin-left: 4px; font-size: 12px; }
+  .cert-filter button.on { background: #1d1d1f; border-color: #1d1d1f; color: #fff; }
+  .cert-filter button.on .cnt { color: #a1a1a6; }
+
+  /* 그리드 */
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px 20px; }
+  .cert-card { display: flex; flex-direction: column; gap: 10px; cursor: zoom-in; background: none; border: 0; padding: 0; text-align: left; font-family: inherit; color: inherit; }
+  .cert-thumb {
+    position: relative; aspect-ratio: 1 / 1.414; border-radius: 14px; overflow: hidden;
+    background: #f5f5f7; border: 1px solid #e5e5ea;
+    display: flex; align-items: center; justify-content: center;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .cert-thumb img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+  .cert-card:hover .cert-thumb, .cert-card:focus-visible .cert-thumb { border-color: #14306b; }
+  .cert-card:focus-visible { outline: none; }
+  .cert-card:focus-visible .cert-thumb { outline: 2px solid var(--bp-accent5); outline-offset: 3px; }
+  .cert-title { font-size: 14px; font-weight: 600; color: #1d1d1f; line-height: 1.4; }
+  .cert-sub { font-size: 12px; color: #6e6e73; line-height: 1.5; margin-top: -4px; }
+  .cert-tags { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 980px; background: rgba(29,29,31,.85); color: #fff; }
+  .tag.export { background: #14306b; }
+  .tag.hold { background: #ff9f0a; color: #1d1d1f; }
+  .cert-empty { padding: 48px 0; color: #86868b; }
+
+  /* 라이트박스 */
+  .lb { position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.92); display: none; flex-direction: column; }
+  .lb.open { display: flex; }
+  .lb-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; color: #f5f5f7; }
+  .lb-cap { min-width: 0; }
+  .lb-cap b { display: block; font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lb-cap span { font-size: 12px; color: #a1a1a6; }
+  .lb-ctrl { display: flex; align-items: center; gap: 8px; flex: none; }
+  .lb-count { font-size: 13px; color: #a1a1a6; margin-right: 8px; font-variant-numeric: tabular-nums; }
+  .lb button { background: rgba(255,255,255,.12); color: #fff; border: 0; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  .lb button:hover { background: rgba(255,255,255,.24); }
+  .lb button svg { width: 20px; height: 20px; }
+  .lb-stage { flex: 1; position: relative; overflow: auto; display: flex; align-items: center; justify-content: center; padding: 0 72px 24px; }
+  .lb-stage img { max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; border-radius: 6px; cursor: zoom-in; user-select: none; }
+  .lb-stage.zoom { align-items: flex-start; justify-content: flex-start; }
+  .lb-stage.zoom img { max-width: none; max-height: none; width: min(1500px, 180%); cursor: zoom-out; margin: 0 auto; }
+  .lb-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 52px !important; height: 52px !important; }
+  .lb-prev { left: 12px; } .lb-next { right: 12px; }
+  @media (max-width: 700px) {
+    .cert-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
+    .lb-stage { padding: 0 8px 16px; }
+    .lb-nav { top: auto; bottom: 16px; transform: none; }
+    .lb-zoom { display: none !important; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+</head>
+<body data-base=".." data-nav="about">
+
+<div id="bp-header-slot"></div>
+
+<section class="page-hero">
+  <nav class="breadcrumb">
+        <a href="about.html">About</a><span class="sep">/</span>
+    <span>Certifications</span>
+  </nav>
+  <h1 class="ko-only">인증현황<span class="en">Certifications &amp; Licenses</span></h1>
+  <h1 class="en-only">Certifications<span class="en">Licenses &amp; Registrations</span></h1>
+  <p class="lead ko-only">보유 중인 허가증·인증서를 하나씩 확인하실 수 있습니다.<br>이미지를 누르면 크게 볼 수 있습니다.</p>
+  <p class="lead en-only">Browse each license and certificate we hold.<br>Click any image to view it in full size.</p>
+</section>
+
+<div class="company-tabs"><nav aria-label="Company">
+  <a href="about.html"><span class="ko-only">회사소개</span><span class="en-only">About</span></a>
+  <a href="ceo.html"><span class="ko-only">CEO 메시지</span><span class="en-only">CEO Message</span></a>
+  <a href="quality.html"><span class="ko-only">품질방침</span><span class="en-only">Quality Policy</span></a>
+  <a href="certification.html" class="on" aria-current="page"><span class="ko-only">인증현황</span><span class="en-only">Certifications</span></a>
+</nav></div>
+
+<main class="page-body">
+
+  <!-- ① 인증서 이미지 전체 -->
+  <div class="bp-kicker" id="list">Certificates</div>
+  <div class="cert-filter" id="cert-filter" role="tablist"></div>
+  <div class="cert-grid" id="cert-grid"></div>
+
+  <!-- ② 국가별 인증 현황 (인증팀 전달본 261001 기준) -->
+  <div class="bp-kicker" id="status" style="margin-top:88px">Registration Status</div>
+  <div class="cs-wrap">
+  <table class="cs-table">
+    <thead><tr>
+      <th><span class="ko-only">국가·지역</span><span class="en-only">Region</span></th>
+      <th><span class="ko-only">인증·등록</span><span class="en-only">Certification</span></th>
+      <th><span class="ko-only">번호</span><span class="en-only">No.</span></th>
+      <th><span class="ko-only">대상</span><span class="en-only">Scope</span></th>
+      <th></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="ko-only">공통</span><span class="en-only">Global</span></td><td>ISO 13485:2016</td><td class="num">10504-2017-AQ-KOR-NA-PS (DNV)</td><td><span class="ko-only">전 제품</span><span class="en-only">All products</span></td><td><a href="#cert-04" data-open="cert-04">↗</a></td></tr>
+      <tr><td><span class="ko-only">한국</span><span class="en-only">Korea</span></td><td><span class="ko-only">의료기기 제조업 허가</span><span class="en-only">Manufacturing License</span></td><td class="num">제1023호</td><td><span class="ko-only">전 제품 (제조)</span><span class="en-only">All products (manufacturing)</span></td><td><a href="#cert-01" data-open="cert-01">↗</a></td></tr>
+      <tr><td><span class="ko-only">한국</span><span class="en-only">Korea</span></td><td><span class="ko-only">의료기기 수입업 허가</span><span class="en-only">Import License</span></td><td class="num">제3350호</td><td><span class="ko-only">수입 품목</span><span class="en-only">Imported items</span></td><td><a href="#cert-02" data-open="cert-02">↗</a></td></tr>
+      <tr><td><span class="ko-only">한국</span><span class="en-only">Korea</span></td><td>KGMP</td><td class="num">KTL-AABA-19238 (본사) / KTL-ABBA-18970 (옌타이)</td><td>ESU Pencil, Smoke Pencil, Needle electrode</td><td><a href="#cert-03" data-open="cert-03">↗</a></td></tr>
+      <tr><td><span class="ko-only">한국</span><span class="en-only">Korea</span></td><td><span class="ko-only">품목 허가·인증·신고</span><span class="en-only">Product approvals</span></td><td class="num"><span class="ko-only">제품별 허가증 참조</span><span class="en-only">See each certificate</span></td><td><span class="ko-only">전 제품</span><span class="en-only">All products</span></td><td><a href="#list" data-filter="product">↑</a></td></tr>
+      <tr><td><span class="ko-only">유럽</span><span class="en-only">EU</span></td><td><span class="ko-only">EU MDR 품질시스템 인증서 (DNV, NB 2460)</span><span class="en-only">EU MDR QMS Certificate (DNV, NB 2460)</span></td><td class="num">C611944</td><td><span class="ko-only">접지판, 전기수술 펜슬, 연기흡입 펜슬 (Class IIb)</span><span class="en-only">Ground plates, electrosurgical pencils, smoke evacuation pencils (Class IIb)</span></td><td><a href="#cert-05" data-open="cert-05">↗</a></td></tr>
+      <tr><td><span class="ko-only">유럽</span><span class="en-only">EU</span></td><td><span class="ko-only">CE 자기적합선언 (MDR Class I)</span><span class="en-only">CE Declaration of Conformity (MDR Class I)</span></td><td class="num"></td><td><span class="ko-only">ECG·TAB·Neonatal·TENS·EEG·EMG Surface 전극, Smoke Evacuation System</span><span class="en-only">ECG·TAB·Neonatal·TENS·EEG·EMG surface electrodes, Smoke Evacuation System</span></td><td></td></tr>
+      <tr><td><span class="ko-only">미국</span><span class="en-only">USA</span></td><td>FDA 510(k) Cleared (17)</td><td class="num">K020003, K040784, K042301, K053011, K073360, K073438, K083148, K091248, K092732, K092761, K100246, K111270, K142099, K143103, K152984, K153019, K192035</td><td><span class="ko-only">ECG·TAB·Neonatal·TENS 전극, ESU Plate·Pencil, Smoke Pencil·Evacuator, EMG Needle, TENS·EMS·IF Unit</span><span class="en-only">ECG·TAB·Neonatal·TENS electrodes, ESU Plate·Pencil, Smoke Pencil·Evacuator, EMG Needle, TENS·EMS·IF Unit</span></td><td><a href="#cert-08" data-open="cert-08">↗</a></td></tr>
+      <tr><td><span class="ko-only">미국</span><span class="en-only">USA</span></td><td>FDA Device Listing (510(k) exempt)</td><td class="num">D370701, D531985</td><td><span class="ko-only">Laparo 연기흡입기, Smoke Tubing</span><span class="en-only">Laparoscopic smoke evacuator, Smoke Tubing</span></td><td></td></tr>
+      <tr><td><span class="ko-only">일본</span><span class="en-only">Japan</span></td><td><span class="ko-only">외국제조업자 등록</span><span class="en-only">Foreign Manufacturer Registration</span></td><td class="num">BG10300079</td><td><span class="ko-only">본사</span><span class="en-only">HQ</span></td><td><a href="#cert-06" data-open="cert-06">↗</a></td></tr>
+      <tr><td><span class="ko-only">중국</span><span class="en-only">China</span></td><td><span class="ko-only">의료기기 생산허가증 (옌타이 법인)</span><span class="en-only">Production License (Yantai)</span></td><td class="num">鲁药监械生产许20230059号</td><td><span class="ko-only">능동수술기기, 진단·모니터링기기 (II류)</span><span class="en-only">Active surgical, diagnostic &amp; monitoring devices (Class II)</span></td><td><a href="#cert-07" data-open="cert-07">↗</a></td></tr>
+      <tr><td><span class="ko-only">중국</span><span class="en-only">China</span></td><td><span class="ko-only">의료기기 등록증 (옌타이 법인)</span><span class="en-only">NMPA Registration (Yantai)</span></td><td class="num">鲁械注准20262070303</td><td><span class="ko-only">일회용 니들 전극</span><span class="en-only">Disposable needle electrode</span></td><td><a href="#cert-48" data-open="cert-48">↗</a></td></tr>
+      <tr><td><span class="ko-only">중국</span><span class="en-only">China</span></td><td><span class="ko-only">의료기기 등록증 (옌타이 법인)</span><span class="en-only">NMPA Registration (Yantai)</span></td><td class="num">鲁械注准20262010229</td><td><span class="ko-only">전기수술 전극 (Smoke Pencil · ESU Pencil)</span><span class="en-only">Electrosurgical electrode (Smoke Pencil · ESU Pencil)</span></td><td><a href="#cert-49" data-open="cert-49">↗</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cs-note ko-only">※ 위에 없는 국가의 등록 현황 및 국가별 공급 가능 여부는 영업팀으로 문의해 주세요.</p>
+  <p class="cs-note en-only">※ For other countries and product availability by country, please contact our Sales team.</p>
+</main>
+
+<!-- 라이트박스 -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+  <div class="lb-top">
+    <div class="lb-cap"><b id="lb-title"></b><span id="lb-sub"></span></div>
+    <div class="lb-ctrl">
+      <span class="lb-count" id="lb-count"></span>
+      <button type="button" class="lb-zoom" id="lb-zoom" aria-label="Zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></button>
+      <button type="button" id="lb-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </div>
+  <div class="lb-stage" id="lb-stage"><img id="lb-img" alt="" /></div>
+  <button type="button" class="lb-nav lb-prev" id="lb-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <button type="button" class="lb-nav lb-next" id="lb-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
+
+<div id="bp-footer-slot"></div>
+<script src="../assets/js/data-bundle.js"></script>
+<script src="../assets/js/chrome.js"></script>
+<script>
+/* =========================================================
+   인증서 데이터: 인증팀 「홈페이지_인증서_게시용_수정」 47건 + 옌타이 BPC 중국 등록증 2건 (TF/BPC)
+   · 이미지: assets/img/certs/full/{id}.jpg (원본) · thumb/{id}.jpg (목록용)
+   · hold:true   → 인증팀 「게시 보류」 항목 (FDA 510(k) 3건)
+   · export:true → 수출용 허가 품목
+   · 게시 보류 항목을 숨기려면 SHOW_ON_HOLD = false 로 변경
+   ========================================================= */
+const SHOW_ON_HOLD = true;
+const CERTS = [
+{
+"id": "cert-01",
+"g": "corp",
+"t": "의료기기 제조업 허가증",
+"te": "Medical Device Manufacturing License",
+"sub": "식품의약품안전처 · 제1023호",
+"sube": "MFDS (Korea) · No. 1023",
+"region": "KR"
+},
+{
+"id": "cert-02",
+"g": "corp",
+"t": "의료기기 수입업 허가증",
+"te": "Medical Device Import License",
+"sub": "식품의약품안전처 · 제3350호",
+"sube": "MFDS (Korea) · No. 3350",
+"region": "KR"
+},
+{
+"id": "cert-03",
+"g": "corp",
+"t": "KGMP 적합인정서",
+"te": "KGMP Certificate",
+"sub": "한국산업기술시험원 · KTL-AABA-19238 (본사)",
+"sube": "KTL · KTL-AABA-19238 (HQ)",
+"region": "KR"
+},
+{
+"id": "cert-04",
+"g": "corp",
+"t": "ISO 13485:2016",
+"te": "ISO 13485:2016",
+"sub": "DNV · 의료기기 품질경영시스템",
+"sube": "DNV · Medical Device QMS",
+"region": "GL"
+},
+{
+"id": "cert-05",
+"g": "global",
+"t": "CE MDR EU 품질경영시스템 인증서",
+"te": "CE MDR EU QMS Certificate",
+"sub": "DNV (NB 2460) · C611944",
+"sube": "DNV (NB 2460) · C611944",
+"region": "EU"
+},
+{
+"id": "cert-06",
+"g": "global",
+"t": "일본 외국제조업자 등록증 (본사)",
+"te": "Japan Foreign Manufacturer Registration (HQ)",
+"sub": "BG10300079",
+"sube": "BG10300079",
+"region": "JP"
+},
+{
+"id": "cert-07",
+"g": "global",
+"t": "중국 의료기기 생산허가증 (옌타이 법인)",
+"te": "China Medical Device Production License (Yantai)",
+"sub": "鲁药监械生产许20230059号 · 2024 발급",
+"sube": "鲁药监械生产许20230059号 · issued 2024",
+"region": "CN"
+},
+{
+"id": "cert-48",
+"g": "global",
+"t": "중국 의료기기 등록증 · 일회용 니들 전극 (옌타이 BPC)",
+"te": "China NMPA Registration · Disposable Needle Electrode (BPC Yantai)",
+"sub": "鲁械注准20262070303 · 2026.08.03 ~ 2031.08.02",
+"sube": "鲁械注准20262070303 · valid Aug 3, 2026 – Aug 2, 2031",
+"region": "CN"
+},
+{
+"id": "cert-49",
+"g": "global",
+"t": "중국 의료기기 등록증 · 전기수술 전극 Smoke Pencil · ESU Pencil (옌타이 BPC)",
+"te": "China NMPA Registration · Electrosurgical Electrode, Smoke Pencil · ESU Pencil (BPC Yantai)",
+"sub": "鲁械注准20262010229 · 2026.04.16 ~ 2031.04.15",
+"sube": "鲁械注准20262010229 · valid Apr 16, 2026 – Apr 15, 2031",
+"region": "CN"
+},
+{
+"id": "cert-08",
+"g": "global",
+"t": "FDA 510(k) · Smoke Pencil",
+"te": "FDA 510(k) · Smoke Pencil",
+"sub": "미국 FDA",
+"sube": "US FDA",
+"region": "US",
+"hold": true
+},
+{
+"id": "cert-09",
+"g": "global",
+"t": "FDA 510(k) · Smoke Evacuator",
+"te": "FDA 510(k) · Smoke Evacuator",
+"sub": "미국 FDA",
+"sube": "US FDA",
+"region": "US",
+"hold": true
+},
+{
+"id": "cert-10",
+"g": "global",
+"t": "FDA 510(k) · PROPLATE",
+"te": "FDA 510(k) · PROPLATE",
+"sub": "미국 FDA",
+"sube": "US FDA",
+"region": "US",
+"hold": true
+},
+{
+"id": "cert-11",
+"g": "product",
+"t": "AED Pad",
+"te": "AED Pad",
+"sub": "제신 24-197호 · 품목신고",
+"sube": "MFDS 제신 24-197호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-12",
+"g": "product",
+"t": "Disposable EEG Electrode",
+"te": "Disposable EEG Electrode",
+"sub": "제신 26-653호 · 품목신고",
+"sube": "MFDS 제신 26-653호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-13",
+"g": "product",
+"t": "ECG Electrode",
+"te": "ECG Electrode",
+"sub": "서울 제신 01-29호 · 품목신고",
+"sube": "MFDS 서울 제신 01-29호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-14",
+"g": "product",
+"t": "ECG Electrode",
+"te": "ECG Electrode",
+"sub": "수신 17-2724호 · 품목신고",
+"sube": "MFDS 수신 17-2724호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-15",
+"g": "product",
+"t": "EEG Electrode",
+"te": "EEG Electrode",
+"sub": "수신 24-1746호 · 품목신고",
+"sube": "MFDS 수신 24-1746호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-16",
+"g": "product",
+"t": "EEG Gel",
+"te": "EEG Gel",
+"sub": "수신 24-1596호 · 품목신고",
+"sube": "MFDS 수신 24-1596호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-17",
+"g": "product",
+"t": "EMG Needle Electrode",
+"te": "EMG Needle Electrode",
+"sub": "제인 10-751호 · 품목인증",
+"sube": "MFDS 제인 10-751호 · Certification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-18",
+"g": "product",
+"t": "EMG Needle Electrode",
+"te": "EMG Needle Electrode",
+"sub": "제인 15-4303호 · 품목인증",
+"sube": "MFDS 제인 15-4303호 · Certification",
+"region": "KR",
+"export": true
+},
+{
+"id": "cert-19",
+"g": "product",
+"t": "EMG Surface Electrode",
+"te": "EMG Surface Electrode",
+"sub": "서울 제신 08-153호 · 품목신고",
+"sube": "MFDS 서울 제신 08-153호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-20",
+"g": "product",
+"t": "EMS Stimulator",
+"te": "EMS Stimulator",
+"sub": "제인 09-484호 · 품목인증",
+"sube": "MFDS 제인 09-484호 · Certification",
+"region": "KR",
+"export": true
+},
+{
+"id": "cert-21",
+"g": "product",
+"t": "ESU Pencil",
+"te": "ESU Pencil",
+"sub": "제인 10-307호 · 품목인증",
+"sube": "MFDS 제인 10-307호 · Certification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-22",
+"g": "product",
+"t": "ESU Pencil",
+"te": "ESU Pencil",
+"sub": "제인 19-4071호 · 품목인증",
+"sube": "MFDS 제인 19-4071호 · Certification",
+"region": "KR",
+"export": true
+},
+{
+"id": "cert-23",
+"g": "product",
+"t": "ESU Plate",
+"te": "ESU Plate",
+"sub": "서울 수신 14-2258호 · 품목신고",
+"sube": "MFDS 서울 수신 14-2258호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-24",
+"g": "product",
+"t": "ESU Plate",
+"te": "ESU Plate",
+"sub": "서울 제신 01-30호 · 품목신고",
+"sube": "MFDS 서울 제신 01-30호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-25",
+"g": "product",
+"t": "ESU Plate Oversized",
+"te": "ESU Plate Oversized",
+"sub": "제신 24-618호 · 품목신고",
+"sube": "MFDS 제신 24-618호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-26",
+"g": "product",
+"t": "Holter ECG Electrode",
+"te": "Holter ECG Electrode",
+"sub": "제신 23-1437호 · 품목신고",
+"sube": "MFDS 제신 23-1437호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-27",
+"g": "product",
+"t": "Interferential Stimulator",
+"te": "Interferential Stimulator",
+"sub": "제인 11-250호 · 품목인증",
+"sube": "MFDS 제인 11-250호 · Certification",
+"region": "KR",
+"export": true
+},
+{
+"id": "cert-28",
+"g": "product",
+"t": "Laparoscopic",
+"te": "Laparoscopic",
+"sub": "제인 24-507호 · 품목인증",
+"sube": "MFDS 제인 24-507호 · Certification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-29",
+"g": "product",
+"t": "Neonatal Electrode",
+"te": "Neonatal Electrode",
+"sub": "서울 수신 14-2257호 · 품목신고",
+"sube": "MFDS 서울 수신 14-2257호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-30",
+"g": "product",
+"t": "Neonatal Electrode",
+"te": "Neonatal Electrode",
+"sub": "서울 제신 08-38호 · 품목신고",
+"sube": "MFDS 서울 제신 08-38호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-31",
+"g": "product",
+"t": "Neonatal Electrode",
+"te": "Neonatal Electrode",
+"sub": "제신 23-1426호 · 품목신고",
+"sube": "MFDS 제신 23-1426호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-32",
+"g": "product",
+"t": "Reusable EEG Electrode",
+"te": "Reusable EEG Electrode",
+"sub": "제신 26-691호 · 품목신고",
+"sube": "MFDS 제신 26-691호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-33",
+"g": "product",
+"t": "Reusable SpO2 Sensor",
+"te": "Reusable SpO2 Sensor",
+"sub": "서울 제신 12-29호 · 품목신고",
+"sube": "MFDS 서울 제신 12-29호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-34",
+"g": "product",
+"t": "Smoke Adapter",
+"te": "Smoke Adapter",
+"sub": "제신 24-1175호 · 품목신고",
+"sube": "MFDS 제신 24-1175호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-35",
+"g": "product",
+"t": "Smoke Evacuator",
+"te": "Smoke Evacuator",
+"sub": "제인 21-4113호 · 품목인증",
+"sube": "MFDS 제인 21-4113호 · Certification",
+"region": "KR",
+"export": true
+},
+{
+"id": "cert-36",
+"g": "product",
+"t": "Smoke Evacuator",
+"te": "Smoke Evacuator",
+"sub": "제인 24-603호 · 품목인증",
+"sube": "MFDS 제인 24-603호 · Certification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-37",
+"g": "product",
+"t": "Smoke Pencil",
+"te": "Smoke Pencil",
+"sub": "제인 11-778호 · 품목인증",
+"sube": "MFDS 제인 11-778호 · Certification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-38",
+"g": "product",
+"t": "Smoke Pencil",
+"te": "Smoke Pencil",
+"sub": "제인 24-53호 · 품목인증",
+"sube": "MFDS 제인 24-53호 · Certification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-39",
+"g": "product",
+"t": "Smoke Pencil",
+"te": "Smoke Pencil",
+"sub": "제인 26-4866호 · 품목인증",
+"sube": "MFDS 제인 26-4866호 · Certification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-40",
+"g": "product",
+"t": "Smoke Pencil Kit",
+"te": "Smoke Pencil Kit",
+"sub": "제인 25-4623호 · 품목인증",
+"sube": "MFDS 제인 25-4623호 · Certification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-41",
+"g": "product",
+"t": "SpO2 Sensor",
+"te": "SpO2 Sensor",
+"sub": "서울 수신 14-1655호 · 품목신고",
+"sube": "MFDS 서울 수신 14-1655호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-42",
+"g": "product",
+"t": "SpO2 Sensor",
+"te": "SpO2 Sensor",
+"sub": "서울 제신 04-15호 · 품목신고",
+"sube": "MFDS 서울 제신 04-15호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-43",
+"g": "product",
+"t": "SpO2 Sensor",
+"te": "SpO2 Sensor",
+"sub": "제신 23-1207호 · 품목신고",
+"sube": "MFDS 제신 23-1207호 · Notification",
+"region": "KR",
+"export": true
+},
+{
+"id": "cert-44",
+"g": "product",
+"t": "TAB Electrode",
+"te": "TAB Electrode",
+"sub": "서울 제신 08-40호 · 품목신고",
+"sube": "MFDS 서울 제신 08-40호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-45",
+"g": "product",
+"t": "TENS Electrode",
+"te": "TENS Electrode",
+"sub": "서울 수신 14-2256호 · 품목신고",
+"sube": "MFDS 서울 수신 14-2256호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-46",
+"g": "product",
+"t": "TENS Electrode",
+"te": "TENS Electrode",
+"sub": "서울 제신 01-31호 · 품목신고",
+"sube": "MFDS 서울 제신 01-31호 · Notification",
+"region": "KR",
+"export": false
+},
+{
+"id": "cert-47",
+"g": "product",
+"t": "TENS Electrode",
+"te": "TENS Electrode",
+"sub": "제신 23-1203호 · 품목신고",
+"sube": "MFDS 제신 23-1203호 · Notification",
+"region": "KR",
+"export": true
+}
+];
+
+(function () {
+  const lang = (window.bpLang && bpLang()) || 'ko';
+  const L = (ko, en, es) => lang === 'en' ? en : lang === 'es' ? (es || en) : ko;
+  const list = CERTS.filter(c => SHOW_ON_HOLD || !c.hold);
+  const GROUPS = [
+    ['all',     L('전체','All','Todos')],
+    ['corp',    L('허가·품질시스템','Licenses & QMS','Licencias y SGC')],
+    ['global',  L('해외 인증·등록','International','Internacional')],
+    ['product', L('국내 제품 허가·인증','Korea Product Approvals','Aprobaciones de producto (Corea)')],
+  ];
+  const grid = document.getElementById('cert-grid');
+  const filt = document.getElementById('cert-filter');
+  let current = 'all', view = list;
+
+  filt.innerHTML = GROUPS.map(([g, label]) => {
+    const n = g === 'all' ? list.length : list.filter(c => c.g === g).length;
+    return `<button type="button" role="tab" data-g="${g}" class="${g==='all'?'on':''}">${label}<span class="cnt">${n}</span></button>`;
+  }).join('');
+  filt.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    setFilter(b.dataset.g);
+  });
+
+  function title(c) { return lang === 'ko' ? c.t : c.te; }
+  function sub(c) { return lang === 'ko' ? c.sub : c.sube; }
+  function tags(c) {
+    let t = '';
+    if (c.export) t += `<span class="tag export">${L('수출용','Export only','Solo exportación')}</span>`;
+    if (c.hold) t += `<span class="tag hold">${L('게시 보류 검토','On hold','En revisión')}</span>`;
+    return t ? `<div class="cert-tags">${t}</div>` : '';
+  }
+  function setFilter(g) {
+    current = g;
+    filt.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.g === g));
+    view = g === 'all' ? list : list.filter(c => c.g === g);
+    grid.innerHTML = view.map((c, i) => `
+      <button type="button" class="cert-card" data-i="${i}" id="${c.id}">
+        <div class="cert-thumb">${tags(c)}<img loading="lazy" src="../assets/img/certs/thumb/${c.id}.jpg" alt="${title(c)}"></div>
+        <div class="cert-title">${title(c)}</div>
+        <div class="cert-sub">${sub(c)}</div>
+      </button>`).join('') || `<p class="cert-empty">${L('등록된 인증서가 없습니다.','No certificates.','Sin certificados.')}</p>`;
+  }
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.cert-card'); if (card) open(+card.dataset.i);
+  });
+
+  // ---- Lightbox ----
+  const lb = document.getElementById('lb'), img = document.getElementById('lb-img'),
+        stage = document.getElementById('lb-stage');
+  let idx = 0, lastFocus = null;
+  function show(i) {
+    idx = (i + view.length) % view.length;
+    const c = view[idx];
+    stage.classList.remove('zoom');
+    img.src = `../assets/img/certs/full/${c.id}.jpg`;
+    img.alt = title(c);
+    document.getElementById('lb-title').textContent = title(c);
+    document.getElementById('lb-sub').textContent = sub(c) + (c.export ? ' · ' + L('수출용','Export only','Solo exportación') : '');
+    document.getElementById('lb-count').textContent = `${idx + 1} / ${view.length}`;
+    // 이웃 이미지 미리 로드
+    [1, -1].forEach(d => { const n = view[(idx + d + view.length) % view.length]; new Image().src = `../assets/img/certs/full/${n.id}.jpg`; });
+  }
+  function open(i) {
+    lastFocus = document.activeElement;
+    show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden';
+    document.getElementById('lb-close').focus();
+  }
+  function close() {
+    lb.classList.remove('open'); document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  const zoom = () => stage.classList.toggle('zoom');
+  document.getElementById('lb-close').onclick = close;
+  document.getElementById('lb-prev').onclick = () => show(idx - 1);
+  document.getElementById('lb-next').onclick = () => show(idx + 1);
+  document.getElementById('lb-zoom').onclick = zoom;
+  img.addEventListener('click', zoom);
+  img.addEventListener('contextmenu', e => e.preventDefault()); // 원본 저장 억제 (인증팀 요청: 다운로드 미제공)
+  stage.addEventListener('click', e => { if (e.target === stage) close(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  let sx = null;
+  stage.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', e => {
+    if (sx === null || stage.classList.contains('zoom')) return;
+    const dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+  });
+
+  // 표의 ↗ 링크 · URL 해시(#cert-04 등)로 바로 열기
+  function openById(id) {
+    setFilter('all');
+    const i = view.findIndex(c => c.id === id);
+    if (i >= 0) open(i);
+  }
+  document.querySelectorAll('[data-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openById(a.dataset.open); }));
+  document.querySelectorAll('[data-filter]').forEach(a => a.addEventListener('click', () => setFilter(a.dataset.filter)));
+
+  setFilter('all');
+  if (/^#cert-\d+$/.test(location.hash)) openById(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
