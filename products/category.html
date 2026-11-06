@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>카테고리 | 바이오프로테크</title>
-<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
-<link rel="stylesheet" href="../assets/css/site.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Category | Bioprotech</title>
+<link href="../Bioprotech Design System/colors_and_type.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
-  /* 261102: 제품 목록도 전체 제품 페이지와 같은 세로 카드. 제품 전체가 보이게 크게, 아래에 모델 수 · 이름만 */
+  
   .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 28px; }
   .prod-card { display: flex; flex-direction: column; color: inherit; }
   .prod-card .thumb { aspect-ratio: 3 / 4; background: #f4f6f9; display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 11px; letter-spacing: .15em; color: #14306b; font-weight: 700; }
@@ -21,26 +22,22 @@
   @media (max-width: 1000px) { .prod-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; } }
   @media (max-width: 560px) { .prod-grid { gap: 22px 14px; } .prod-card .body { padding-top: 12px; } .prod-card h4 { font-size: 15px; } .prod-card .mcount { font-size: 10px; } .prod-card .go { font-size: 17px; } }
 </style>
-<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+<link href="../assets/css/theme-apple.css" rel="stylesheet"/>
 </head>
-<body data-lang="en" data-base=".." data-nav="products">
-
+<body data-base=".." data-lang="en" data-nav="products">
 <div id="bp-header-slot"></div>
-
 <section class="page-hero" id="hero">
-  <nav class="breadcrumb">
-        <a href="index.html">Products</a>
-    <span class="sep">/</span>
-    <span id="crumb-cat"></span>
-  </nav>
-  <h1 id="h1"><span class="en" id="h1-en"></span></h1>
-  <p class="lead" id="desc"></p>
+<nav class="breadcrumb">
+<a href="index.html">Products</a>
+<span class="sep">/</span>
+<span id="crumb-cat"></span>
+</nav>
+<h1 id="h1"><span class="en" id="h1-en"></span></h1>
+<p class="lead" id="desc"></p>
 </section>
-
 <main class="page-body">
-  <div class="prod-grid" id="prods"></div>
+<div class="prod-grid" id="prods"></div>
 </main>
-
 <div id="bp-footer-slot"></div>
 <script src="../assets/js/data-bundle.js"></script>
 <script src="../assets/js/chrome.js"></script>
@@ -58,9 +55,9 @@
     return;
   }
 
-  document.title = `${cat.name[lang]} · ${cat.sub[lang]} | 바이오프로테크`;
+  document.title = `${cat.name[lang]} · ${cat.sub[lang]} | Bioprotech`;
   document.getElementById('crumb-cat').textContent = cat.name[lang];
-  // 261008 수정: h1 textContent 설정 시 하위 span(h1-en)이 지워져 이후 스크립트가 중단되던 버그 수정
+  
   document.getElementById('h1').innerHTML = `${cat.name[lang]}<span class="en" id="h1-en">${cat.sub[lang]}</span>`;
   document.getElementById('desc').textContent = cat.desc[lang];
 
@@ -70,9 +67,9 @@
 
   document.getElementById('prods').innerHTML = prods.map(p => `
     <a class="prod-card" href="detail.html?id=${p.id}" title="${p.tagline[lang]}">
-      ${p.images ? `<div class="thumb"><img src="../assets/img/products/thumb/${p.id}.jpg" onerror="this.onerror=null;this.src='../assets/img/products/${p.images[0]}'" alt="${p.name[lang]}" loading="lazy"></div>` : `<div class="thumb">${({ko:'이미지 준비 중', en:'Image pending', es:'Imagen pendiente'})[lang]}</div>`}
+      ${p.images ? `<div class="thumb"><img src="../assets/img/products/thumb/${p.id}.jpg" onerror="this.onerror=null;this.src='../assets/img/products/${p.images[0]}'" alt="${p.name[lang]}" loading="lazy"></div>` : `<div class="thumb">${({ko:'Image pending', en:'Image pending', es:'Imagen pendiente'})[lang]}</div>`}
       <div class="body">
-        <div>${p.spec && p.spec.rows ? `<span class="mcount">${p.spec.rows.length} ${({ko:'개 모델', en:'models', es:'modelos'})[lang]}</span>` : ''}<h4>${p.name[lang]}</h4></div>
+        <div>${p.spec && p.spec.rows ? `<span class="mcount">${p.spec.rows.length} ${({ko:'models', en:'models', es:'modelos'})[lang]}</span>` : ''}<h4>${p.name[lang]}</h4></div>
         <span class="go" aria-hidden="true">→</span>
       </div>
     </a>

@@ -3,11 +3,11 @@
    ========================================================= */
 (function () {
   const BASE = document.body.dataset.base || '.';
-  // 261102: 기본 언어를 영어로 변경 (예전 저장값은 무시하도록 키 이름 변경)
+  
   const LANG_KEY = 'bp-lang-v2';
-  // 261102: 스페인어 페이지 삭제 → 한국어·영어만 사용 (예전에 ES를 고른 방문자는 한국어로)
-  // 261106: 한국어 심의 완료 전까지 영어로 고정 (KO 버튼을 눌러도 영어 유지)
-  //         심의 완료 후 KO_ENABLED 를 true 로 바꾸면 원래대로 동작
+  
+  
+  
   const KO_ENABLED = false;
   let savedLang = null;
   try { savedLang = localStorage.getItem(LANG_KEY); } catch (e) {}
@@ -40,10 +40,10 @@
 
   // --------- Mega-menu data ----------
   const MEGA_CATS = [
-    {id:'esu',    name:{ko:'전기수술', en:'Electrosurgery',  es:'Electrocirugía'},       code:'ESU'},
-    {id:'cardio', name:{ko:'심전도',   en:'Cardiology',      es:'Cardiología'},           code:'ECG'},
-    {id:'neuro',  name:{ko:'신경진단', en:'Neurology',       es:'Neurología'},            code:'EEG · EMG'},
-    {id:'pain',   name:{ko:'통증관리', en:'Pain Management', es:'Tratamiento del dolor'}, code:'TENS'},
+    {id:'esu',    name:{ko:'Electrosurgery', en:'Electrosurgery',  es:'Electrocirugía'},       code:'ESU'},
+    {id:'cardio', name:{ko:'Cardiology',   en:'Cardiology',      es:'Cardiología'},           code:'ECG'},
+    {id:'neuro',  name:{ko:'Neurology', en:'Neurology',       es:'Neurología'},            code:'EEG · EMG'},
+    {id:'pain',   name:{ko:'Pain Management', en:'Pain Management', es:'Tratamiento del dolor'}, code:'TENS'},
   ];
   const MEGA_PRODS = [
     {id:'smoke-evacuator',        cat:'esu',    name:{ko:'Smoke Evacuator',             en:'Smoke Evacuator',             es:'Smoke Evacuator'}},
@@ -72,10 +72,10 @@
     {id:'if-unit',                cat:'pain',   name:{ko:'IF Unit',                    en:'IF Unit',                     es:'IF Unit'}},
   ];
 
-  // --------- 모바일 메뉴 하단: 견적 문의·연락처·SNS (261012) ----------
+  
   function mobileFoot() {
     const T = {
-      ko: { q:'견적 문의하기', h:'고객 상담', hrs:'평일 09:00 ~ 18:00' },
+      ko: { q:'Request a Quote', h:'Customer Service', hrs:'Weekdays 09:00 ~ 18:00 (KST)' },
       en: { q:'Request a Quote', h:'Customer Service', hrs:'Weekdays 09:00 ~ 18:00 (KST)' },
       es: { q:'Solicitar presupuesto', h:'Atención al cliente', hrs:'Días laborables 09:00 ~ 18:00 (KST)' },
     }[currentLang] || {};
@@ -97,12 +97,12 @@
     const isHome = document.body.dataset.page === 'home';
     const brandHref = BASE + '/index.html';
     const NAV_BY_LANG = {
-      ko: { home:'홈', products:'제품',       about:'회사소개', news:'뉴스',     downloads:'자료실',  support:'고객지원', contact:'문의' },
+      ko: { home:'Home', products:'Products',   about:'About',    news:'News',     downloads:'Download', support:'Support',  contact:'Contact' },
       en: { home:'Home', products:'Products',   about:'About',    news:'News',     downloads:'Download', support:'Support',  contact:'Contact' },
       es: { home:'Inicio', products:'Productos',  about:'Empresa',  news:'Noticias', downloads:'Recursos',  support:'Soporte',  contact:'Contacto' },
     };
     const NAV_LABELS = NAV_BY_LANG[currentLang] || NAV_BY_LANG.en;
-    // 261008 TF 반영: 홈·회사소개·뉴스를 앞으로, 제품을 메뉴 중앙(7개 중 4번째)에 배치
+    
     const items = [
       ['home',     BASE + '/index.html',          NAV_LABELS.home],
       ['about',    BASE + '/company/about.html',  NAV_LABELS.about],
@@ -112,7 +112,7 @@
       ['support',  BASE + '/support/faq.html',    NAV_LABELS.support],
       ['contact',  BASE + '/support/contact.html',NAV_LABELS.contact],
     ];
-    const VAL = {ko:'전체 제품 보기', en:'View All Products', es:'Ver todos los productos'};
+    const VAL = {ko:'View All Products', en:'View All Products', es:'Ver todos los productos'};
     const megaCols = MEGA_CATS.map(cat => {
       const prods = MEGA_PRODS.filter(p => p.cat === cat.id);
       return `<div class="mega-col">
@@ -151,14 +151,14 @@
       </a>
       <nav class="bp-nav" id="bp-nav">${nav}</nav>
       <div class="bp-header-cta">
-        <button type="button" class="bp-search-btn" id="bp-search-btn" aria-label="${({ko:'검색',en:'Search',es:'Buscar'})[currentLang]}" title="${({ko:'검색',en:'Search',es:'Buscar'})[currentLang]}">
+        <button type="button" class="bp-search-btn" id="bp-search-btn" aria-label="${({ko:'Search',en:'Search',es:'Buscar'})[currentLang]}" title="${({ko:'Search',en:'Search',es:'Buscar'})[currentLang]}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
         </button>
         <div class="bp-lang-toggle" role="group" aria-label="Language">
           <button type="button" data-lang="en" class="${currentLang==='en'?'active':''}">EN</button>
           <button type="button" data-lang="ko" class="${currentLang==='ko'?'active':''}">KO</button>
         </div>
-        <a href="${BASE}/support/contact.html" class="pill">${({ko:'견적 문의',en:'Get a Quote',es:'Solicitar presupuesto'})[currentLang]||'견적 문의'}</a>
+        <a href="${BASE}/support/contact.html" class="pill">${({ko:'Get a Quote',en:'Get a Quote',es:'Solicitar presupuesto'})[currentLang]|| ''}</a>
         <button type="button" class="bp-burger" id="bp-burger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -168,7 +168,7 @@
       <div class="bp-search-inner">
         <form class="bp-search-form" id="bp-search-form" action="${BASE}/search.html" method="get" role="search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
-          <input type="search" name="q" id="bp-search-input" autocomplete="off" aria-label="${({ko:'검색',en:'Search',es:'Buscar'})[currentLang]}" />
+          <input type="search" name="q" id="bp-search-input" autocomplete="off" aria-label="${({ko:'Search',en:'Search',es:'Buscar'})[currentLang]}" />
           <button type="button" class="bp-search-close" id="bp-search-close" aria-label="Close">×</button>
         </form>
         <div class="bp-search-results" id="bp-search-results"></div>
@@ -177,9 +177,9 @@
     <div class="bp-search-dim" id="bp-search-dim" hidden></div>`;
   }
 
-  // --------- SNS 링크 (261008 TF 반영) ----------
-  // ※ 공식 계정 주소가 확정되면 아래 url 값만 교체하면 전 페이지에 반영됩니다.
-  //   (현재는 각 플랫폼 기본 주소로 연결: 공식 계정 URL 확정 필요)
+  
+  
+  
   const SNS_LINKS = [
     { id:'instagram', name:'Instagram', url:'https://www.instagram.com/',
       icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>' },
@@ -197,12 +197,12 @@
       `<a class="sns-btn sns-${s.id}" href="${s.url}" target="_blank" rel="noopener noreferrer" aria-label="${s.name}" title="${s.name}"${s.qr ? ` data-qr="${s.id}"` : ''}>${s.icon}<span>${s.name}</span></a>`
     ).join('');
   }
-  // QR만 있는 채널(WeChat): 버튼 클릭 시 QR 팝업
+  
   function wireQR() {
     document.querySelectorAll('.sns-btn[data-qr]').forEach(btn => btn.addEventListener('click', e => {
       const s = SNS_LINKS.find(x => x.id === btn.dataset.qr); if (!s) return;
       e.preventDefault();
-      const T = { ko:{ scan:'위챗 앱에서 QR 코드를 스캔해 주세요.', search:'또는 위챗 검색', close:'닫기' }, en:{ scan:'Scan the QR code with the WeChat app.', search:'Or search in WeChat', close:'Close' }, es:{ scan:'Escanee el código QR con la app WeChat.', search:'O busque en WeChat', close:'Cerrar' } }[currentLang] || {};
+      const T = { ko:{ scan:'Scan the QR code with the WeChat app.', search:'Or search in WeChat', close:'Close' }, en:{ scan:'Scan the QR code with the WeChat app.', search:'Or search in WeChat', close:'Close' }, es:{ scan:'Escanee el código QR con la app WeChat.', search:'O busque en WeChat', close:'Cerrar' } }[currentLang] || {};
       const wrap = document.createElement('div');
       wrap.className = 'qr-pop';
       wrap.innerHTML = `<div class="qr-box" role="dialog" aria-modal="true" aria-label="${s.name} QR">
@@ -251,15 +251,15 @@
       },
       ko: {
         prod: 'Products', comp: 'Company', sup: 'Support',
-        a1: '전기수술', a2: '심전도 전극', a3: '신경진단', a4: '통증관리',
-        b1: '회사소개', b2: '연혁', b3: '글로벌', b4: '연구개발', b5: '품질방침', b6: '인증현황', sns: '바이오프로테크 SNS',
-        c1: '문의하기', c2: 'FAQ', c3: '자료실', c4: '인증현황',
-        terms: '이용약관', privacy: '개인정보처리방침',
-        company: '㈜바이오프로테크 | 대표이사',
-        reg: '사업자등록번호 : 108-81-22350',
-        addr: '(26365) 강원도 원주시 문막읍 동화공단로 151-3',
-        tel: '전화 033-735-7720 · 팩스 033-735-7736',
-        copy: 'Copyright © 2026 ㈜바이오프로테크 All rights reserved.'
+        a1: 'Electrosurgery', a2: 'ECG Electrodes', a3: 'Neurology', a4: 'TENS / Pain',
+        b1: 'About', b2: 'History', b3: 'Global', b4: 'R&D', b5: 'Quality Policy', b6: 'Certifications', sns: 'Follow Bioprotech',
+        c1: 'Inquiry', c2: 'FAQ', c3: 'Downloads', c4: 'Certifications',
+        terms: 'Terms', privacy: 'Privacy Policy',
+        company: 'Bioprotech | CEO',
+        reg: 'Business Reg. No.: 108-81-22350',
+        addr: '(26365) 151-3 Donghwagongdan-ro, Munmak-eup, Wonju-si, Gangwon-do',
+        tel: 'Tel 033-735-7720 · Fax 033-735-7736',
+        copy: '© 2026 Bioprotech Co., Ltd. All rights reserved.'
       }
     };
     const L = FOOT_BY_LANG[currentLang] || FOOT_BY_LANG.ko;
@@ -314,41 +314,33 @@
     </footer>
 
     <div class="floating">
-      <a class="fl-contact" href="${BASE}/support/contact.html" aria-label="${({ko:'문의하기',en:'Contact us',es:'Contacto'})[currentLang]}" title="${({ko:'문의하기',en:'Contact us',es:'Contacto'})[currentLang]}">
+      <a class="fl-contact" href="${BASE}/support/contact.html" aria-label="${({ko:'Contact us',en:'Contact us',es:'Contacto'})[currentLang]}" title="${({ko:'Contact us',en:'Contact us',es:'Contacto'})[currentLang]}">
         <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
       </a>
-      <a href="#top" aria-label="맨 위로" title="맨 위로">
+      <a href="#top" aria-label="Back to top" title="Back to top">
         <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
       </a>
     </div>`;
   }
 
-  // --------- 사이트 검색 (261008) ----------
-  // 제품(모델번호·사양 포함) · 뉴스 · FAQ · 주요 페이지를 한 번에 검색. 한글 일반어 → 제품 용어 동의어 확장.
+  
+  
   const SR_SYN = {
-    '심전도':'ecg cardiology', '심전':'ecg', '뇌파':'eeg', '근전도':'emg', '신경':'neurology emg eeg', '피하':'subdermal',
-    '접지':'grounding plate', '접지판':'grounding plate', '패드':'pad plate', '전기수술':'esu electrosurgery electrosurgical',
-    '연기':'smoke', '배연':'smoke evacuation', '흡인':'smoke evacuation suction', '펜슬':'pencil', '전기메스':'pencil esu',
-    '복강경':'laparoscopic', '통증':'tens pain', '저주파':'tens', '신생아':'neonatal', '소아':'pediatric', '산소포화도':'spo2 sensor',
-    '바늘':'needle', '니들':'needle', '케이블':'cable', '전극':'electrode', '젤':'gel hydrogel', '겔':'gel hydrogel',
-    '인증':'certification 인증현황 인증서', '허가':'certification 인증현황 허가증', '스모크':'smoke', '에스유':'esu', '품질':'quality 품질방침',
-    '카탈로그':'catalog download', '자료':'download', '사용설명서':'ifu', '전시회':'exhibition 전시회', '학회':'exhibition',
-    '수출':'export global', '견적':'quote contact', '문의':'contact inquiry'
-  };
+    };
   const SR_PAGES = [
-    { url:'/company/about.html', t:{ko:'회사소개',en:'About',es:'Empresa'}, k:'회사 소개 about company 설립 연혁 history 조직도 organization 법인' },
-    { url:'/company/ceo.html', t:{ko:'CEO 메시지',en:'CEO Message',es:'Mensaje del CEO'}, k:'ceo 대표 인사말 메시지 message' },
-    { url:'/company/quality.html', t:{ko:'품질방침',en:'Quality Policy',es:'Política de calidad'}, k:'quality 품질 품질방침 qms iso 13485 kgmp' },
-    { url:'/company/certification.html', t:{ko:'인증현황',en:'Certifications',es:'Certificaciones'}, k:'certification 인증 인증현황 인증서 허가증 iso 13485 ce mdr fda 510k kgmp mfds 식약처' },
-    { url:'/company/history.html', t:{ko:'연혁',en:'History',es:'Historia'}, k:'history 연혁' },
-    { url:'/company/global.html', t:{ko:'글로벌 네트워크',en:'Global Network',es:'Red global'}, k:'global 글로벌 법인 export 수출 usa china yantai guangzhou' },
-    { url:'/company/rnd.html', t:{ko:'연구개발',en:'R&D',es:'I+D'}, k:'r&d 연구개발 연구 개발 hydrogel' },
-    { url:'/news/index.html', t:{ko:'뉴스 · IR',en:'News',es:'Noticias'}, k:'news 뉴스 ir 공시 공지 보도' },
-    { url:'/news/exhibition.html', t:{ko:'전시회 · 학회',en:'Exhibitions',es:'Ferias'}, k:'exhibition 전시회 학회 medica gmes kimes' },
-    { url:'/downloads/index.html', t:{ko:'자료실 (Download)',en:'Download',es:'Descargas'}, k:'download 자료실 카탈로그 catalog ifu 사용설명서 pdf' },
-    { url:'/support/faq.html', t:{ko:'FAQ',en:'FAQ',es:'FAQ'}, k:'faq 자주 묻는 질문 support 고객지원' },
-    { url:'/support/contact.html', t:{ko:'문의하기',en:'Contact',es:'Contacto'}, k:'contact 문의 견적 quote sample 샘플 inquiry' },
-    { url:'/products/index.html', t:{ko:'전체 제품',en:'All Products',es:'Todos los productos'}, k:'products 제품 전체 라인업' },
+    { url:'/company/about.html', t:{ko:'About',en:'About',es:'Empresa'}, k:'about company history organization' },
+    { url:'/company/ceo.html', t:{ko:'CEO Message',en:'CEO Message',es:'Mensaje del CEO'}, k:'ceo message' },
+    { url:'/company/quality.html', t:{ko:'Quality Policy',en:'Quality Policy',es:'Política de calidad'}, k:'quality qms iso 13485 kgmp' },
+    { url:'/company/certification.html', t:{ko:'Certifications',en:'Certifications',es:'Certificaciones'}, k:'certification iso 13485 ce mdr fda 510k kgmp mfds' },
+    { url:'/company/history.html', t:{ko:'History',en:'History',es:'Historia'}, k:'history' },
+    { url:'/company/global.html', t:{ko:'Global Network',en:'Global Network',es:'Red global'}, k:'global export usa china yantai guangzhou' },
+    { url:'/company/rnd.html', t:{ko:'R&D',en:'R&D',es:'I+D'}, k:'r&d hydrogel' },
+    { url:'/news/index.html', t:{ko:'News',en:'News',es:'Noticias'}, k:'news ir' },
+    { url:'/news/exhibition.html', t:{ko:'Exhibitions',en:'Exhibitions',es:'Ferias'}, k:'exhibition medica gmes kimes' },
+    { url:'/downloads/index.html', t:{ko:'Download',en:'Download',es:'Descargas'}, k:'download catalog ifu pdf' },
+    { url:'/support/faq.html', t:{ko:'FAQ',en:'FAQ',es:'FAQ'}, k:'faq support' },
+    { url:'/support/contact.html', t:{ko:'Contact',en:'Contact',es:'Contacto'}, k:'contact quote sample inquiry' },
+    { url:'/products/index.html', t:{ko:'All Products',en:'All Products',es:'Todos los productos'}, k:'products' },
   ];
   let SR_IDX = null;
   function srLoad() {
@@ -392,7 +384,7 @@
         let best = 0;
         g.forEach((t, n) => {
           const w = n === 0 ? 1 : 0.7;
-          // 짧은 영문 동의어는 단어 단위로만 일치 (예: 'ce'가 'surface'에 걸리지 않도록)
+          
           const has = (n > 0 && /^[a-z0-9]{1,4}$/.test(t)) ? (x => new RegExp('\\b' + t + '\\b').test(x)) : (x => x.includes(t));
           if (has(d.ltitle)) best = Math.max(best, 6 * w);
           else if (has(d.lt)) best = Math.max(best, 2 * w);
@@ -408,12 +400,12 @@
     return out.sort((a, b) => b.score - a.score);
   }
   window.bpSearch = bpSearch;
-  const SR_KIND = { prod:{ko:'제품',en:'Product',es:'Producto'}, cat:{ko:'카테고리',en:'Category',es:'Categoría'}, news:{ko:'뉴스',en:'News',es:'Noticia'}, faq:{ko:'FAQ',en:'FAQ',es:'FAQ'}, page:{ko:'페이지',en:'Page',es:'Página'} };
+  const SR_KIND = { prod:{ko:'Product',en:'Product',es:'Producto'}, cat:{ko:'Category',en:'Category',es:'Categoría'}, news:{ko:'News',en:'News',es:'Noticia'}, faq:{ko:'FAQ',en:'FAQ',es:'FAQ'}, page:{ko:'Page',en:'Page',es:'Página'} };
   window.bpSearchKind = t => (SR_KIND[t] || {})[currentLang] || t;
   function srEsc(v) { return String(v || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
   window.bpSearchItemHTML = (r) => `<a class="sr-item" href="${r.url}">
       <span class="sr-kind sr-${r.type}">${window.bpSearchKind(r.type)}</span>
-      <span class="sr-main"><b>${srEsc(r.title)}</b>${r.model ? `<em>${({ko:'모델',en:'Model',es:'Modelo'})[currentLang]} ${srEsc(r.model)}</em>` : ''}<small>${srEsc(r.sub)}</small></span>
+      <span class="sr-main"><b>${srEsc(r.title)}</b>${r.model ? `<em>${({ko:'Model',en:'Model',es:'Modelo'})[currentLang]} ${srEsc(r.model)}</em>` : ''}<small>${srEsc(r.sub)}</small></span>
       ${r.img ? `<img src="${BASE}/assets/img/products/${r.img}" alt="" loading="lazy">` : ''}
     </a>`;
 
@@ -422,8 +414,8 @@
           dim = document.getElementById('bp-search-dim'), input = document.getElementById('bp-search-input'),
           res = document.getElementById('bp-search-results'), close = document.getElementById('bp-search-close');
     if (!btn || !box) return;
-    const T = { hint:{ko:'자주 찾는 검색어',en:'Popular searches',es:'Búsquedas frecuentes'}, none:{ko:'검색 결과가 없습니다.',en:'No results.',es:'Sin resultados.'}, all:{ko:'전체 결과 보기',en:'View all results',es:'Ver todos los resultados'} };
-    const POP = { ko:['심전도 전극','접지판','스모크 펜슬','EMG','인증서','카탈로그'], en:['ECG electrode','Grounding pad','Smoke pencil','EMG','Certificates','Catalog'], es:['ECG','ESU plate','Smoke pencil','EMG','Certificados','Catálogo'] }[currentLang] || [];
+    const T = { hint:{ko:'Popular searches',en:'Popular searches',es:'Búsquedas frecuentes'}, none:{ko:'No results.',en:'No results.',es:'Sin resultados.'}, all:{ko:'View all results',en:'View all results',es:'Ver todos los resultados'} };
+    const POP = { ko:['ECG electrode','Grounding pad','Smoke pencil','EMG','Certificates','Catalog'], en:['ECG electrode','Grounding pad','Smoke pencil','EMG','Certificates','Catalog'], es:['ECG','ESU plate','Smoke pencil','EMG','Certificados','Catálogo'] }[currentLang] || [];
     const hint = () => { res.innerHTML = `<div class="sr-hint"><span>${T.hint[currentLang]}</span>${POP.map(p => `<button type="button" data-q="${p}">${p}</button>`).join('')}</div>`; };
     const open = () => { box.hidden = false; dim.hidden = false; document.body.classList.add('sr-open'); hint(); setTimeout(() => input.focus(), 30); srLoad(); };
     const shut = () => { box.hidden = true; dim.hidden = true; document.body.classList.remove('sr-open'); input.value = ''; btn.focus(); };
@@ -479,7 +471,7 @@
       });
     }
 
-    // ----- 제품 메가메뉴 토글 -----
+    
     const prodBtn  = document.getElementById('nav-prod-btn');
     const prodWrap = document.getElementById('nav-prod-wrap');
     const megaEl   = document.getElementById('nav-mega');
@@ -490,7 +482,7 @@
         if (megaEl) megaEl.setAttribute('aria-hidden', String(!opening));
       };
 
-      // 데스크톱: 마우스 호버만으로 열림/닫힘 (모바일·터치는 기존 클릭 방식 유지)
+      
       const hoverMq = window.matchMedia('(min-width: 901px) and (hover: hover)');
       let hoverCloseTimer = null;
       prodWrap.addEventListener('mouseenter', () => {
@@ -504,7 +496,7 @@
         hoverCloseTimer = setTimeout(() => setMega(false), 200);
       });
 
-      // 261008: 「제품」 클릭 시 전체 제품 페이지로 이동 (메가메뉴는 데스크톱 호버·키보드 포커스로 열림)
+      
       prodWrap.addEventListener('focusin', () => setMega(true));
       prodWrap.addEventListener('focusout', (e) => { if (!prodWrap.contains(e.relatedTarget)) setMega(false); });
       document.addEventListener('click', (e) => {
@@ -525,7 +517,7 @@
     document.querySelectorAll('.bp-lang-toggle button').forEach(b => {
       b.addEventListener('click', () => {
         const newLang = b.dataset.lang;
-        if (!KO_ENABLED) return; // 261106: 한국어 잠금 중에는 언어 전환 안 함
+        if (!KO_ENABLED) return; 
         if (newLang !== currentLang) {
           try { localStorage.setItem(LANG_KEY, newLang); } catch (e) {}
           location.reload();

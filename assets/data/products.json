@@ -4,17 +4,17 @@
       "id": "esu",
       "order": 1,
       "name": {
-        "ko": "전기수술",
+        "ko": "Electrosurgery",
         "en": "Electrosurgery",
         "es": "Electrocirugía"
       },
       "sub": {
-        "ko": "Electrosurgery · ESU",
+        "ko": "ESU",
         "en": "ESU",
         "es": "ESU"
       },
       "desc": {
-        "ko": "수술용 연기 배출기부터 전기수술 펜슬·접지패드까지 제공합니다.",
+        "ko": "From smoke evacuation to electrosurgical pencils and grounding pads.",
         "en": "From smoke evacuation to electrosurgical pencils and grounding pads.",
         "es": "Desde la evacuación de humo hasta lápices y placas de electrocirugía."
       }
@@ -23,17 +23,17 @@
       "id": "cardio",
       "order": 2,
       "name": {
-        "ko": "심전도",
+        "ko": "Cardiology",
         "en": "Cardiology",
         "es": "Cardiología"
       },
       "sub": {
-        "ko": "Cardiology · ECG",
+        "ko": "ECG",
         "en": "ECG",
         "es": "ECG"
       },
       "desc": {
-        "ko": "ECG·TAB·신생아 전극과 SpO₂ 센서를 제공합니다.",
+        "ko": "Disposable ECG, TAB and neonatal electrodes and SpO₂ sensors.",
         "en": "Disposable ECG, TAB and neonatal electrodes and SpO₂ sensors.",
         "es": "Electrodos ECG, TAB y neonatales desechables y sensores de SpO₂."
       }
@@ -42,17 +42,17 @@
       "id": "neuro",
       "order": 3,
       "name": {
-        "ko": "신경진단",
+        "ko": "Neurology",
         "en": "Neurology",
         "es": "Neurología"
       },
       "sub": {
-        "ko": "Neurology · EEG / EMG",
+        "ko": "EEG / EMG",
         "en": "EEG / EMG",
         "es": "EEG / EMG"
       },
       "desc": {
-        "ko": "EMG·EEG·IONM 전극과 신경진단용 케이블을 제공합니다.",
+        "ko": "Precision electrodes and cables for neurological diagnostics.",
         "en": "Precision electrodes and cables for neurological diagnostics.",
         "es": "Electrodos y cables de precisión para el diagnóstico neurológico."
       }
@@ -61,17 +61,17 @@
       "id": "pain",
       "order": 4,
       "name": {
-        "ko": "통증관리",
+        "ko": "Pain Management",
         "en": "Pain Management",
         "es": "Tratamiento del dolor"
       },
       "sub": {
-        "ko": "Pain Management · TENS",
+        "ko": "TENS",
         "en": "TENS",
         "es": "TENS"
       },
       "desc": {
-        "ko": "TENS 전극과 TENS·EMS·IF 자극기를 제공합니다.",
+        "ko": "TENS electrodes and TENS, EMS and IF stimulators.",
         "en": "TENS electrodes and TENS, EMS and IF stimulators.",
         "es": "Electrodos TENS y estimuladores TENS, EMS e IF."
       }
@@ -88,7 +88,7 @@
         "es": "Smoke Evacuator"
       },
       "tagline": {
-        "ko": "수술실 연기 배출기",
+        "ko": "Surgical smoke evacuation unit",
         "en": "Surgical smoke evacuation unit",
         "es": "Unidad de evacuación de humo quirúrgico"
       },
@@ -97,17 +97,17 @@
         "name": "EvaQMax™ Smoke Free Unit (EvaQMax™ Electro Surgical Evacuator, EQM-U)"
       },
       "summary": {
-        "ko": "터치스크린 패널과 수술 절차별 기본 흡인 레벨을 설정하는 작동 모드를 갖추고, 1/4·3/8·7/8인치 튜브를 연결할 수 있는 멀티 포트 필터를 사용하는 전기수술용 연기 배출기입니다.",
+        "ko": "Electrosurgical smoke evacuator with a touch-screen panel, procedure operating modes that set the default suction level for the selected procedure, and a multi-port filter accepting 1/4 in, 3/8 in and 7/8 in tubing.",
         "en": "Electrosurgical smoke evacuator with a touch-screen panel, procedure operating modes that set the default suction level for the selected procedure, and a multi-port filter accepting 1/4 in, 3/8 in and 7/8 in tubing."
       },
       "features": {
         "ko": [
-          "수술 절차 작동 모드: 해당 이미지를 터치하면 절차별 기본 흡인 레벨이 설정됨",
-          "장갑을 착용한 상태로 터치스크린 조작 가능",
-          "멀티 포트 구조: 3종 연결 포트(1/4인치, 3/8인치, 7/8인치) 및 포트 커버 캡",
-          "화면에 필터 수명 게이지 표시, 필터 수명 최대 50시간",
-          "ULPA 필터(EQM-CAF) 사용, 카탈로그 표기 효율 99,999+%",
-          "풋스위치 기본 포함, 자동 작동 장치 및 플루이드 트랩은 선택 사양"
+          "Procedure operating modes: touching the corresponding image sets the default suction level for the selected procedure",
+          "Touch screen panel can be operated while wearing gloves",
+          "Multi port design: three connection port sizes (1/4 in, 3/8 in, 7/8 in) with port cover cap",
+          "Filter life gauge on screen; filter life up to 50 hours",
+          "ULPA filter (EQM-CAF), stated 99,999+% efficiency",
+          "Foot-switch included; automatic activation device and fluid trap optional"
         ],
         "en": [
           "Procedure operating modes: touching the corresponding image sets the default suction level for the selected procedure",
@@ -176,7 +176,7 @@
       "pack": [
         {
           "label": {
-            "ko": "EQM-U 본체",
+            "ko": "EQM-U unit",
             "en": "EQM-U unit",
             "es": "EQM-U unidad"
           },
@@ -190,7 +190,7 @@
         },
         {
           "label": {
-            "ko": "EQM-CAF 필터 (1개입)",
+            "ko": "EQM-CAF filter (single)",
             "en": "EQM-CAF filter (single)",
             "es": "EQM-CAF filtro (individual)"
           },
@@ -204,7 +204,7 @@
         },
         {
           "label": {
-            "ko": "EQM-CAF 필터 (4개입)",
+            "ko": "EQM-CAF filter (4-pack)",
             "en": "EQM-CAF filter (4-pack)",
             "es": "EQM-CAF filtro (4 uds.)"
           },
@@ -218,7 +218,7 @@
         },
         {
           "label": {
-            "ko": "EQM-A 자동 작동 장치",
+            "ko": "EQM-A auto activation",
             "en": "EQM-A auto activation",
             "es": "EQM-A activación automática"
           },
@@ -232,7 +232,7 @@
         },
         {
           "label": {
-            "ko": "EQM-FT 플루이드 트랩",
+            "ko": "EQM-FT fluid trap",
             "en": "EQM-FT fluid trap",
             "es": "EQM-FT trampa de fluidos"
           },
@@ -256,7 +256,7 @@
         "es": "Telescopic Smoke Pencil"
       },
       "tagline": {
-        "ko": "길이 조절식 연기 흡입 펜슬",
+        "ko": "Telescopic smoke evacuation pencil",
         "en": "Telescopic smoke evacuation pencil",
         "es": "Lápiz telescópico de evacuación de humo"
       },
@@ -265,19 +265,19 @@
         "name": "EvaQMax™ Pen Telescopic Smoke Evacuation Pencil"
       },
       "summary": {
-        "ko": "원터치 릴리즈 버튼으로 텔레스코픽 전극 튜브를 2.5~6.0인치 범위에서 조절할 수 있는 연기 배출 펜슬로, 길이 조절 중에도 수술 부위에 집중할 수 있도록 구성되었습니다.",
+        "ko": "Smoke evacuation pencil with a one-touch release button that lets the telescopic electrode tube be extended from 2.5 to 6.0 inches while keeping focus on the surgical area.",
         "en": "Smoke evacuation pencil with a one-touch release button that lets the telescopic electrode tube be extended from 2.5 to 6.0 inches while keeping focus on the surgical area."
       },
       "features": {
         "ko": [
-          "원터치 릴리즈 버튼, 텔레스코픽 길이 2.5~6.0인치 조절",
-          "블레이드와 함께 흡인 튜브 연장·수축",
-          "얇고 가벼운 디자인",
-          "절개(Cut) 및 응고(Coagulation) 버튼",
-          "스위블 타입(360도 회전) 또는 엘보 타입(회전 없는 고정 엘보) 선택",
-          "케이블 길이 10 ft 또는 16 ft",
-          "2.5인치 논스틱 세라믹 코팅 블레이드(일반 또는 절연), 홀스터 포함",
-          "절개·응고 후 세척이 용이하도록 설계된 세라믹 코팅 블레이드"
+          "One-touch release button; telescope length variable from 2.5 to 6.0 inches",
+          "Extension and retraction of the suction tube together with the blade",
+          "Thin, light-weight design",
+          "Cut and coagulation buttons",
+          "Swivel type (360 degree swivel) or Elbow type (fixed elbow without swivel)",
+          "10 ft or 16 ft cable",
+          "2.5 in non-stick ceramic coated blade (standard or insulated), holster included",
+          "Ceramic coated blade designed for easy cleaning after cutting and coagulation"
         ],
         "en": [
           "One-touch release button; telescope length variable from 2.5 to 6.0 inches",
@@ -396,7 +396,7 @@
         "es": "Economy Smoke Pencil"
       },
       "tagline": {
-        "ko": "경제형 연기 흡입 펜슬",
+        "ko": "Economy-grade smoke pencil",
         "en": "Economy-grade smoke pencil",
         "es": "Lápiz de evacuación de humo de gama económica"
       },
@@ -405,17 +405,18 @@
         "name": "EvaQMax™ Pen Economy Smoke Evacuation Pencil"
       },
       "summary": {
-        "ko": "비연장형(논텔레스코픽) 연기 배출 펜슬로, 비용 효율적이고 간단히 사용할 수 있도록 구성되었으며 흡인 팁을 블레이드 쪽으로 이동할 수 있습니다.",
+        "ko": "Non-extendable (non-telescopic) smoke evacuation pencil described as cost effective and simple to use, with a suction tip that can be slid toward the blade.",
         "en": "Non-extendable (non-telescopic) smoke evacuation pencil described as cost effective and simple to use, with a suction tip that can be slid toward the blade."
       },
       "features": {
         "ko": [
-          "비연장형(논텔레스코픽) 타입",
-          "흡인 팁 연장: 흡인 팁을 블레이드 쪽으로 이동 가능",
-          "스위블 타입(360도 회전) 또는 엘보 타입(회전 없는 고정 엘보) 선택",
-          "케이블 길이 10 ft 또는 16 ft",
-          "2.5인치 논스틱 세라믹 코팅 블레이드(일반 또는 절연), 홀스터 포함",
-          "절개·응고 후 세척이 용이하도록 설계된 세라믹 코팅 블레이드"
+          "Non-extendable (non-telescopic) type",
+          "Suction tip extension: slide the suction tip toward the blade",
+          "Swivel type (360 degree swivel) or Elbow type (fixed elbow without swivel)",
+          "10 ft or 16 ft cable",
+          "2.5 in non-stick ceramic coated blade (standard or insulated), holster included",
+          "Ceramic coated blade designed for easy cleaning after cutting and coagulation",
+          "Catalog photos show blade before use, after use at 50W, and after cleaning with one swipe"
         ],
         "en": [
           "Non-extendable (non-telescopic) type",
@@ -530,7 +531,7 @@
         "es": "Dual Extension Smoke Pencil"
       },
       "tagline": {
-        "ko": "듀얼 익스텐션 스모크 펜슬",
+        "ko": "Dual-extension smoke pencil",
         "en": "Dual-extension smoke pencil",
         "es": "Lápiz de evacuación de humo de doble extensión"
       },
@@ -539,17 +540,17 @@
         "name": "EvaQMax™ Pen Dual Extension Smoke Evacuation Pencil"
       },
       "summary": {
-        "ko": "릴리즈 버튼으로 텔레스코픽 튜브 길이를 조절하고, 흡인 팁을 블레이드 쪽으로 밀어 연기 발생 부위 가까이에서 흡인할 수 있는 이중 연장형 연기 배출 펜슬입니다.",
+        "ko": "Telescopic smoke evacuation pencil whose tube is adjusted with a release button, and whose suction tip can additionally be slid toward the blade to bring suction closer to the smoke source.",
         "en": "Telescopic smoke evacuation pencil whose tube is adjusted with a release button, and whose suction tip can additionally be slid toward the blade to bring suction closer to the smoke source."
       },
       "features": {
         "ko": [
-          "릴리즈 버튼으로 텔레스코픽 튜브 길이 조절",
-          "흡인 팁 연장: 흡인 팁을 블레이드 쪽으로 이동 가능",
-          "스위블 타입(360도 회전) 또는 엘보 타입(회전 없는 고정 엘보) 선택",
-          "케이블 길이 10 ft 또는 16 ft",
-          "2.5인치 논스틱 세라믹 코팅 블레이드(일반 또는 절연), 홀스터 포함",
-          "절개·응고 후 세척이 용이하도록 설계된 세라믹 코팅 블레이드"
+          "Telescopic extendable tube adjusted with the release button",
+          "Suction tip extension: slide the suction tip toward the blade",
+          "Swivel type (360 degree swivel) or Elbow type (fixed elbow without swivel)",
+          "10 ft or 16 ft cable",
+          "2.5 in non-stick ceramic coated blade (standard or insulated), holster included",
+          "Ceramic coated blade designed for easy cleaning after cutting and coagulation"
         ],
         "en": [
           "Telescopic extendable tube adjusted with the release button",
@@ -664,7 +665,7 @@
         "es": "Surgical Pencil"
       },
       "tagline": {
-        "ko": "전기수술용 펜슬 (Ergonomic / Standard)",
+        "ko": "Electrosurgical pencil (Ergonomic / Standard)",
         "en": "Electrosurgical pencil (Ergonomic / Standard)",
         "es": "Lápiz electroquirúrgico (Ergonómico / Estándar)"
       },
@@ -673,17 +674,17 @@
         "name": "PROPENCIL Series Surgical Pencil"
       },
       "summary": {
-        "ko": "PROPENCIL 전기수술용 펜슬은 손잡이에 각인 처리된 미끄럼 방지 그립의 에르고노믹 펜슬(Ergonomic Pencil)과 범용 표준 디자인의 스탠다드 펜슬(Standard Pencil)로 구성됩니다. 두 제품 모두 푸시 버튼 또는 로커 스위치, 2.5인치 블레이드 옵션, 10 ft(3 m) 또는 16 ft(5 m) 케이블을 선택할 수 있으며 홀스터 포함 구성도 있습니다.",
+        "ko": "PROPENCIL electrosurgical pencils are offered as an Ergonomic Pencil with an engraved non-slip handle and a Standard Pencil with a universal standard design. Both are available with push-button or rocker switches, several 2.5\" blade options, and 10 ft (3 m) or 16 ft (5 m) cables, with or without holster.",
         "en": "PROPENCIL electrosurgical pencils are offered as an Ergonomic Pencil with an engraved non-slip handle and a Standard Pencil with a universal standard design. Both are available with push-button or rocker switches, several 2.5\" blade options, and 10 ft (3 m) or 16 ft (5 m) cables, with or without holster."
       },
       "features": {
         "ko": [
-          "푸시 버튼 또는 로커 스위치 선택",
-          "2.5인치 블레이드: 스테인리스 스틸, 논스틱 세라믹 코팅, 스테인리스 스틸 니들, 절연 스테인리스, 절연 논스틱",
-          "10 ft(3 m) 또는 16 ft(5 m) 케이블",
-          "홀스터 포함/미포함 모델",
-          "에르고노믹 펜슬: 인체공학적 형상과 각인 처리된 미끄럼 방지 손잡이",
-          "스탠다드 펜슬: 범용 표준 디자인"
+          "Push button or rocker switch configuration",
+          "2.5\" blade options: stainless steel, non-stick ceramic coated, stainless steel needle, insulated stainless, insulated non-stick",
+          "10 Ft (3 m) or 16 Ft (5 m) cable",
+          "Models with or without holster",
+          "Ergonomic Pencil: ergonomic shape and engraved non-slip handle for grip",
+          "Standard Pencil: universal standard design"
         ],
         "en": [
           "Push button or rocker switch configuration",
@@ -958,7 +959,7 @@
       "pack": [
         {
           "label": {
-            "ko": "DB · DR · SB · SR 계열",
+            "ko": "DB · DR · SB · SR series",
             "en": "DB · DR · SB · SR series",
             "es": "Serie DB · DR · SB · SR"
           },
@@ -982,7 +983,7 @@
         },
         {
           "label": {
-            "ko": "H 모델 (DBH · DRH · SBH · SRH 등)",
+            "ko": "H models (DBH · DRH · SBH · SRH, etc.)",
             "en": "H models (DBH · DRH · SBH · SRH, etc.)",
             "es": "Modelos H (DBH · DRH · SBH · SRH, etc.)"
           },
@@ -1016,7 +1017,7 @@
         "es": "Smoke Adapter"
       },
       "tagline": {
-        "ko": "수술용 연기 어댑터",
+        "ko": "Surgical smoke adapter",
         "en": "Surgical smoke adapter",
         "es": "Adaptador de humo quirúrgico"
       },
@@ -1025,14 +1026,14 @@
         "name": "Surgical Smoke Evacuation Adapter"
       },
       "summary": {
-        "ko": "기존 ESU 펜슬 또는 하이프리케이터에 장착하여 연기 배출 기능을 추가하는 어댑터로, 흡인 팁을 연장할 수 있습니다.",
+        "ko": "Adapter that attaches to an existing ESU pencil or hyfrecator to add smoke evacuation, with an extendable suction tip.",
         "en": "Adapter that attaches to an existing ESU pencil or hyfrecator to add smoke evacuation, with an extendable suction tip."
       },
       "features": {
         "ko": [
-          "ESU 펜슬 또는 하이프리케이터에 장착(카탈로그에 두 가지 사용 예시 수록)",
-          "흡인 팁 연장 가능",
-          "3/8인치 튜브, 길이 10 ft 또는 16 ft"
+          "Fits over an ESU pencil or a hyfrecator (both shown in catalog)",
+          "Suction tip extension (before/after extension shown)",
+          "3/8 in tubing, 10 ft or 16 ft"
         ],
         "en": [
           "Fits over an ESU pencil or a hyfrecator (both shown in catalog)",
@@ -1096,7 +1097,7 @@
         "es": "Laparoscopic"
       },
       "tagline": {
-        "ko": "복강경 수술용 연기 배출 장치·튜브",
+        "ko": "Laparoscopic smoke evacuation devices & tubing",
         "en": "Laparoscopic smoke evacuation devices & tubing",
         "es": "Dispositivos laparoscópicos de evacuación de humo"
       },
@@ -1105,17 +1106,17 @@
         "name": "EvaQMax™ Laparo Laparoscopic Smoke Evacuation Devices"
       },
       "summary": {
-        "ko": "트로카에 연결하여 사용하는 복강경 수술용 연기 배출 유닛, 튜브 및 액세서리로, 패시브형, 액티브형(볼륨 컨트롤, 인라인 플루이드 트랩 & 필터, 인라인 플루이드 트랩) 및 튜브 세트 구성으로 제공됩니다. 기복기(인서플레이터)는 공급하지 않습니다.",
+        "ko": "Laparoscopic smoke evacuation units, tubing and accessories connected to a trocar, offered in passive, active (volume control, in-line fluid trap & filter, in-line fluid trap) and tube-set configurations. Bio Protech states it does not offer insufflators.",
         "en": "Laparoscopic smoke evacuation units, tubing and accessories connected to a trocar, offered in passive, active (volume control, in-line fluid trap & filter, in-line fluid trap) and tube-set configurations. Bio Protech states it does not offer insufflators."
       },
       "features": {
         "ko": [
-          "PSF2 패시브형: ULPA 필터 일체형, 플루이드 트랩 내장, 트로카에만 연결하며 별도 배출기·흡인기 불필요",
-          "ASF3 액티브 볼륨 컨트롤: ULPA 필터, 플루이드 트랩, 공기 유량 조절 다이얼, 트로카와 벽면 흡인 캐니스터에 연결",
-          "ASFN3 액티브 인라인 플루이드 트랩 & 필터: ULPA 필터와 플루이드 트랩, 유량 다이얼 없음, 연기 흡인 유닛/휴대용 흡인기에 연결",
-          "ASFT03 액티브 인라인 플루이드 트랩: 플루이드 트랩, 필터 없음, 유량 다이얼 없음, 필터가 있는 연기 배출기에 연결",
-          "TS3/TV3/TO3 튜브: 튜브 세트, 컨트롤 밸브 부착형, 유량 제한기 부착형, 필터 및 플루이드 트랩이 있는 연기 배출기에 연결",
-          "표준 루어락 피팅과 호환"
+          "PSF2 Passive: ULPA filter integrated, fluid trap built in, connect to trocar only; no evacuator or suction device required",
+          "ASF3 Active Volume Control: ULPA filter, fluid trap, air flow control dial; connects trocar to wall-suction canister",
+          "ASFN3 Active In-Line Fluid Trap & Filter: ULPA filter and fluid trap, no air control dial; connects to smoke suction unit/portable suction",
+          "ASFT03 Active In-Line Fluid Trap: fluid trap, no filtration, no air control dial; connects to smoke evacuator with filter",
+          "TS3 / TV3 / TO3 tubes: tube set, tube with control valve, tube with flow restrictor; connect to smoke evacuator with filter and fluid trap",
+          "Compatible with standard luer lock fittings"
         ],
         "en": [
           "PSF2 Passive: ULPA filter integrated, fluid trap built in, connect to trocar only; no evacuator or suction device required",
@@ -1231,7 +1232,7 @@
         "es": "ESU Plate"
       },
       "tagline": {
-        "ko": "전기수술용 접지패드 (일회용)",
+        "ko": "Disposable ESU grounding pad",
         "en": "Disposable ESU grounding pad",
         "es": "Placa de retorno ESU desechable"
       },
@@ -1240,16 +1241,16 @@
         "name": "PROPLATE Series ESU Grounding Pad"
       },
       "summary": {
-        "ko": "PROPLATE 전기수술기(ESU) 접지패드는 전도성 향상과 임피던스 저감을 목적으로 설계된 하이드로겔을 사용합니다. 오버사이즈 겔(Over-sized Gel)과 스탠다드(가로형·세로형) 구성으로, 일체형(Solid)/분리형(Split), 코드 미부착/코드 부착, 천(Cloth)/폼(Foam) 타입이 성인·소아·신생아용으로 구분되어 있습니다.",
+        "ko": "PROPLATE ESU grounding pads use a hydro-gel intended to improve conductivity and lower impedance. The series is offered in Over-sized Gel and Standard (horizontal and vertical) configurations, in solid or split, non-corded or corded, and cloth or foam versions for adult, pediatric and neonatal use.",
         "en": "PROPLATE ESU grounding pads use a hydro-gel intended to improve conductivity and lower impedance. The series is offered in Over-sized Gel and Standard (horizontal and vertical) configurations, in solid or split, non-corded or corded, and cloth or foam versions for adult, pediatric and neonatal use."
       },
       "features": {
         "ko": [
-          "피부 접착력과 낮은 임피던스를 고려한 하이드로겔 적용",
-          "가로형·세로형, 일체형(Solid)·분리형(Split) 전극 구성",
-          "코드 미부착형 및 코드 부착형(P 접두 모델), C = 천 타입 / F = 폼 타입",
-          "성인·소아·신생아용 사이즈 구성",
-          "별매 케이블 RCV300, RCE300 (3 m)"
+          "Hydro-Gel formulated for skin adhesion and lower impedance",
+          "Horizontal and vertical pad shapes; solid or split electrode",
+          "Non-corded or corded (P-prefix) models; C = Cloth type, F = Foam type",
+          "Adult, pediatric and neonatal sizes",
+          "Optional cables RCV300 and RCE300 (3 m)"
         ],
         "en": [
           "Hydro-Gel formulated for skin adhesion and lower impedance",
@@ -1507,7 +1508,7 @@
       "pack": [
         {
           "label": {
-            "ko": "비코드형",
+            "ko": "Non-corded",
             "en": "Non-corded",
             "es": "Sin cable"
           },
@@ -1531,7 +1532,7 @@
         },
         {
           "label": {
-            "ko": "코드형",
+            "ko": "Corded",
             "en": "Corded",
             "es": "Con cable"
           },
@@ -1565,7 +1566,7 @@
         "es": "Monitoring ECG Electrode"
       },
       "tagline": {
-        "ko": "일반 모니터링용 심전도 전극 (성인·소아)",
+        "ko": "ECG electrodes for routine monitoring (adult · pediatric)",
         "en": "ECG electrodes for routine monitoring (adult · pediatric)",
         "es": "ECG electrodes for routine monitoring (adult · pediatric)"
       },
@@ -1574,16 +1575,16 @@
         "name": "TELECTRODE Monitoring ECG Electrodes"
       },
       "summary": {
-        "ko": "다양한 크기와 형태로 성인·소아 환자의 체형에 맞춰 쓰는 일반 모니터링용 스냅형 심전도 전극입니다. PE 폼, 천(Cloth), 투명 테이프 백킹 중에서 고를 수 있습니다.",
+        "ko": "Snap-type ECG electrodes for routine monitoring, offered in several sizes and shapes for adult and pediatric patients, with PE foam, cloth or clear tape backing.",
         "en": "Snap-type ECG electrodes for routine monitoring, offered in several sizes and shapes for adult and pediatric patients, with PE foam, cloth or clear tape backing.",
         "es": "Snap-type ECG electrodes for routine monitoring, offered in several sizes and shapes for adult and pediatric patients, with PE foam, cloth or clear tape backing."
       },
       "features": {
         "ko": [
-          "범용(Universal) 8종, 소아용 1종",
-          "PE 폼: 부드러운 쿠션감, 피부 습기 차단",
-          "천(Cloth): 활동이 많은 환자에게 오래 부착",
-          "투명 테이프: 부착 부위 피부 상태를 눈으로 확인"
+          "8 universal models and 1 pediatric model",
+          "PE foam: soft cushioning, prevents moisture build-up",
+          "Cloth: long wear for active patients",
+          "Clear tape: skin under the electrode stays visible"
         ],
         "en": [
           "8 universal models and 1 pediatric model",
@@ -1722,7 +1723,7 @@
         "es": "Diaphoretic ECG Electrode"
       },
       "tagline": {
-        "ko": "땀이 많거나 피부가 약한 환자용 심전도 전극",
+        "ko": "For diaphoretic patients and fragile skin",
         "en": "For diaphoretic patients and fragile skin",
         "es": "For diaphoretic patients and fragile skin"
       },
@@ -1731,15 +1732,15 @@
         "name": "TELECTRODE Diaphoretic Solutions"
       },
       "summary": {
-        "ko": "넓은 접착면과 강한 접착제로 땀이 많은 환자에게도 단단히 붙는 전극입니다. 피부가 약한 환자용은 부드러운 접착제와 순한 연마재로 피부 부담을 줄였습니다.",
+        "ko": "Electrodes with an expanded adhesive surface and robust adhesive for secure contact on diaphoretic patients. Fragile-skin versions use a soft adhesive and a gentle abrader.",
         "en": "Electrodes with an expanded adhesive surface and robust adhesive for secure contact on diaphoretic patients. Fragile-skin versions use a soft adhesive and a gentle abrader.",
         "es": "Electrodes with an expanded adhesive surface and robust adhesive for secure contact on diaphoretic patients. Fragile-skin versions use a soft adhesive and a gentle abrader."
       },
       "features": {
         "ko": [
-          "T815: 넓은 접착면으로 발한 환자에게 안정적 부착",
-          "T832 · T832C: 부드러운 접착, 민감한 피부용",
-          "피부 친화적인 연마재로 측정 전 피부 준비"
+          "T815: expanded adhesive area for diaphoretic patients",
+          "T832 · T832C: soft adhesive for fragile skin",
+          "Skin-friendly abrader for gentle skin preparation"
         ],
         "en": [
           "T815: expanded adhesive area for diaphoretic patients",
@@ -1830,7 +1831,7 @@
         "es": "Radiolucent ECG Electrode"
       },
       "tagline": {
-        "ko": "X-ray·MRI 영상검사 중에도 붙여 두는 방사선 투과형 전극",
+        "ko": "Radiolucent electrodes that stay on during X-ray and MRI",
         "en": "Radiolucent electrodes that stay on during X-ray and MRI",
         "es": "Radiolucent electrodes that stay on during X-ray and MRI"
       },
@@ -1839,15 +1840,15 @@
         "name": "TELECTRODE Real-time monitoring during imaging processes"
       },
       "summary": {
-        "ko": "다른 병동에서 붙인 전극을 X-ray나 MRI 검사 중에도 떼지 않아도 되는 방사선 투과형 전극입니다. 전극 교체 시간과 비용을 줄여 줍니다.",
+        "ko": "Radiolucent electrodes that do not need to be removed during X-ray or MRI procedures, saving the time and cost of changing electrodes.",
         "en": "Radiolucent electrodes that do not need to be removed during X-ray or MRI procedures, saving the time and cost of changing electrodes.",
         "es": "Radiolucent electrodes that do not need to be removed during X-ray or MRI procedures, saving the time and cost of changing electrodes."
       },
       "features": {
         "ko": [
-          "영상검사 중 실시간 모니터링 유지",
-          "전극 교체 없이 검사 진행",
-          "PE 폼 · 천 · 투명 테이프 백킹 8종"
+          "Real-time monitoring during imaging",
+          "No electrode change needed for imaging",
+          "8 models in PE foam, cloth and clear tape"
         ],
         "en": [
           "Real-time monitoring during imaging",
@@ -1974,7 +1975,7 @@
         "es": "Stress Test · Holter ECG Electrode"
       },
       "tagline": {
-        "ko": "운동부하검사·홀터 측정용 웻젤 전극",
+        "ko": "Wet-gel electrodes for stress tests and Holter",
         "en": "Wet-gel electrodes for stress tests and Holter",
         "es": "Wet-gel electrodes for stress tests and Holter"
       },
@@ -1983,15 +1984,15 @@
         "name": "TELECTRODE Enhanced Electrode Solution for Stress Test and Holter"
       },
       "summary": {
-        "ko": "전도성 웻젤이 피부 임피던스를 빠르게 낮춰 강한 신호와 안정적인 기준선을 얻는 전극입니다. Ag/AgCl 센서로 일정한 신호 품질을 유지하며, 방사선 투과형(카본) 모델도 있습니다.",
+        "ko": "Conductive wet gel quickly lowers skin impedance for strong signals and stable baselines. The Ag/AgCl sensor keeps signal quality consistent; radiolucent carbon models are also available.",
         "en": "Conductive wet gel quickly lowers skin impedance for strong signals and stable baselines. The Ag/AgCl sensor keeps signal quality consistent; radiolucent carbon models are also available.",
         "es": "Conductive wet gel quickly lowers skin impedance for strong signals and stable baselines. The Ag/AgCl sensor keeps signal quality consistent; radiolucent carbon models are also available."
       },
       "features": {
         "ko": [
-          "웻젤로 피부 임피던스를 빠르게 낮춤",
-          "빠르고 오래가는 접착으로 움직임 중에도 안정",
-          "Ag/AgCl 센서 · 카본(방사선 투과) 모델 포함"
+          "Wet gel rapidly lowers skin impedance",
+          "Quick, durable adhesion stays stable during movement",
+          "Ag/AgCl sensor · carbon (radiolucent) models"
         ],
         "en": [
           "Wet gel rapidly lowers skin impedance",
@@ -2116,7 +2117,7 @@
         "es": "TAB Electrode"
       },
       "tagline": {
-        "ko": "안정시 진단 심전도(12유도)용 탭형 전극",
+        "ko": "Tab electrodes for diagnostic resting ECG",
         "en": "Tab electrodes for diagnostic resting ECG",
         "es": "Tab electrodes for diagnostic resting ECG"
       },
@@ -2125,18 +2126,18 @@
         "name": "PROTAB Diagnostics Resting ECG Electrodes"
       },
       "summary": {
-        "ko": "PROTAB은 안정 시 진단용 심전도를 위한 탭(Tab)형 전극으로, 카드당 10매로 공급됩니다. 전도성 점착제로 피부에 밀착되며 탭 위치가 리드선 연결과 제거에 편리하도록 설계되었고, 방사선 투과형입니다.",
+        "ko": "PROTAB is a tab-type electrode for resting diagnostic ECG, supplied on cards of 10. The conductive adhesive provides close skin contact, the tab is positioned for leadwire connection and removal, and the electrodes are radiolucent.",
         "en": "PROTAB is a tab-type electrode for resting diagnostic ECG, supplied on cards of 10. The conductive adhesive provides close skin contact, the tab is positioned for leadwire connection and removal, and the electrodes are radiolucent."
       },
       "features": {
         "ko": [
-          "리드선 연결과 제거가 편리한 탭 위치",
-          "피부에 밀착되는 전도성 점착제",
-          "안정적인 부착과 재부착이 가능한 점착력",
-          "제세동 후 회복(Defibrillation recoverable)",
-          "방사선 투과형",
-          "PET, Ag/AgCl 구성",
-          "4가지 크기: 13x34, 20x34, 23x34, 30x34 mm"
+          "Tab positioned for convenient leadwire placement and easy removal",
+          "Conductive adhesive for close skin contact",
+          "Adhesion that allows secure placement and repositioning",
+          "Defibrillation recoverable",
+          "Radiolucent",
+          "PET, Ag/AgCl construction",
+          "Four sizes: 13x34, 20x34, 23x34, 30x34 mm"
         ],
         "en": [
           "Tab positioned for convenient leadwire placement and easy removal",
@@ -2236,7 +2237,7 @@
         "es": "Neonatal Electrode"
       },
       "tagline": {
-        "ko": "신생아·영아용 프리와이어드 전극",
+        "ko": "Prewired infant · neonatal electrodes",
         "en": "Prewired infant · neonatal electrodes",
         "es": "Prewired infant · neonatal electrodes"
       },
@@ -2245,16 +2246,16 @@
         "name": "PRONEO Pre-wired Infant Neonatal Electrodes"
       },
       "summary": {
-        "ko": "PRONEO는 신생아 및 영아용 리드선 일체형(Pre-wired) 색상 구분 심전도 전극으로, 60 cm 리드선과 천(Cloth) 백킹으로 구성됩니다. 여러 전극 크기와 Φ1.5 또는 Φ2.0 소켓, 일반형(SG) 및 방사선 투과형(SR)으로 제공됩니다.",
+        "ko": "PRONEO is a range of pre-wired, color-coded ECG electrodes for newborns and infants, with a 60 cm leadwire and cloth backing. It is available in several electrode sizes, Φ1.5 or Φ2.0 sockets, and in standard (SG) or radiolucent (SR) versions.",
         "en": "PRONEO is a range of pre-wired, color-coded ECG electrodes for newborns and infants, with a 60 cm leadwire and cloth backing. It is available in several electrode sizes, Φ1.5 or Φ2.0 sockets, and in standard (SG) or radiolucent (SR) versions."
       },
       "features": {
         "ko": [
-          "리드선 일체형 색상 구분으로 부착이 용이하고 파형 품질 확보",
-          "작은 흉부에 맞춘 소형 전극",
-          "60 cm 리드선, 천(Cloth) 백킹",
-          "소켓 크기 Φ1.5 및 Φ2.0",
-          "방사선 투과형 SR 모델"
+          "Pre-wired and color-coded for ease of application and trace quality",
+          "Smaller footprint for smaller chest sizes",
+          "60 cm leadwire, cloth backing",
+          "Socket sizes Φ1.5 and Φ2.0",
+          "Radiolucent SR models"
         ],
         "en": [
           "Pre-wired and color-coded for ease of application and trace quality",
@@ -2390,7 +2391,7 @@
       "pack": [
         {
           "label": {
-            "ko": "3개 1세트",
+            "ko": "3 pcs per set",
             "en": "3 pcs per set",
             "es": "3 uds. por juego"
           },
@@ -2424,7 +2425,7 @@
         "es": "SpO₂ Sensor"
       },
       "tagline": {
-        "ko": "산소포화도 센서",
+        "ko": "Oxygen saturation sensor",
         "en": "Oxygen saturation sensor",
         "es": "Sensor de saturación de oxígeno"
       },
@@ -2436,7 +2437,7 @@
       "pack": [
         {
           "label": {
-            "ko": "일회용",
+            "ko": "Disposable",
             "en": "Disposable",
             "es": "Desechable"
           },
@@ -2455,7 +2456,7 @@
         },
         {
           "label": {
-            "ko": "재사용형",
+            "ko": "Reusable",
             "en": "Reusable",
             "es": "Reutilizable"
           },
@@ -2484,7 +2485,7 @@
         "es": "EMG Needle & Electrode"
       },
       "tagline": {
-        "ko": "근전도 검사용 바늘·전극",
+        "ko": "Needle and electrode for EMG",
         "en": "Needle and electrode for EMG",
         "es": "Aguja y electrodo para EMG"
       },
@@ -2493,19 +2494,19 @@
         "name": "Disposable Concentric Needle Electrode / Disposable Monopolar Needle Electrode"
       },
       "summary": {
-        "ko": "근전도(EMG) 검사용 일회용 동심형(Concentric) 및 단극형(Monopolar) 니들 전극입니다. 게이지와 길이에 따라 허브 색상이 구분되며, 개별 멸균 필 팩으로 공급됩니다. 단극형은 비유선(Non-wired)과 유선(Prewired) 타입이 있습니다.",
+        "ko": "Single-use concentric and monopolar needle electrodes for electromyography (EMG), with color-coded hubs by gauge and length. Supplied sterile in individual peel packs; monopolar models are available non-wired or prewired.",
         "en": "Single-use concentric and monopolar needle electrodes for electromyography (EMG), with color-coded hubs by gauge and length. Supplied sterile in individual peel packs; monopolar models are available non-wired or prewired."
       },
       "features": {
         "ko": [
-          "동심형: 은(Silver) 전극 코어 와이어",
-          "동심형: 컴퓨터 제어 연마 팁",
-          "스테인리스 스틸 캐뉼라",
-          "게이지·길이 구분용 색상 허브",
-          "동심형 허브에 기록 위치 표시",
-          "단극형: 얇은 PTFE 코팅",
-          "개별 멸균 필 팩, 1인 1회 사용",
-          "동심형·단극형 니들 공용 재사용 케이블 연결"
+          "Concentric: silver electrode core wire",
+          "Concentric: computer-controlled sharpened tip",
+          "Stainless steel cannula",
+          "Color-coded hub for gauge and length selection",
+          "Concentric hub has an indicator of recording position",
+          "Monopolar: thin PTFE coating",
+          "Sterile, single-patient-use peel pack",
+          "Reusable cable for one-touch connection to concentric and monopolar needles"
         ],
         "en": [
           "Concentric: silver electrode core wire",
@@ -2719,7 +2720,7 @@
         "es": "EEG Cup Electrode"
       },
       "tagline": {
-        "ko": "뇌파 컵 전극",
+        "ko": "Cup-type EEG electrode",
         "en": "Cup-type EEG electrode",
         "es": "Electrodo de copa para EEG"
       },
@@ -2728,17 +2729,17 @@
         "name": "Disposable EEG Cup Electrodes (PROEEG) / Reusable EEG Cup Electrodes"
       },
       "summary": {
-        "ko": "임상 EEG, EP, PSG 검사용 직경 10mm 컵 전극입니다. DIN 42802 커넥터 리드선이 부착된 일회용 Ag/AgCl 도금 타입(PROEEG)과, PTFE 또는 실리콘 리드선을 사용하는 재사용 금도금 은/은 타입이 있습니다.",
+        "ko": "10mm-diameter EEG cup electrodes for clinical EEG, EP and PSG, in a disposable Ag/AgCl-plated type (PROEEG) with pre-attached DIN 42802 lead wires and a reusable gold-plated silver or silver type with PTFE or silicone lead wires.",
         "en": "10mm-diameter EEG cup electrodes for clinical EEG, EP and PSG, in a disposable Ag/AgCl-plated type (PROEEG) with pre-attached DIN 42802 lead wires and a reusable gold-plated silver or silver type with PTFE or silicone lead wires."
       },
       "features": {
         "ko": [
-          "일회용: 직경 10mm 경량 컵, 은/염화은 도금 디스크",
-          "일회용: DIN 42802 커넥터 리드선 사전 부착",
-          "일회용: 리드선 색상 구분",
-          "재사용: 금도금 은 또는 은 디스크",
-          "재사용: PTFE(엉킴 저감) 또는 실리콘(유연성) 리드선",
-          "재사용: 10가지 색상 구분 리드선"
+          "Disposable: 10mm diameter, lightweight cup with silver-silver chloride plated disk",
+          "Disposable: pre-attached lead wires with DIN 42802 connector",
+          "Disposable: color coding on lead wires",
+          "Reusable: gold plated silver or silver disk",
+          "Reusable: PTFE (tangle resistant) or silicone (flexible) lead wires",
+          "Reusable: 10 color-coded lead wires"
         ],
         "en": [
           "Disposable: 10mm diameter, lightweight cup with silver-silver chloride plated disk",
@@ -2895,7 +2896,7 @@
       "pack": [
         {
           "label": {
-            "ko": "일회용 10개 팩",
+            "ko": "Disposable, 10-pack",
             "en": "Disposable, 10-pack",
             "es": "Desechable, paquete de 10"
           },
@@ -2914,7 +2915,7 @@
         },
         {
           "label": {
-            "ko": "일회용 25개 팩",
+            "ko": "Disposable, 25-pack",
             "en": "Disposable, 25-pack",
             "es": "Desechable, paquete de 25"
           },
@@ -2933,7 +2934,7 @@
         },
         {
           "label": {
-            "ko": "재사용형",
+            "ko": "Reusable",
             "en": "Reusable",
             "es": "Reutilizable"
           },
@@ -2957,7 +2958,7 @@
         "es": "Surface Electrode"
       },
       "tagline": {
-        "ko": "표면 전극",
+        "ko": "Surface electrode",
         "en": "Surface electrode",
         "es": "Electrodo de superficie"
       },
@@ -2966,15 +2967,15 @@
         "name": "Disposable Surface Electrode"
       },
       "summary": {
-        "ko": "하이드로겔과 은/염화은(Ag/AgCl) 전도층을 적용한 프리젤 일회용 표면 전극으로, 4-디스크, 접지(Ground), NCS 표면, NCS 트리오 타입으로 구성됩니다. 유선 타입은 색상 구분 PVC 리드선과 TP 세이프티 DIN 커넥터를 사용합니다.",
+        "ko": "Pre-gelled disposable surface electrodes with hydrogel and silver/silver chloride conductive layers, offered as 4-disk, ground, NCS surface and NCS trio types. Wired types have color-coded PVC lead wires with TP safety DIN connectors.",
         "en": "Pre-gelled disposable surface electrodes with hydrogel and silver/silver chloride conductive layers, offered as 4-disk, ground, NCS surface and NCS trio types. Wired types have color-coded PVC lead wires with TP safety DIN connectors."
       },
       "features": {
         "ko": [
-          "색상 구분 유연 PVC 리드선, TP 세이프티 DIN 커넥터",
-          "저임피던스 생체적합성 하이드로겔",
-          "은/염화은(Ag/AgCl) 전도층",
-          "1인 1회 사용"
+          "Color-coded flexible PVC wires with TP Safety DIN connector",
+          "Soft, low-impedance biocompatible hydrogel",
+          "Silver-silver chloride conductive layers",
+          "Single patient use only"
         ],
         "en": [
           "Color-coded flexible PVC wires with TP Safety DIN connector",
@@ -3125,7 +3126,7 @@
         "es": "IONM Needle"
       },
       "tagline": {
-        "ko": "피하 EP 니들 전극 (EP · IONM · EEG)",
+        "ko": "Subdermal EP needle electrode (EP · IONM · EEG)",
         "en": "Subdermal EP needle electrode (EP · IONM · EEG)",
         "es": "Electrodo de aguja subdérmica EP"
       },
@@ -3134,18 +3135,18 @@
         "name": "Disposable Subdermal EP Needle Electrode (Subdermal EP / Twisted EP)"
       },
       "summary": {
-        "ko": "EP, IONM, EEG에 사용하는 일회용 유선 피하(Subdermal) 니들 전극으로, 색상 구분 단일 니들 타입과 트위스티드 페어 타입이 있습니다. 1.5mm 암(Female) 터치프루프 커넥터가 적용되며 개별 멸균 필 팩으로 공급됩니다.",
+        "ko": "Single-use prewired subdermal needle electrodes for EP, IONM and EEG, available as single color-coded subdermal needles or twisted pairs. Supplied sterile in individual peel packs with 1.5mm female touchproof connectors.",
         "en": "Single-use prewired subdermal needle electrodes for EP, IONM and EEG, available as single color-coded subdermal needles or twisted pairs. Supplied sterile in individual peel packs with 1.5mm female touchproof connectors."
       },
       "features": {
         "ko": [
-          "유선 일체형, 색상 구분 리드선",
-          "트위스티드 페어 타입(Twisted EP), 세이프티 캡 적용 형태 표기",
-          "27G(0.40mm) 니들, 길이 12mm 또는 15mm",
-          "1.5mm 암(Female) TP 커넥터",
-          "개별 멸균 필 팩",
-          "1회 사용",
-          "카탈로그상 코르크스크루 니들 전극 여러 구성 공급 가능으로 기재"
+          "Prewired, color-coded lead wire",
+          "Twisted pair type (Twisted EP), also shown with safety cap",
+          "27G (0.40mm) needle, 12mm or 15mm length",
+          "1.5mm female TP connector",
+          "Sterile, individual peel pack",
+          "Single use only",
+          "Catalog states corkscrew needle electrode available in several configurations"
         ],
         "en": [
           "Prewired, color-coded lead wire",
@@ -3318,7 +3319,7 @@
       "pack": [
         {
           "label": {
-            "ko": "서브더멀 EP",
+            "ko": "Subdermal EP",
             "en": "Subdermal EP",
             "es": "Subdermal EP"
           },
@@ -3342,7 +3343,7 @@
         },
         {
           "label": {
-            "ko": "트위스티드 EP",
+            "ko": "Twisted EP",
             "en": "Twisted EP",
             "es": "Twisted EP"
           },
@@ -3376,7 +3377,7 @@
         "es": "Neurology Cable"
       },
       "tagline": {
-        "ko": "신경과 진단 케이블",
+        "ko": "Neurological diagnostic cable",
         "en": "Neurological diagnostic cable",
         "es": "Cable de diagnóstico neurológico"
       },
@@ -3385,16 +3386,16 @@
         "name": "Cables for Disposable Concentric Needle Electrode / Monopolar Needle Electrode / Surface Electrodes"
       },
       "summary": {
-        "ko": "일회용 동심형 니들(5핀 DIN), 단극형 니들(1.5mm DIN 42 802), 표면 전극(악어 클립 리드 세트) 연결용 케이블입니다.",
+        "ko": "Reusable connection cables for the disposable concentric needle (5-pin DIN), monopolar needle (1.5mm DIN 42 802) and surface electrodes (alligator clip lead set).",
         "en": "Reusable connection cables for the disposable concentric needle (5-pin DIN), monopolar needle (1.5mm DIN 42 802) and surface electrodes (alligator clip lead set)."
       },
       "features": {
         "ko": [
-          "동심형용: 방향 무관 연결, 차폐(Shielded) 와이어",
-          "동심형용: 5핀 2700 DIN 커넥터, 1m·2m 길이",
-          "단극형용: 세이프티 DIN 42 802 커넥터",
-          "표면 전극용: 1.5m 악어 클립 리드, 터치프루프 커넥터",
-          "표면 전극용: 3개 1세트(적·흑·녹 각 1)"
+          "Concentric cable: orientation-free connection, shielded wire",
+          "Concentric cable: 5 pin 2700 DIN connector, 1m and 2m lengths",
+          "Monopolar cable: safety DIN 42 802 connector",
+          "Surface cable: 1.5m alligator clip leads with touchproof connector",
+          "Surface cable: set of 3 (1 red, 1 black, 1 green)"
         ],
         "en": [
           "Concentric cable: orientation-free connection, shielded wire",
@@ -3507,7 +3508,7 @@
         "es": "TENS Electrode"
       },
       "tagline": {
-        "ko": "PROTENS 경피전기자극 전극",
+        "ko": "PROTENS transcutaneous stimulation electrode",
         "en": "PROTENS transcutaneous stimulation electrode",
         "es": "Electrodo de estimulación transcutánea PROTENS"
       },
@@ -3519,7 +3520,7 @@
       "pack": [
         {
           "label": {
-            "ko": "일반 (4개입)",
+            "ko": "Standard (4 per bag)",
             "en": "Standard (4 per bag)",
             "es": "Estándar (4 por bolsa)"
           },
@@ -3543,7 +3544,7 @@
         },
         {
           "label": {
-            "ko": "BT02 (2개입)",
+            "ko": "BT02 (2 per bag)",
             "en": "BT02 (2 per bag)",
             "es": "BT02 (2 por bolsa)"
           },
@@ -3567,7 +3568,7 @@
         },
         {
           "label": {
-            "ko": "BT03 (1개입)",
+            "ko": "BT03 (1 per bag)",
             "en": "BT03 (1 per bag)",
             "es": "BT03 (1 por bolsa)"
           },
@@ -3601,7 +3602,7 @@
         "es": "TENS Unit"
       },
       "tagline": {
-        "ko": "TENS 자극기 본체",
+        "ko": "TENS stimulator unit",
         "en": "TENS stimulator unit",
         "es": "Unidad estimuladora TENS"
       },
@@ -3631,7 +3632,7 @@
         "es": "EMS Unit"
       },
       "tagline": {
-        "ko": "EMS 전기근육자극기",
+        "ko": "Electrical muscle stimulator",
         "en": "Electrical muscle stimulator",
         "es": "Estimulador muscular eléctrico"
       },
@@ -3661,7 +3662,7 @@
         "es": "IF Unit"
       },
       "tagline": {
-        "ko": "간섭파 치료기",
+        "ko": "Interferential current unit",
         "en": "Interferential current unit",
         "es": "Unidad de corriente interferencial"
       },

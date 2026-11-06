@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>제품 상세 | 바이오프로테크</title>
-<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
-<link rel="stylesheet" href="../assets/css/site.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Detail | Bioprotech</title>
+<link href="../Bioprotech Design System/colors_and_type.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
   .detail-grid {
     display: grid;
@@ -86,7 +87,7 @@
   .rel-card h4 { font-size: 13px; font-weight: 700; color: var(--bp-dk2); }
   .rel-card p { font-size: 11px; color: var(--bp-dk2); opacity: 0.7; margin-top: auto; }
 
-  /* 261008: 카탈로그 기반 상세 */
+  
   .gallery .main-img { height: 420px; border-radius: 0; background: #fff; border: 1px solid #e5e5ea; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .gallery .main-img img { max-width: 92%; max-height: 92%; object-fit: contain; mix-blend-mode: multiply; }
   .gallery .thumbs button { height: 80px; border: 1px solid #e5e5ea; border-radius: 10px; background: #fff; padding: 6px; cursor: pointer; }
@@ -115,7 +116,7 @@
   .dl-cat b { display: block; font-size: 14px; color: #1d1d1f; }
   .dl-cat span { font-size: 12px; color: #6e6e73; }
   .dl-cat a { margin-left: auto; font-size: 13px; font-weight: 600; color: var(--bp-accent5); white-space: nowrap; }
-  /* 포장 수량 (261027) */
+  
   .pk-row + .pk-row { margin-top: 18px; padding-top: 18px; border-top: 1px dashed #e5e5ea; }
   .pk-label { font-size: 13px; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; }
   .pk-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
@@ -159,84 +160,73 @@
     .rel-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
-<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+<link href="../assets/css/theme-apple.css" rel="stylesheet"/>
 </head>
-<body data-lang="en" data-base=".." data-nav="products">
-
+<body data-base=".." data-lang="en" data-nav="products">
 <div id="bp-header-slot"></div>
-
 <section class="page-hero">
-  <nav class="breadcrumb">
-        <a href="index.html">Products</a>
-    <span class="sep">/</span>
-    <a id="crumb-cat" href="#"></a>
-    <span class="sep">/</span>
-    <span id="crumb-prod"></span>
-  </nav>
-  <h1 id="prod-h1"></h1>
+<nav class="breadcrumb">
+<a href="index.html">Products</a>
+<span class="sep">/</span>
+<a href="#" id="crumb-cat"></a>
+<span class="sep">/</span>
+<span id="crumb-prod"></span>
+</nav>
+<h1 id="prod-h1"></h1>
 </section>
-
 <main class="page-body">
-  <div class="detail-grid">
-    <div class="gallery">
-      <div class="main-img" id="main-img"><div class="placeholder-img" data-label="Image pending" style="width:100%;height:100%"></div></div>
-      <div class="thumbs" id="thumbs"></div>
-    </div>
-    <div class="info">
-      <div class="name" id="name-block"> </div>
-      <div id="desc-wrap"></div>
-
-      <div class="spec-block">
-        <h3>Specifications</h3>
-        <table class="spec-table"><tbody id="spec-body"></tbody></table>
-      </div>
-
-      <div class="spec-block" id="pack-block" hidden>
-        <h3>Packaging</h3>
-        <div id="pack-wrap"></div>
-      </div>
-
-      <div class="spec-block">
-        <h3>Downloads</h3>
-        <div id="dl-wrap"></div>
-      </div>
-
-      <div class="actions">
-        <a href="../support/contact.html?subject=quote" class="btn btn-primary" id="quote-btn">
-          <span class="ko-only">견적 문의</span><span class="en-only">Get a Quote</span> <span class="arrow">→</span>
-        </a>
-        <a href="../downloads/index.html" class="btn btn-ghost" id="cat-btn"><span class="ko-only">카탈로그 다운로드</span><span class="en-only">Download Catalog</span></a>
-      </div>
-    </div>
-  </div>
-
-  <section class="models" id="models" hidden>
-    <h3 id="models-title">Models</h3>
-    <p class="sub" id="models-sub"></p>
-    <div class="mfilter"><input type="search" id="mfilter" /></div>
-    <div class="mtable-wrap"><table class="mtable" id="mtable"></table></div>
-    <div id="acc-wrap"></div>
-  </section>
-
-  <section class="related">
-    <h3 id="related-title">같은 카테고리 제품</h3>
-    <div class="rel-grid" id="rel-grid"></div>
-  </section>
-
-  <script>
+<div class="detail-grid">
+<div class="gallery">
+<div class="main-img" id="main-img"><div class="placeholder-img" data-label="Image pending" style="width:100%;height:100%"></div></div>
+<div class="thumbs" id="thumbs"></div>
+</div>
+<div class="info">
+<div class="name" id="name-block"> </div>
+<div id="desc-wrap"></div>
+<div class="spec-block">
+<h3>Specifications</h3>
+<table class="spec-table"><tbody id="spec-body"></tbody></table>
+</div>
+<div class="spec-block" hidden="" id="pack-block">
+<h3>Packaging</h3>
+<div id="pack-wrap"></div>
+</div>
+<div class="spec-block">
+<h3>Downloads</h3>
+<div id="dl-wrap"></div>
+</div>
+<div class="actions">
+<a class="btn btn-primary" href="../support/contact.html?subject=quote" id="quote-btn">
+<span class="en-only">Get a Quote</span> <span class="arrow">→</span>
+</a>
+<a class="btn btn-ghost" href="../downloads/index.html" id="cat-btn"><span class="en-only">Download Catalog</span></a>
+</div>
+</div>
+</div>
+<section class="models" hidden="" id="models">
+<h3 id="models-title">Models</h3>
+<p class="sub" id="models-sub"></p>
+<div class="mfilter"><input id="mfilter" type="search"/></div>
+<div class="mtable-wrap"><table class="mtable" id="mtable"></table></div>
+<div id="acc-wrap"></div>
+</section>
+<section class="related">
+<h3 id="related-title">Related Products</h3>
+<div class="rel-grid" id="rel-grid"></div>
+</section>
+<script>
     // Localize static phrase when lang is KO (EN handled by existing inline script)
     (function(){ if (window.bpLang && window.bpLang()==='ko') {
-      document.getElementById('related-title').textContent = '같은 카테고리 제품';
+      document.getElementById('related-title').textContent = 'Related Products';
     }})();
   </script>
 </main>
-
 <div id="bp-footer-slot"></div>
 <script src="../assets/js/data-bundle.js"></script>
 <script src="../assets/js/chrome.js"></script>
 <script>
 (async function () {
-  // 261102: ECG Electrode를 사용 목적별 4개 제품으로 분리 → 예전 주소는 모니터링용으로 연결
+  
   const ALIAS = { 'ecg-electrode': 'ecg-monitoring' };
   const id = ALIAS[window.bpQuery('id')] || window.bpQuery('id');
   if (!id) { location.replace('index.html'); return; }
@@ -251,7 +241,7 @@
   }
   const cat = data.categories.find(c => c.id === prod.cat);
 
-  document.title = `${prod.name[lang]} | 바이오프로테크`;
+  document.title = `${prod.name[lang]} | Bioprotech`;
   const L = (ko, en, es) => lang === 'ko' ? ko : lang === 'es' ? (es || en) : en;
   const tx = o => o ? (o[lang] || o.en || o.ko || '') : '';
   const esc = v => String(v ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -262,7 +252,7 @@
   document.getElementById('name-block').firstChild.nodeValue = prod.name[lang];
   document.getElementById('quote-btn').href = `../support/contact.html?subject=quote&product=${encodeURIComponent(prod.name.en)}`;
 
-  // 이미지
+  
   const imgs = prod.images || [];
   if (imgs.length) {
     const main = document.getElementById('main-img');
@@ -276,35 +266,35 @@
     show(0);
   }
 
-  // 설명
+  
   const dw = document.getElementById('desc-wrap');
   if (prod.summary) {
     const feats = (prod.features && (prod.features[lang] || prod.features.en)) || [];
     dw.innerHTML = `<p class="desc">${esc(tx(prod.summary))}</p>` +
       (feats.length ? `<ul class="feat">${feats.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : '');
   } else {
-    dw.innerHTML = `<div class="placeholder-empty"><strong>${L('제품 설명','Product Description','Descripción del producto')}</strong>${L('해당 제품의 카탈로그가 준비되면 상세 설명과 사양이 반영됩니다.','Details will be added once the catalog for this product is available.','Los detalles se añadirán cuando el catálogo esté disponible.')}</div>`;
+    dw.innerHTML = `<div class="placeholder-empty"><strong>${L('Product Description','Product Description','Descripción del producto')}</strong>${L('Details will be added once the catalog for this product is available.','Details will be added once the catalog for this product is available.','Los detalles se añadirán cuando el catálogo esté disponible.')}</div>`;
   }
 
-  // 주요 사양 표
+  
   const rows = [];
-  if (prod.spec && prod.spec.rows) rows.push([L('모델 수','Models','Modelos'), `${prod.spec.rows.length} ${L('종','models','modelos')}`]);
+  if (prod.spec && prod.spec.rows) rows.push([L('Models','Models','Modelos'), `${prod.spec.rows.length} ${L('models','models','modelos')}`]);
   if (prod.keyspecs) Object.entries(prod.keyspecs).forEach(([k, v]) => rows.push([k, v]));
-  if (prod.material) rows.push([L('소재','Material','Material'), prod.material]);
-  if (prod.packing && !prod.pack) rows.push([L('포장 단위','Packing Unit','Embalaje'), prod.packing]);
-  if (prod.applications && prod.applications.length) rows.push([L('적용 분야','Applications','Aplicaciones'), `<div class="chips">${prod.applications.map(a => `<span>${esc(a)}</span>`).join('')}</div>`]);
+  if (prod.material) rows.push([L('Material','Material','Material'), prod.material]);
+  if (prod.packing && !prod.pack) rows.push([L('Packing Unit','Packing Unit','Embalaje'), prod.packing]);
+  if (prod.applications && prod.applications.length) rows.push([L('Applications','Applications','Aplicaciones'), `<div class="chips">${prod.applications.map(a => `<span>${esc(a)}</span>`).join('')}</div>`]);
   document.getElementById('spec-body').innerHTML = rows.length
     ? rows.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${String(v).startsWith('<div') ? v : esc(v)}</td></tr>`).join('')
-    : `<tr><th>${L('사양','Specifications','Especificaciones')}</th><td>${L('카탈로그 준비 중','Catalog in preparation','Catálogo en preparación')}</td></tr>`;
+    : `<tr><th>${L('Specifications','Specifications','Especificaciones')}</th><td>${L('Catalog in preparation','Catalog in preparation','Catálogo en preparación')}</td></tr>`;
 
 
-  // 포장 수량 (261027): 낱개 → 팩 → 박스 → 케이스 단계별 수량
+  
   if (prod.pack && prod.pack.length) {
     const LV = {
-      each:{ko:'낱개',en:'Each',es:'Unidad'}, pack:{ko:'팩',en:'Pack',es:'Paquete'}, pouch:{ko:'파우치',en:'Pouch',es:'Bolsa'},
-      card:{ko:'카드',en:'Card',es:'Tarjeta'}, bag:{ko:'봉',en:'Bag',es:'Bolsa'}, box:{ko:'박스',en:'Box',es:'Caja'}, inbox:{ko:'인박스',en:'Inner box',es:'Caja interior'},
-      hardcase:{ko:'하드케이스',en:'Hard case',es:'Estuche rígido'}, case:{ko:'케이스',en:'Case',es:'Caja máster'} };
-    const UN = { pc:{ko:'개',en:'pcs',es:'uds.'}, pair:{ko:'쌍',en:'pairs',es:'pares'}, unit:{ko:'대',en:'units',es:'uds.'} };
+      each:{ko:'Each',en:'Each',es:'Unidad'}, pack:{ko:'Pack',en:'Pack',es:'Paquete'}, pouch:{ko:'Pouch',en:'Pouch',es:'Bolsa'},
+      card:{ko:'Card',en:'Card',es:'Tarjeta'}, bag:{ko:'Bag',en:'Bag',es:'Bolsa'}, box:{ko:'Box',en:'Box',es:'Caja'}, inbox:{ko:'Inner box',en:'Inner box',es:'Caja interior'},
+      hardcase:{ko:'Hard case',en:'Hard case',es:'Estuche rígido'}, case:{ko:'Case',en:'Case',es:'Caja máster'} };
+    const UN = { pc:{ko:'pcs',en:'pcs',es:'uds.'}, pair:{ko:'pairs',en:'pairs',es:'pares'}, unit:{ko:'units',en:'units',es:'uds.'} };
     const IC = {
       each:'<rect x="9" y="9" width="6" height="6" rx="1.5"/>',
       pack:'<path d="M6 5h12l-1 14H7z"/><path d="M6 8h12"/>', bag:'<path d="M6 4h12v16H6z"/><path d="M6 8h12"/>', pouch:'<path d="M6 5h12l-1 14H7z"/><path d="M6 8h12"/>',
@@ -329,33 +319,33 @@
     document.getElementById('pack-block').hidden = false;
   }
 
-  // 다운로드
+  
   const dl = document.getElementById('dl-wrap');
   if (prod.catalog) {
     const f = prod.catalog.file, cover = f.replace('.pdf', '-cover.jpg');
-    dl.innerHTML = `<div class="dl-cat"><img src="../assets/catalog/${cover}" alt=""><div><b>${esc(prod.catalog.name || f)}</b><span>PDF · ${L('제품 카탈로그','Product catalog','Catálogo')}</span></div><a href="../assets/catalog/${f}" target="_blank" rel="noopener">${L('카탈로그 보기','View catalog','Ver catálogo')} ↗</a></div>`;
+    dl.innerHTML = `<div class="dl-cat"><img src="../assets/catalog/${cover}" alt=""><div><b>${esc(prod.catalog.name || f)}</b><span>PDF · ${L('Product catalog','Product catalog','Catálogo')}</span></div><a href="../assets/catalog/${f}" target="_blank" rel="noopener">${L('View catalog','View catalog','Ver catálogo')} ↗</a></div>`;
     const cb = document.getElementById('cat-btn'); cb.href = `../assets/catalog/${f}`; cb.setAttribute('download', '');
   } else {
-    dl.innerHTML = `<p style="font-size:13px;color:#6e6e73">${L('카탈로그 준비 중입니다.','Catalog in preparation.','Catálogo en preparación.')}</p>`;
+    dl.innerHTML = `<p style="font-size:13px;color:#6e6e73">${L('Catalog in preparation.','Catalog in preparation.','Catálogo en preparación.')}</p>`;
   }
 
-  // 모델 표
+  
   if (prod.spec && prod.spec.rows && prod.spec.rows.length) {
     const sec = document.getElementById('models'); sec.hidden = false;
-    document.getElementById('models-title').textContent = L('모델 사양','Model Specifications','Especificaciones de modelos');
-    document.getElementById('models-sub').textContent = L(`카탈로그 기준 ${prod.spec.rows.length}개 모델`, `${prod.spec.rows.length} models per catalog`, `${prod.spec.rows.length} modelos según catálogo`);
+    document.getElementById('models-title').textContent = L('Model Specifications','Model Specifications','Especificaciones de modelos');
+    document.getElementById('models-sub').textContent = L(`${prod.spec.rows.length} models per catalog`, `${prod.spec.rows.length} models per catalog`, `${prod.spec.rows.length} modelos según catálogo`);
     const inp = document.getElementById('mfilter');
-    inp.placeholder = L('모델명·사양 검색', 'Search model or spec', 'Buscar modelo');
+    inp.placeholder = L('Search model or spec', 'Search model or spec', 'Buscar modelo');
     const tbl = document.getElementById('mtable');
     const draw = q => {
       const rs = prod.spec.rows.filter(r => !q || r.join(' ').toLowerCase().includes(q.toLowerCase()));
       tbl.innerHTML = `<thead><tr>${prod.spec.columns.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>` +
-        (rs.map(r => `<tr>${r.map((c,i) => `<td data-l="${esc(prod.spec.columns[i]||'')}">${esc(c)}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${prod.spec.columns.length}">${L('검색 결과가 없습니다.','No matching models.','Sin resultados.')}</td></tr>`) + '</tbody>';
+        (rs.map(r => `<tr>${r.map((c,i) => `<td data-l="${esc(prod.spec.columns[i]||'')}">${esc(c)}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${prod.spec.columns.length}">${L('No matching models.','No matching models.','Sin resultados.')}</td></tr>`) + '</tbody>';
     };
     inp.oninput = () => draw(inp.value.trim()); draw('');
     if (prod.accessories) {
       const a = prod.accessories;
-      document.getElementById('acc-wrap').innerHTML = `<h3 style="margin-top:40px">${L('액세서리','Accessories','Accesorios')}</h3><div class="mtable-wrap" style="margin-top:14px"><table class="mtable"><thead><tr>${a.columns.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${a.rows.map(r => `<tr>${r.map((c,i) => `<td data-l="${esc(a.columns[i]||'')}">${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+      document.getElementById('acc-wrap').innerHTML = `<h3 style="margin-top:40px">${L('Accessories','Accessories','Accesorios')}</h3><div class="mtable-wrap" style="margin-top:14px"><table class="mtable"><thead><tr>${a.columns.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${a.rows.map(r => `<tr>${r.map((c,i) => `<td data-l="${esc(a.columns[i]||'')}">${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     }
   }
 

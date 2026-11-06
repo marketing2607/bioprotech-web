@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>뉴스 | 바이오프로테크</title>
-<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
-<link rel="stylesheet" href="../assets/css/site.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>News | Bioprotech</title>
+<link href="../Bioprotech Design System/colors_and_type.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
   .article-head { padding-bottom: 32px; border-bottom: 1px solid var(--bp-lt2); margin-bottom: 40px; }
   .article-meta { display: flex; gap: 16px; font-size: 12px; letter-spacing: 0.1em; color: var(--bp-dk2); opacity: 0.7; margin-bottom: 16px; }
@@ -34,44 +35,40 @@
   @media (max-width: 900px) { .av-lead { grid-template-columns: 1fr; } .av-facts { grid-template-columns: 1fr 1fr; } .av-facts > div:nth-child(3) { border-left: 0; padding-left: 0; } .article-gallery { grid-template-columns: 1fr 1fr; } }
   #summary { font-size: 16px; line-height: 1.9; color: #1d1d1f; word-break: keep-all; }
 </style>
-<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+<link href="../assets/css/theme-apple.css" rel="stylesheet"/>
 </head>
-<body data-lang="en" data-base=".." data-nav="news">
-
+<body data-base=".." data-lang="en" data-nav="news">
 <div id="bp-header-slot"></div>
-
 <section class="page-hero">
-  <nav class="breadcrumb">
-        <a href="index.html">News</a><span class="sep">/</span>
-    <span id="crumb"></span>
-  </nav>
-  <h1 id="h1"></h1>
+<nav class="breadcrumb">
+<a href="index.html">News</a><span class="sep">/</span>
+<span id="crumb"></span>
+</nav>
+<h1 id="h1"></h1>
 </section>
-
 <main class="page-body">
-  <div class="article-head">
-    <div class="article-meta">
-      <span class="tag" id="tag"></span>
-      <span id="date"></span>
-    </div>
-    <h2 class="article-title" id="title"></h2>
-  </div>
-  <div class="article-body">
-    <div class="article-visual" id="visual"></div>
-    <p id="summary"></p>
-    <div class="article-text" id="body"></div>
-    <div class="article-gallery" id="gallery"></div>
-    <p class="article-src" id="src"></p>
-  </div>
-  <div class="article-nav">
-    <a href="index.html" class="btn btn-ghost"><span class="ko-only">← 목록으로</span><span class="en-only">← Back to list</span></a>
-    <div>
-      <a href="#" class="btn btn-ghost" id="prev"><span class="ko-only">← 이전</span><span class="en-only">← Prev</span></a>
-      <a href="#" class="btn btn-ghost" id="next"><span class="ko-only">다음 →</span><span class="en-only">Next →</span></a>
-    </div>
-  </div>
+<div class="article-head">
+<div class="article-meta">
+<span class="tag" id="tag"></span>
+<span id="date"></span>
+</div>
+<h2 class="article-title" id="title"></h2>
+</div>
+<div class="article-body">
+<div class="article-visual" id="visual"></div>
+<p id="summary"></p>
+<div class="article-text" id="body"></div>
+<div class="article-gallery" id="gallery"></div>
+<p class="article-src" id="src"></p>
+</div>
+<div class="article-nav">
+<a class="btn btn-ghost" href="index.html"><span class="en-only">← Back to list</span></a>
+<div>
+<a class="btn btn-ghost" href="#" id="prev"><span class="en-only">← Prev</span></a>
+<a class="btn btn-ghost" href="#" id="next"><span class="en-only">Next →</span></a>
+</div>
+</div>
 </main>
-
 <div id="bp-footer-slot"></div>
 <script src="../assets/js/data-bundle.js"></script>
 <script src="../assets/js/chrome.js"></script>
@@ -85,13 +82,13 @@
   const item = data.items[idx];
   if (!item) { document.getElementById('h1').textContent = 'Not Found'; return; }
 
-  document.title = `${item.title[lang]} | 바이오프로테크`;
+  document.title = `${item.title[lang]} | Bioprotech`;
   document.getElementById('crumb').textContent = item.title[lang];
   document.getElementById('h1').textContent = item.title[lang];
   document.getElementById('tag').textContent = item.tag[lang];
   document.getElementById('date').textContent = item.date;
   document.getElementById('title').textContent = item.title[lang];
-  // 261008: 이미지 중심 기사 (lead 이미지 · 핵심 정보 · 갤러리)
+  
   const pick = v => typeof v === 'string' ? v : (v[lang] || v.en || v.ko);
   if (item.lead) {
     document.getElementById('visual').innerHTML =
@@ -101,7 +98,7 @@
   if (item.gallery) {
     document.getElementById('gallery').innerHTML = item.gallery.map(g => `<figure><img src="${pick(g.src)}" alt="${g.alt || ''}" loading="lazy"></figure>`).join('');
   }
-  // 261008: 본문(body)이 있으면 원문 전체 표시, 없으면 요약 표시
+  
   const esc = v => String(v).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const body = item.body ? (item.body[lang] || item.body.ko || item.body.en) : '';
   if (body) {

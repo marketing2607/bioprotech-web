@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>검색 | 바이오프로테크</title>
-<link rel="stylesheet" href="Bioprotech Design System/colors_and_type.css" />
-<link rel="stylesheet" href="assets/css/site.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search | Bioprotech</title>
+<link href="Bioprotech Design System/colors_and_type.css" rel="stylesheet"/>
+<link href="assets/css/site.css" rel="stylesheet"/>
 <style>
   .search-box { display: flex; gap: 8px; margin-bottom: 32px; }
   .search-box input { flex: 1; padding: 16px 20px; font-size: 15px; border: 1px solid var(--bp-lt2); background: #fff; }
@@ -24,41 +25,37 @@
   .search-group h3 { font-size: 13px; font-weight: 700; color: #1d1d1f; margin-bottom: 6px; padding-bottom: 8px; border-bottom: 1px solid #e5e5ea; }
   .search-box input { border-radius: 12px; font-size: 17px; }
 </style>
-<link rel="stylesheet" href="assets/css/theme-apple.css" />
+<link href="assets/css/theme-apple.css" rel="stylesheet"/>
 </head>
-<body data-lang="en" data-base="." data-nav="">
-
+<body data-base="." data-lang="en" data-nav="">
 <div id="bp-header-slot"></div>
-
 <section class="page-hero">
-  <nav class="breadcrumb"><span>Search</span></nav>
-  <h1 class="ko-only">검색<span class="en">Search</span></h1>
-  <h1 class="en-only">Search<span class="en">Site-wide</span></h1>
-  <p class="lead ko-only">제품, 뉴스, FAQ 전체를 한 번에 검색합니다.</p>
-  <p class="lead en-only">Search across products, news, and FAQ at once.</p>
+<nav class="breadcrumb"><span>Search</span></nav>
+
+<h1 class="en-only">Search<span class="en">Site-wide</span></h1>
+
+<p class="lead en-only">Search across products, news, and FAQ at once.</p>
 </section>
-
 <main class="page-body">
-  <div class="search-box">
-    <input type="search" id="q" placeholder="" autofocus />
-  </div>
-  <div id="results"><div class="empty-state"></div></div>
+<div class="search-box">
+<input autofocus="" id="q" placeholder="" type="search"/>
+</div>
+<div id="results"><div class="empty-state"></div></div>
 </main>
-
 <div id="bp-footer-slot"></div>
 <script src="assets/js/data-bundle.js"></script>
 <script src="assets/js/chrome.js"></script>
 <script>
-/* 261008: 헤더 검색과 같은 검색 엔진(window.bpSearch) 사용: 제품·모델번호·사양·뉴스·FAQ·페이지 통합 검색 */
+
 (function () {
   const lang = window.bpLang();
   const L = ({
-    ko: { hint: '검색어를 입력해 주세요.', none: q => `"${q}"에 대한 결과가 없습니다.`, cnt: n => `검색 결과 ${n}건` },
+    ko: { hint: 'Please enter a search term.', none: q => `No results for "${q}".`, cnt: n => `${n} results` },
     en: { hint: 'Please enter a search term.', none: q => `No results for "${q}".`, cnt: n => `${n} results` },
     es: { hint: 'Introduzca un término de búsqueda.', none: q => `No se han encontrado resultados para "${q}".`, cnt: n => `${n} resultados` },
   })[lang] || {};
   const input = document.getElementById('q'), root = document.getElementById('results');
-  input.setAttribute('aria-label', ({ko:'검색',en:'Search',es:'Buscar'})[lang]);
+  input.setAttribute('aria-label', ({ko:'Search',en:'Search',es:'Buscar'})[lang]);
   const seed = window.bpQuery('q'); if (seed) input.value = seed;
   const ORDER = ['prod', 'cat', 'page', 'news', 'faq'];
   async function render() {

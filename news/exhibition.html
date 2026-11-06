@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>전시회 · 학회 | 바이오프로테크</title>
-<meta name="description" content="㈜바이오프로테크 전시회·학회 참가 일정." />
-<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
-<link rel="stylesheet" href="../assets/css/site.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exhibitions &amp; Conferences | Bioprotech</title>
+<meta content="Bioprotech exhibition and conference schedule." name="description"/>
+<link href="../Bioprotech Design System/colors_and_type.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
-  /* 261008: 연도 탭 + 포스터형 카드 목록 (참고 레이아웃: classys.co.kr 전시/학회) */
+  
   .ex-years { display: flex; justify-content: center; gap: 36px; border-bottom: 1px solid #d2d2d7; margin-bottom: 48px; }
   .ex-years button { appearance: none; background: none; border: 0; font: inherit; font-size: 17px; font-weight: 600; color: #86868b; padding: 0 2px 16px; cursor: pointer; position: relative; }
   .ex-years button.on { color: #0a1428; }
@@ -35,73 +36,59 @@
   @media (max-width: 900px) { .ex-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .ex-grid { grid-template-columns: 1fr; } .ex-years { gap: 22px; } }
 </style>
-<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+<link href="../assets/css/theme-apple.css" rel="stylesheet"/>
 </head>
-<body data-lang="en" data-base=".." data-nav="news">
-
+<body data-base=".." data-lang="en" data-nav="news">
 <div id="bp-header-slot"></div>
-
 <section class="page-hero">
-  <nav class="breadcrumb"><a href="index.html">News</a><span class="sep">/</span><span>Exhibitions</span></nav>
-  <h1 class="ko-only">전시회 · 학회<span class="en">Exhibitions &amp; Congresses</span></h1>
-  <h1 class="en-only">Exhibitions &amp; Congresses<span class="en">Annual Schedule</span></h1>
-  <p class="lead ko-only">바이오프로테크가 참가하는 국내외 전시회와 학회 일정을 안내합니다.<br>현장에서 제품을 직접 만나보세요.</p>
-  <p class="lead en-only">Find the trade shows and congresses Bioprotech attends in Korea and abroad.<br>Meet our products in person.</p>
+<nav class="breadcrumb"><a href="index.html">News</a><span class="sep">/</span><span>Exhibitions</span></nav>
+
+<h1 class="en-only">Exhibitions &amp; Congresses<span class="en">Annual Schedule</span></h1>
+
+<p class="lead en-only">Find the trade shows and congresses Bioprotech attends in Korea and abroad.<br/>Meet our products in person.</p>
 </section>
-
 <div class="company-tabs"><nav aria-label="News">
-  <a href="index.html"><span class="ko-only">뉴스 · IR</span><span class="en-only">News &amp; IR</span></a>
-  <a href="exhibition.html" class="on" aria-current="page"><span class="ko-only">전시회 · 학회</span><span class="en-only">Exhibitions</span></a>
+<a href="index.html"><span class="en-only">News &amp; IR</span></a>
+<a aria-current="page" class="on" href="exhibition.html"><span class="en-only">Exhibitions</span></a>
 </nav></div>
-
 <main class="page-body">
-  <div class="ex-years" id="ex-year" role="tablist"></div>
-  <ul class="ex-grid" id="ex-list"></ul>
-  <div class="ex-pager" id="ex-pager"></div>
-  <p class="ex-note ko-only">※ 2026 GMES는 실제 개최 정보, 2026 MEDICA는 가상 데이터, 2027년 항목은 예시입니다. 영업팀 연간 일정 수령 후 교체합니다.</p>
-  <p class="ex-note en-only">※ GMES 2026 is actual event information, MEDICA 2026 is sample data and 2027 entries are examples.</p>
-</main>
+<div class="ex-years" id="ex-year" role="tablist"></div>
+<ul class="ex-grid" id="ex-list"></ul>
+<div class="ex-pager" id="ex-pager"></div>
 
+<p class="ex-note en-only">※ GMES 2026 is actual event information, MEDICA 2026 is sample data and 2027 entries are examples.</p>
+</main>
 <div id="bp-footer-slot"></div>
 <script src="../assets/js/data-bundle.js"></script>
 <script src="../assets/js/chrome.js"></script>
 <script>
-/* =========================================================
-   전시회·학회 일정 데이터: 영업팀 전달 일정으로 교체
-   · status: 'plan'(참가 예정) | 'tbd'(일정 확인 중) | 'done'(종료)
-     ※ 종료일(end)이 지나면 자동으로 '종료' 표시
-   · start/end: 'YYYY-MM-DD' (미정이면 month만 'YYYY-MM' 또는 빈 값)
-   · sample:true → 「가상」 배지 표시 (MEDICA 2026, 가상 데이터, 실제 참가 확정 후 sample 삭제)
-   · news: 관련 뉴스 id (news.json) → 「더보기」 링크 (없으면 url 사용)
-   · img: 포스터 이미지 경로 (없으면 남색 타일에 행사명 표시)
-   · short: 포스터 타일에 표시할 짧은 이름 (예: 'GMES 2026')
-   ========================================================= */
+
 const EXHIBITIONS = [
   { year: 2026, start: '2026-09-03', end: '2026-09-04', status: 'done',
-    short: 'GMES 2026', name: { ko: '제22회 강원의료기기전시회 (GMES 2026)', en: 'GMES 2026, 22nd Gangwon Medical Equipment Show', es: 'GMES 2026' },
-    city: { ko: '원주 · 의료기기종합지원센터 상설전시장', en: 'Medical Device Comprehensive Support Center, Wonju, Korea', es: 'Wonju, Corea' },
+    short: 'GMES 2026', name: { ko: 'GMES 2026, 22nd Gangwon Medical Equipment Show', en: 'GMES 2026, 22nd Gangwon Medical Equipment Show', es: 'GMES 2026' },
+    city: { ko: 'Medical Device Comprehensive Support Center, Wonju, Korea', en: 'Medical Device Comprehensive Support Center, Wonju, Korea', es: 'Wonju, Corea' },
     booth: 'W209 (2F)', img: '../assets/img/news/gmes-2026/card.jpg', url: '', news: '2026-gmes' },
   { year: 2026, start: '2026-11-16', end: '2026-11-19', status: 'plan', sample: true, short: 'MEDICA 2026',
     name: { ko: 'MEDICA 2026', en: 'MEDICA 2026', es: 'MEDICA 2026' },
-    city: { ko: '독일 · 뒤셀도르프 메쎄', en: 'Messe Düsseldorf, Germany', es: 'Messe Düsseldorf, Alemania' },
+    city: { ko: 'Messe Düsseldorf, Germany', en: 'Messe Düsseldorf, Germany', es: 'Messe Düsseldorf, Alemania' },
     booth: 'Hall 10 / 10D30', img: '../assets/img/exhibitions/medica-2026.jpg', url: 'https://www.medica-tradefair.com/', news: '2026-medica' },
   { year: 2027, start: '', end: '', status: 'tbd',
-    short: 'KIMES', name: { ko: '[예시] KIMES 국제의료기기·병원설비전시회', en: '[Example] KIMES', es: '[Ejemplo] KIMES' },
-    city: { ko: '서울 · 코엑스', en: 'Seoul, Korea', es: 'Seúl, Corea' }, booth: '', url: '' },
+    short: 'KIMES', name: { ko: '[Example] KIMES', en: '[Example] KIMES', es: '[Ejemplo] KIMES' },
+    city: { ko: 'Seoul, Korea', en: 'Seoul, Korea', es: 'Seúl, Corea' }, booth: '', url: '' },
   { year: 2027, start: '', end: '', status: 'tbd',
-    short: 'GMES', name: { ko: '[예시] GMES 강원의료기기전시회', en: '[Example] GMES', es: '[Ejemplo] GMES' },
-    city: { ko: '원주', en: 'Wonju, Korea', es: 'Wonju, Corea' }, booth: '', url: '' },
+    short: 'GMES', name: { ko: '[Example] GMES', en: '[Example] GMES', es: '[Ejemplo] GMES' },
+    city: { ko: 'Wonju, Korea', en: 'Wonju, Korea', es: 'Wonju, Corea' }, booth: '', url: '' },
   { year: 2027, start: '', end: '', status: 'tbd',
-    short: 'MEDICA', name: { ko: '[예시] MEDICA', en: '[Example] MEDICA', es: '[Ejemplo] MEDICA' },
-    city: { ko: '독일 · 뒤셀도르프', en: 'Düsseldorf, Germany', es: 'Düsseldorf, Alemania' }, booth: '', url: '' },
+    short: 'MEDICA', name: { ko: '[Example] MEDICA', en: '[Example] MEDICA', es: '[Ejemplo] MEDICA' },
+    city: { ko: 'Düsseldorf, Germany', en: 'Düsseldorf, Germany', es: 'Düsseldorf, Alemania' }, booth: '', url: '' },
 ];
 
 (function () {
   const lang = window.bpLang ? bpLang() : 'en';
   const L = (ko, en, es) => lang === 'en' ? en : lang === 'es' ? es : ko;
-  const WD = { ko:['일','월','화','수','목','금','토'], en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], es:['dom','lun','mar','mié','jue','vie','sáb'] }[lang];
+  const WD = { ko:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], es:['dom','lun','mar','mié','jue','vie','sáb'] }[lang];
   const fmt = d => { const t = new Date(d + 'T00:00:00'); return `${d.replace(/-/g, '.')} (${WD[t.getDay()]})`; };
-  const dateText = e => !e.start ? L('일정 확인 중', 'To be confirmed', 'Por confirmar') : fmt(e.start) + (e.end && e.end !== e.start ? ' ~ ' + fmt(e.end) : '');
+  const dateText = e => !e.start ? L('To be confirmed', 'To be confirmed', 'Por confirmar') : fmt(e.start) + (e.end && e.end !== e.start ? ' ~ ' + fmt(e.end) : '');
   const short = e => (e.short || (e.name.en || '').replace(/^\[[^\]]*\]\s*/, '').split(',')[0]);
   const years = [...new Set(EXHIBITIONS.map(e => e.year))].sort((a, b) => b - a);
   const thisYear = new Date().getFullYear();
@@ -124,15 +111,15 @@ const EXHIBITIONS = [
         : `<div class="tile"><b>${short(e)}</b><span>${e.city[lang] || e.city.en}</span></div>`;
       return `<li class="ex-item">
         <div class="ex-poster">${poster}</div>
-        <h4>${e.name[lang] || e.name.en}${e.sample ? `<em>${L('가상', 'Sample', 'Ejemplo')}</em>` : ''}</h4>
+        <h4>${e.name[lang] || e.name.en}${e.sample ? `<em>${L('Sample', 'Sample', 'Ejemplo')}</em>` : ''}</h4>
         <ul class="ex-info">
-          <li><b>${L('위치', 'Venue', 'Lugar')}</b>${e.city[lang] || e.city.en}</li>
-          <li><b>${L('날짜', 'Date', 'Fecha')}</b>${dateText(e)}</li>
-          ${e.booth ? `<li><b>${L('부스', 'Booth', 'Stand')}</b>${e.booth}</li>` : ''}
+          <li><b>${L('Venue', 'Venue', 'Lugar')}</b>${e.city[lang] || e.city.en}</li>
+          <li><b>${L('Date', 'Date', 'Fecha')}</b>${dateText(e)}</li>
+          ${e.booth ? `<li><b>${L('Booth', 'Booth', 'Stand')}</b>${e.booth}</li>` : ''}
         </ul>
-        ${more ? `<a class="ex-more" href="${more}"${ext ? ' target="_blank" rel="noopener"' : ''}>${L('더보기', 'More', 'Ver más')}</a>` : ''}
+        ${more ? `<a class="ex-more" href="${more}"${ext ? ' target="_blank" rel="noopener"' : ''}>${L('More', 'More', 'Ver más')}</a>` : ''}
       </li>`;
-    }).join('') || `<li class="ex-empty">${L('등록된 일정이 없습니다.', 'No events scheduled.', 'No hay eventos.')}</li>`;
+    }).join('') || `<li class="ex-empty">${L('No events scheduled.', 'No events scheduled.', 'No hay eventos.')}</li>`;
     pager.innerHTML = pages > 1 ? Array.from({ length: pages }, (_, k) => `<button type="button" data-p="${k + 1}" class="${k + 1 === page ? 'on' : ''}">${k + 1}</button>`).join('') : '';
   }
   yearBox.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { sel = +b.dataset.y; page = 1; drawYears(); draw(); } });

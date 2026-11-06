@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>뉴스 | 바이오프로테크</title>
-<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
-<link rel="stylesheet" href="../assets/css/site.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>News | Bioprotech</title>
+<link href="../Bioprotech Design System/colors_and_type.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
   .filters { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
   .filter-btn { padding: 10px 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--bp-lt2); color: var(--bp-dk2); transition: all .2s; background: #fff; }
@@ -27,31 +28,26 @@
     .news-item .arrow { display: none; }
   }
 </style>
-<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+<link href="../assets/css/theme-apple.css" rel="stylesheet"/>
 </head>
-<body data-lang="en" data-base=".." data-nav="news">
-
+<body data-base=".." data-lang="en" data-nav="news">
 <div id="bp-header-slot"></div>
-
 <section class="page-hero">
-  <nav class="breadcrumb"><span>News</span></nav>
-  <h1 class="ko-only">뉴스 · IR<span class="en">News</span></h1>
-  <h1 class="en-only">News<span class="en">Announcements &amp; IR</span></h1>
-  <p class="lead ko-only">공지사항, 보도자료, IR 공시, 전시회 참가 소식을 모아 보여드립니다.</p>
-  <p class="lead en-only">Announcements, press releases, IR disclosures, and exhibition news.</p>
+<nav class="breadcrumb"><span>News</span></nav>
+
+<h1 class="en-only">News<span class="en">Announcements &amp; IR</span></h1>
+
+<p class="lead en-only">Announcements, press releases, IR disclosures, and exhibition news.</p>
 </section>
-
 <div class="company-tabs"><nav aria-label="News">
-  <a href="index.html" class="on" aria-current="page"><span class="ko-only">뉴스 · IR</span><span class="en-only">News &amp; IR</span></a>
-  <a href="exhibition.html"><span class="ko-only">전시회 · 학회</span><span class="en-only">Exhibitions</span></a>
+<a aria-current="page" class="on" href="index.html"><span class="en-only">News &amp; IR</span></a>
+<a href="exhibition.html"><span class="en-only">Exhibitions</span></a>
 </nav></div>
-
 <main class="page-body">
-  <div class="filters" id="filters"></div>
-  <div class="news-list" id="list"></div>
-  <div class="pager" id="pager"></div>
+<div class="filters" id="filters"></div>
+<div class="news-list" id="list"></div>
+<div class="pager" id="pager"></div>
 </main>
-
 <div id="bp-footer-slot"></div>
 <script src="../assets/js/data-bundle.js"></script>
 <script src="../assets/js/chrome.js"></script>
@@ -60,7 +56,7 @@
   const res = await fetch('../assets/data/news.json');
   const data = await res.json();
   const lang = window.bpLang();
-  const all = ({ ko: '전체', en: 'All', es: 'Todos' }[lang] || '전체');
+  const all = ({ ko: 'All', en: 'All', es: 'Todos' }[lang] || '');
   const tags = [...new Set(data.items.map(i => i.tag[lang]))];
 
   const filters = document.getElementById('filters');

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>제품 · Products | 바이오프로테크</title>
-<meta name="description" content="바이오프로테크 제품 전체 라인업: 전기수술, 심전도, 신경진단, 통증관리." />
-<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
-<link rel="stylesheet" href="../assets/css/site.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Products | Bioprotech</title>
+<meta content="Bioprotech product line-up: electrosurgery, cardiology, neurology and pain management." name="description"/>
+<link href="../Bioprotech Design System/colors_and_type.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
-  /* 261102: 전체 제품 페이지 = 4개 대분류. 세로로 긴 카드에 제품 전체가 보이도록 크게 배치, 아래에 이름만 */
+  
   .cat-wrap { padding: 72px max(48px, calc((100% - 1180px) / 2)) 112px; }
   .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
   .cat-card { display: flex; flex-direction: column; color: inherit; }
@@ -24,28 +25,24 @@
   @media (max-width: 1000px) { .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 20px; } }
   @media (max-width: 560px) { .cat-wrap { padding: 40px 16px 72px; } .cat-grid { gap: 20px 14px; } .cat-body { padding-top: 14px; } .cat-card h2 { font-size: 17px; } .cat-code { font-size: 10px; } }
 </style>
-<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+<link href="../assets/css/theme-apple.css" rel="stylesheet"/>
 </head>
-<body data-lang="en" data-base=".." data-nav="products">
-
+<body data-base=".." data-lang="en" data-nav="products">
 <div id="bp-header-slot"></div>
-
 <section class="page-hero">
-  <nav class="breadcrumb">
-        <span><span class="ko-only">제품</span><span class="en-only">Products</span></span>
-  </nav>
-  <h1>
-    <span class="ko-only">제품</span><span class="en-only">Products</span>
-    <span class="en">Product Line-up</span>
-  </h1>
-  <p class="lead">
-    <span class="ko-only">전기수술, 심전도, 신경진단, 통증관리의 4개 전문 라인업.<br>임상 현장의 정밀한 요구에 맞춘 1회용·비1회용 의료기기를 운영합니다.</span>
-    <span class="en-only">Four specialized lines: Electrosurgery, Cardiology, Neurology, Pain Management.<br>A full portfolio of disposable and reusable medical devices for clinical precision.</span>
-  </p>
+<nav class="breadcrumb">
+<span><span class="en-only">Products</span></span>
+</nav>
+<h1>
+<span class="en-only">Products</span>
+<span class="en">Product Line-up</span>
+</h1>
+<p class="lead">
+
+<span class="en-only">Four specialized lines: Electrosurgery, Cardiology, Neurology, Pain Management.<br/>A full portfolio of disposable and reusable medical devices for clinical precision.</span>
+</p>
 </section>
-
 <main class="cat-wrap"><div class="cat-grid" id="catalog"></div></main>
-
 <div id="bp-footer-slot"></div>
 <script src="../assets/js/data-bundle.js"></script>
 <script src="../assets/js/chrome.js"></script>
@@ -54,8 +51,8 @@
   const res = await fetch('../assets/data/products.json');
   const data = await res.json();
   const lang = window.bpLang();
-  const IMG = { esu: 'esu', cardio: 'cardio', neuro: 'neuro', pain: 'pain' };   // 대분류 대표 제품 이미지 (assets/img/categories, 원본: 자료 폴더)
-  const U = { ko: '개 제품', en: ' products', es: ' productos' }, V = { ko: '제품 보기', en: 'View products', es: 'Ver productos' };
+  const IMG = { esu: 'esu', cardio: 'cardio', neuro: 'neuro', pain: 'pain' };   
+  const U = { ko: ' products', en: ' products', es: ' productos' }, V = { ko: 'View products', en: 'View products', es: 'Ver productos' };
   document.getElementById('catalog').innerHTML = data.categories.sort((a, b) => a.order - b.order).map(cat => {
     const n = data.products.filter(p => p.cat === cat.id).length;
     const img = IMG[cat.id]

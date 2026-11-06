@@ -213,7 +213,7 @@ body[data-lang="es"] .ko-only, body[data-lang="es"] .en-only { display: none !im
   min-height: 200px;
 }
 .placeholder-img::before {
-  content: attr(data-label) "\A(제품 사진 준비 중)";
+  content: attr(data-label) "\A(Photo coming soon)";
   white-space: pre;
   opacity: 0.6;
   line-height: 1.8;

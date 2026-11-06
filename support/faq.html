@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FAQ | 바이오프로테크</title>
-<link rel="stylesheet" href="../Bioprotech Design System/colors_and_type.css" />
-<link rel="stylesheet" href="../assets/css/site.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FAQ | Bioprotech</title>
+<link href="../Bioprotech Design System/colors_and_type.css" rel="stylesheet"/>
+<link href="../assets/css/site.css" rel="stylesheet"/>
 <style>
   .faq-tabs { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
   .tab-btn { padding: 10px 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; background: #fff; border: 1px solid var(--bp-lt2); color: var(--bp-dk2); cursor: pointer; }
@@ -24,28 +25,24 @@
   .faq-a { margin: 16px 0 0 44px; padding: 20px 24px; background: #F7F8FA; font-size: 14px; line-height: 1.8; color: var(--bp-dk2);  }
   .empty-state { padding: 48px 24px; text-align: center; color: var(--bp-dk2); opacity: 0.6; font-size: 14px; }
 </style>
-<link rel="stylesheet" href="../assets/css/theme-apple.css" />
+<link href="../assets/css/theme-apple.css" rel="stylesheet"/>
 </head>
-<body data-lang="en" data-base=".." data-nav="support">
-
+<body data-base=".." data-lang="en" data-nav="support">
 <div id="bp-header-slot"></div>
-
 <section class="page-hero">
-  <nav class="breadcrumb"><a href="#">Support</a><span class="sep">/</span><span>FAQ</span></nav>
-  <h1 class="ko-only">자주 묻는 질문<span class="en">Frequently Asked Questions</span></h1>
-  <h1 class="en-only">Frequently Asked Questions<span class="en">Support · FAQ</span></h1>
-  <p class="lead ko-only">자주 들어오는 문의를 카테고리별로 정리했습니다.<br>답을 찾지 못하셨다면 문의 페이지를 이용해 주세요.</p>
-  <p class="lead en-only">Common questions organized by category.<br>If you cannot find an answer, please reach out via the Contact page.</p>
+<nav class="breadcrumb"><a href="#">Support</a><span class="sep">/</span><span>FAQ</span></nav>
+
+<h1 class="en-only">Frequently Asked Questions<span class="en">Support · FAQ</span></h1>
+
+<p class="lead en-only">Common questions organized by category.<br/>If you cannot find an answer, please reach out via the Contact page.</p>
 </section>
-
 <main class="page-body">
-  <div class="faq-search">
-    <input type="search" id="search" placeholder="" />
-  </div>
-  <div class="faq-tabs" id="tabs"></div>
-  <div class="faq-list" id="list"></div>
+<div class="faq-search">
+<input id="search" placeholder="" type="search"/>
+</div>
+<div class="faq-tabs" id="tabs"></div>
+<div class="faq-list" id="list"></div>
 </main>
-
 <div id="bp-footer-slot"></div>
 <script src="../assets/js/data-bundle.js"></script>
 <script src="../assets/js/chrome.js"></script>
@@ -54,12 +51,12 @@
   const res = await fetch('../assets/data/faq.json');
   const data = await res.json();
   const lang = window.bpLang();
-  document.getElementById('search').placeholder = ({ko:'질문 검색...', en:'Search questions...', es:'Buscar preguntas...'}[lang] || '질문 검색...');
+  document.getElementById('search').placeholder = ({ko:'Search questions...', en:'Search questions...', es:'Buscar preguntas...'}[lang] || '');
   let activeCat = '*';
   let query = '';
 
   const tabs = document.getElementById('tabs');
-  tabs.innerHTML = `<button class="tab-btn active" data-c="*">${({ko:'전체', en:'All', es:'Todos'}[lang] || '전체')}</button>` +
+  tabs.innerHTML = `<button class="tab-btn active" data-c="*">${({ko:'All', en:'All', es:'Todos'}[lang] || '')}</button>` +
     data.categories.map(c => `<button class="tab-btn" data-c="${c.id}">${c.name[lang]}</button>`).join('');
 
   function render() {
@@ -70,7 +67,7 @@
     });
     const list = document.getElementById('list');
     if (!filtered.length) {
-      list.innerHTML = `<div class="empty-state">${({ko:'검색 결과가 없습니다.', en:'No results found.', es:'No se han encontrado resultados.'}[lang] || '검색 결과가 없습니다.')}</div>`;
+      list.innerHTML = `<div class="empty-state">${({ko:'No results found.', en:'No results found.', es:'No se han encontrado resultados.'}[lang] || '')}</div>`;
       return;
     }
     list.innerHTML = filtered.map(i => `
