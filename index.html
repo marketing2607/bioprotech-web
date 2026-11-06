@@ -377,7 +377,7 @@
 </style>
 <link rel="stylesheet" href="assets/css/theme-apple.css?v=261102l" />
 </head>
-<body data-base="." data-page="home" data-nav="home" id="top">
+<body data-lang="en" data-base="." data-page="home" data-nav="home" id="top">
 
 <div id="bp-header-slot"></div>
 
@@ -674,7 +674,7 @@ window.BP_CAT_DATA = {
 
   /* ----- 뉴스/노티스 로드 ----- */
   (function loadNews() {
-    const lang = (window.bpLang ? bpLang() : 'ko');
+    const lang = (window.bpLang ? bpLang() : 'en');
     const wrap = document.getElementById('newsList');
     fetch('assets/data/news.json')
       .then(r => r.json())
@@ -702,7 +702,7 @@ window.BP_CAT_DATA = {
   (function () {
     const wrap = document.getElementById('worldmap'); if (!wrap) return;
     const svg = wrap.querySelector('svg'), tip = document.getElementById('wm-tip');
-    const lang = (typeof bpLang === 'function' ? bpLang() : 'ko');
+    const lang = (typeof bpLang === 'function' ? bpLang() : 'en');
     const items = document.querySelectorAll('#gl-list li');
     const nameOf = {};
     items.forEach(li => { const el = li.querySelector('.' + lang + '-only') || li; nameOf[li.dataset.c] = el.textContent; });
@@ -737,7 +737,7 @@ window.BP_CAT_DATA = {
     if (!panel || !inner || !tabs.length) return;
 
     let currentCat = null;
-    const L  = function() { return (typeof bpLang === 'function' ? bpLang() : 'ko'); };
+    const L  = function() { return (typeof bpLang === 'function' ? bpLang() : 'en'); };
     const VA = { ko: '전체 보기', en: 'View All', es: 'Ver todos' };
 
     /* 인라인 데이터 사용 (file:// 및 http:// 모두 동작) */

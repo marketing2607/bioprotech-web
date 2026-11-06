@@ -6,7 +6,12 @@
   // 261102: 기본 언어를 영어로 변경 (예전 저장값은 무시하도록 키 이름 변경)
   const LANG_KEY = 'bp-lang-v2';
   // 261102: 스페인어 페이지 삭제 → 한국어·영어만 사용 (예전에 ES를 고른 방문자는 한국어로)
-  const currentLang = ['ko','en'].includes(localStorage.getItem(LANG_KEY)) ? localStorage.getItem(LANG_KEY) : 'en';
+  // 261106: 한국어 심의 완료 전까지 영어로 고정 (KO 버튼을 눌러도 영어 유지)
+  //         심의 완료 후 KO_ENABLED 를 true 로 바꾸면 원래대로 동작
+  const KO_ENABLED = false;
+  let savedLang = null;
+  try { savedLang = localStorage.getItem(LANG_KEY); } catch (e) {}
+  const currentLang = (KO_ENABLED && ['ko','en'].includes(savedLang)) ? savedLang : 'en';
   document.documentElement.lang = currentLang;
   document.body.dataset.lang = currentLang;
 
@@ -520,8 +525,9 @@
     document.querySelectorAll('.bp-lang-toggle button').forEach(b => {
       b.addEventListener('click', () => {
         const newLang = b.dataset.lang;
+        if (!KO_ENABLED) return; // 261106: 한국어 잠금 중에는 언어 전환 안 함
         if (newLang !== currentLang) {
-          localStorage.setItem(LANG_KEY, newLang);
+          try { localStorage.setItem(LANG_KEY, newLang); } catch (e) {}
           location.reload();
         }
       });

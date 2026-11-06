@@ -76,7 +76,7 @@
 </style>
 <link rel="stylesheet" href="../assets/css/theme-apple.css" />
 </head>
-<body data-base=".." data-nav="about">
+<body data-lang="en" data-base=".." data-nav="about">
 
 <div id="bp-header-slot"></div>
 
@@ -649,7 +649,7 @@ const CERTS = [
 ];
 
 (function () {
-  const lang = (window.bpLang && bpLang()) || 'ko';
+  const lang = (window.bpLang && bpLang()) || 'en';
   const L = (ko, en, es) => lang === 'en' ? en : lang === 'es' ? (es || en) : ko;
   const list = CERTS.filter(c => SHOW_ON_HOLD || !c.hold);
   const GROUPS = [
